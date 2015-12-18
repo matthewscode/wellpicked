@@ -1,0 +1,74 @@
+.page.bracket {
+    
+    .well {
+        padding: 2px;
+        min-height: 75vh;
+        position: relative;
+    
+    
+        .information:extend(.tournament .container .information all) {
+            min-height: 0;
+            .box-shadow(inset 1px 1px 5px 2px rgba(0, 0, 0, 0.3));
+            
+            .name a {
+                color: @color-light;
+                &:hover {
+                    color: @anchor-color-hover;
+                }
+            }
+            
+            .bracket-name input {
+                &:not(.ng-valid) {
+                    .box-shadow(0 0 5px 5px @color-accent);
+                }
+                &.ng-touched.ng-invalid {
+                    .box-shadow(0 0 5px 5px @color-error);
+                }
+                &:focus {
+                    border-color: transparent;
+                }
+            }
+        }
+    }
+    
+    .bracket-container {
+        overflow: hidden;
+        cursor: move;
+        .user-select(none);
+        position: relative;
+        
+        .round {
+            padding-bottom: @gutter*6;
+            
+            &:nth-child(even) {
+                background-color: fade(@color-light, 2.5);
+            }
+            
+            &:hover {
+                background-color: fade(@color-light, 5);
+            }
+        }
+    }
+        
+    .submit-container {
+        margin-top: -(@gutter*8+@gutter/2);
+        padding: @gutter;
+        position: relative;
+        z-index: 10;
+    }
+    
+    .discussion-container {
+        float: none;
+        position: relative;
+        padding: @gutter*3;
+        text-shadow: none;
+        
+        .title {
+            color: @color-accent;
+        }
+        
+        .comments-container {
+            max-height: 20em;
+        }
+    }
+}

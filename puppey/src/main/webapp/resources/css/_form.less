@@ -1,0 +1,265 @@
+input,
+label,
+select,
+button,
+textarea {
+    margin: 0;
+    border: 0;
+    padding: 0;
+    display: inline-block;
+    vertical-align: middle;
+    white-space: normal;
+    background: none;
+    font: @base-font-size/@base-line-height @base-font-family;
+}
+
+input[type=submit],
+.button, .button:visited,
+button {
+    .transition(all .3s ease-in-out 0s);
+    display: inline-block;
+    font-size: @base-font-size * 1.3;
+    font-weight: bold;
+    line-height: 1;
+    letter-spacing: 1px;
+    background: @color-accent;
+    height: 45px;
+    line-height: 45px;
+    border-radius: 3px;
+    padding: 0 2.5em;
+    border: 0px solid transparent;
+    text-transform: uppercase;
+    margin: @gutter 0;
+    color: @color-light;
+    text-shadow: 0 0 2px rgba(0, 0, 0, 0.75);
+    .box-shadow(inset 0 0 1px rgba(255,255,255,.3), 0 0 3px rgba(0,0,0,.75));
+    
+    & + & {
+        margin-left: @gutter !important;
+    }
+    
+    &:hover {
+        cursor: pointer;
+        background: darken(@color-accent, 10%);
+        color: @color-light;
+    }
+    
+    &:focus {
+        .box-shadow(inset 0 0 3px 2px rgba(255,255,255,.3), 0 0 3px rgba(0,0,0,.75));
+    }
+    
+    &.secondary {
+        background: darken(@color-accent, 10%);
+        &:hover {
+            background: @color-accent;
+        }
+    }
+    
+    &.faded {
+        background: mix(@color-accent, @color-grey);
+        &:hover {
+            background: mix(@color-accent, @color-grey, 70%);
+        }
+    }
+    
+    &.warning {
+        background: mix(@color-error, @color-grey);
+        &:hover {
+            background: mix(@color-error, @color-grey, 70%);
+        }
+    }
+    
+    &.over-dark-image {
+        background: fade(@color-light, 30%);
+        border-width: 3px;
+        line-height: 40px;
+        color: @color-light;
+        border-color: @color-light;
+        text-shadow: 0 0 1px #000, 0 0 1px #000, 0 0 2px rgba(0, 0, 0, 0.75);
+        .box-shadow(0 0 3px rgba(0,0,0,.75));
+        
+        &:hover {
+            text-shadow: 0 0 1px #000, 0 0 2px rgba(0, 0, 0, 0.75);
+            background: @color-light;
+        }
+    }
+    
+    &.small {
+        padding: 0 1em;
+        font-size: @base-font-size*.8;
+        height: 36px;
+        line-height: 36px;
+    }
+}
+
+textarea,
+select,
+input[type=date],
+input[type=datetime],
+input[type=datetime-local],
+input[type=email],
+input[type=month],
+input[type=number],
+input[type=password],
+input[type=range],
+input[type=search],
+input[type=tel],
+input[type=text],
+input[type=time],
+input[type=url],
+input[type=week]
+{
+    .transition(all .3s ease-in-out 0s);
+    .placeholder(mix(@color-dark, @color-light));
+    color: @color-dark;
+    background: darken(@color-light, 10%);
+    padding: @gutter;
+    border: 4px solid transparent;
+    
+    &:focus {
+        border-color: @color-accent;
+        background: @color-light;
+    }
+}
+
+::-webkit-input-placeholder {
+    font-style: italic;
+}
+::-moz-placeholder {
+    font-style: italic;
+}
+:-ms-input-placeholder {
+    font-style: italic;
+}
+:-moz-placeholder {
+    font-style: italic;
+}
+
+textarea {
+  height: ~"calc(10em + 1px)";
+}
+
+.form-input {
+    margin: @gutter*2 0;
+    
+    > label,
+    > input,
+    > select,
+    > textarea {
+        display: block;
+        width: 100%;
+    }
+    
+    > label {
+        .h3;
+        font-weight: normal;
+    }
+    
+    > label + * {
+        margin-top: @gutter;
+        margin-bottom: @gutter/2;
+    }
+    
+    button,
+    .button,
+    input[type=submit] {
+        margin: 0;
+    }
+    
+    .help-block {
+        float: right;
+        font-size: .75em;
+    }
+    
+    &.small {
+        > label,
+        > input,
+        > select,
+        > textarea {
+            font: @base-font-size/@base-line-height @base-font-family;
+            border-width: 3px;
+            padding: @gutter/2;
+        }
+    }
+    
+    &.checkbox {
+        > * {
+            width: auto;
+            display: inline-block;
+            vertical-align: middle;
+        }
+        
+        > label {
+            cursor: pointer;
+            position: relative;
+            
+            &:before {
+                vertical-align: middle;
+                .transition(all .3s ease-in-out 0s);
+                content: '';
+                display: inline-block;
+                width: 1.5em;
+                height: 1.5em;
+                background: @color-light;
+                border: 3px solid transparent;
+                margin-right: @gutter/2;
+            }
+            
+            &:after {
+                .icon;
+                display: none;
+                content: '\E5CA';
+                position: absolute;
+                top: 3px;
+                left: 2px;
+                text-align: center;
+                color: @color-accent;
+                text-shadow: none;
+            }
+            
+            &:hover {
+                &:before {
+                    border-color: @color-accent;
+                }
+            }
+        }
+        
+        > input[type=checkbox] {
+            display: none;
+            
+            &:checked {
+                ~ label {
+                    &:before {
+                        border-color: @color-accent;
+                    }
+                    &:after {
+                        display: block;
+                    }
+                }
+            }
+        }
+    }
+}
+
+.timestamper {
+    .timestamper-date,
+    .timestamper-time {
+        white-space: nowrap;
+        
+        > * {
+            display: inline-block;
+        }
+    }
+    
+    select {
+        padding: @gutter;
+    }
+    
+    .timestamper-date + .timestamper-time {
+        margin-top: @gutter/2;
+    }
+    
+    .timestamper-zone {
+        padding: 14px;
+    }
+}

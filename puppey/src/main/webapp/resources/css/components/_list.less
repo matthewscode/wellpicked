@@ -1,0 +1,38 @@
+.list {
+    
+    > * {
+        .clearfix;
+    }
+    
+    .list-header {
+        .clearfix;
+        font-weight: bold;
+        text-transform: uppercase;
+        color: @color-light;
+        position: relative;
+        padding: @gutter/2 0;
+        font-size: .8em;
+        letter-spacing: .5px;
+        cursor: default;
+        
+        &:after {
+            content: '';
+            visibility: visible;
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background: darken(@color-dark, 10%);
+            border-bottom: 1px solid @color-dark;
+        }
+    }
+    
+    .list-item {
+        padding: @gutter/4 0;
+        &:hover {
+            background: rgba(255,255,255,.025);
+        }
+    }
+    
+}

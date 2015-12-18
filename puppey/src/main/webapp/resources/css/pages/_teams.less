@@ -1,0 +1,53 @@
+.page.teams {
+    .region {
+        text-align: center;
+        
+        .grid-item {
+            float: none;
+            margin: 0 auto;
+            
+            .background {
+                .opacity(.8);
+            }
+            &:hover {
+                .background {
+                    .opacity(.4);
+                }
+            }
+        }
+        
+        .teams {
+            max-width: (@gutter+64px+@gutter)*9;
+            margin: @gutter*2 auto;
+            
+            .team {
+                display: inline-block;
+                margin: @gutter @gutter/2;
+                vertical-align: middle;
+                position: relative;
+                background-color: fade(white, 20%);
+                
+                .logo {
+                    display: inline-block;
+                    width: 64px;
+                    line-height: 64px;
+                    padding: 0 @gutter/2;
+                    
+                    img {
+                        vertical-align: middle;
+                    }
+                }
+                
+                .name {
+                    .tooltip;
+                }
+                
+                &:hover {
+                    .name {
+                        display: block;
+                    }
+                }
+            }
+        }
+    }
+}

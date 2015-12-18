@@ -1,0 +1,225 @@
+.tournament {
+    .footer {
+        .opacity(.5);
+        overflow: hidden;
+        position: relative;
+        .wrapper {
+            .filter(blur(1px));
+            background-position: center bottom;
+        }
+    }
+    
+    .container {
+        width: 100%;
+        position: relative;
+        
+        > .wrapper {
+            min-height: 100vh;
+        }
+        
+        .information {
+            text-shadow: 0 0 1px rgba(0, 0, 0, 1), 0 0 1px rgba(0, 0, 0, 1), 0 0 2px rgba(0, 0, 0, 0.5);
+            padding: @gutter*3 0 @gutter*6;
+            text-align: center;
+            cursor: default;
+            background-repeat: no-repeat;
+            background-size: cover;
+            background-position: center;
+            min-height: 66.66vh;
+            position: relative;
+            
+            > .wrapper {
+                width: 60%;
+                margin: 0 auto;
+            }
+            
+            .separator {
+                .box-shadow(0 0 1px 1px rgba(0, 0, 0, 0.5));
+                .opacity(.75);
+                margin: 4% auto;
+                width: 33%;
+                height: 1px;
+                background: @color-light;
+                border: 0;
+                
+                &:last-child {
+                    margin-bottom: 0;
+                }
+            }
+            
+            .name {
+                margin: @gutter*2 0;
+            }
+            
+            .status {
+              display: inline-block;
+              padding: @gutter/2 @gutter;
+              margin-top: @gutter*1.5;
+              text-transform: uppercase;
+              font-size: .8em;
+              letter-spacing: .5px;
+              background: @color-accent;
+              text-shadow: none;
+            }
+            
+            .description {
+                margin: 0 auto;
+                line-height: 1.5;
+                font-weight: bold;
+                font-size: 1.1em;
+            }
+            
+            .teams {
+                max-width: (@gutter+48px+@gutter)*9;
+                margin: @gutter*2 auto;
+                
+                .team {
+                    display: inline-block;
+                    margin: @gutter;
+                    vertical-align: middle;
+                    position: relative;
+                    
+                    .logo {
+                        display: inline-block;
+                        width: 48px;
+                        line-height: 48px;
+                        img {
+                            vertical-align: middle;
+                        }
+                    }
+                    
+                    .name {
+                        .tooltip;
+                    }
+                    
+                    &.eliminated {
+                        .opacity(.5);
+                        
+                        .logo {
+                            .filter(blur(1px));
+                        }
+                        
+                        .name {
+                            text-decoration: line-through;
+                        }
+                    }
+                    
+                    &:hover {
+                        .name {
+                            display: block;
+                        }
+                    }
+                }
+            }
+        }
+        
+        .bracket-container {
+            width: 100%;
+            overflow: hidden;
+            cursor: move;
+            .user-select(none);
+            
+            .round {
+                background: @color-dark;
+                
+                &:nth-child(even) {
+                    background-color: lighten(@color-dark, 2);
+                }
+                
+                &:hover {
+                    background-color: lighten(@color-dark, 4);
+                }
+            }
+        }
+        
+        .brackets-container {
+            color: @color-light;
+            
+            > .wrapper {
+                display: table;
+                width: 100%;
+                table-layout: fixed;
+                
+                > * {
+                    .transition(all .3s ease-in-out 0s);
+                    background: fade(@color-accent, 90);
+                    padding: @gutter*3;
+                    display: table-cell;
+                    float: none;
+                    position: relative;
+                    
+                    &:nth-child(even) {
+                        background: fade(darken(@color-accent, 2.5%), 90);
+                    }
+                    
+                    &:hover {
+                        background: @color-accent;
+                    }
+                    
+                    .title {
+                        margin-bottom: @gutter*2;
+                    }
+                    
+                    ol, ul {
+                        margin: @gutter*2 0;
+                        
+                        li {
+                            .transition(all .3s ease-in-out 0s);
+                            .opacity(.75);
+                             
+                            &:nth-child(even) {
+                                background: fade(black, 5);
+                            }
+                        	a {
+                        		display: block;
+                        		color: @color-light;
+                        		padding: @gutter/2 @gutter;
+                        		border-bottom: 1px solid mix(@color-light, @color-accent, 25);
+                        		
+                        		&:hover {
+                                    .opacity(1);
+                        			border-color: @color-light;
+                        		}
+                        	}
+                        }
+                    }
+                }
+            }
+        }
+        
+        .discussion-pools {
+            display: table;
+            width: 100%;
+        
+            .pools-container,
+            .discussion-container {
+                float: none;
+                display: table-cell;
+                position: relative;
+                padding: @gutter*3;
+                
+                .title {
+                    color: @color-accent;
+                }
+            }
+            
+            .pools-container {
+                .transition(all .3s ease-in-out 0s);
+                color: @color-dark;
+                background: fade(@color-light, 70);
+                
+                &:hover {
+                    background: fade(@color-light, 80);
+                }
+                
+                .title {
+                    margin-bottom: @gutter*2;
+                }
+            }
+            
+            .comments-container {
+                max-height: 20em;
+            }
+        }
+    }
+}

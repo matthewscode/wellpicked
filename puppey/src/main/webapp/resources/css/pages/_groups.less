@@ -1,0 +1,206 @@
+.page.groups {
+    
+    .header {
+        .information {
+            min-height: 50vh;
+            background-position: center;
+            background-size: cover;
+            background-repeat: no-repeat;
+            position: relative;
+            width: 50%;
+        }
+        
+    }
+    
+    .information-container,
+    .streams-container,
+    .tournaments-container,
+    .discussion-container {
+        padding: @gutter;
+    }
+    
+    .information-container {
+        > * {
+            vertical-align: middle;
+        }
+        
+        .logo {
+            text-align: center;
+            
+            > * {
+                position: relative;
+                padding: @gutter;
+            }
+            
+            .favorite {
+                position: absolute;
+                top: 0;
+                left: -@gutter/2;
+                
+                > * {
+                    cursor: pointer;
+                    position: relative;
+                    display: block;
+                    
+                    &:before {
+                        .icon;
+                        .transition(all .3s ease-in-out 0s);
+                        display: block;
+                        margin: 0 auto;
+                        font-size: 3.5em;
+                        text-shadow: 0 0 2px fade(black, 75);
+                        content: '\E866';
+                        color: @color-accent;
+                    }
+                    
+                    &:after {
+                        .icon;
+                        .transition(all .3s ease-in-out 0s);
+                        display: block;
+                        margin: 0 auto;
+                        font-size: 1.5em;
+                        color: @color-light;
+                        z-index: 1;
+                        position: absolute;
+                        top: 50%;
+                        left: 50%;
+                        margin-top: -.5em;
+                        margin-left: -.5em;
+                    }
+                    
+                    .tooltip {
+                        width: 150px;
+                        left: -50px;
+                    }
+                    
+                    &.add {
+                        &:after {
+                            content: '\E145';
+                        }
+                    }
+                    
+                    &.remove {
+                        &:after {
+                            content: '\E15B';
+                        }
+                    }
+                    
+                    &:hover {
+                        &:before {
+                            color: @color-light;
+                        }
+                        &:after {
+                            color: @color-accent;
+                        }
+                        .tooltip {
+                            display: block;
+                        }
+                    }
+                }
+            }
+        }
+        
+        .info {
+            > * {
+                line-height: @gutter*2;
+                vertical-align: top;
+            }
+            
+            .label {
+                .opacity(.75);
+                text-align: right;
+                text-transform: uppercase;
+                font-size: .75em;
+                padding-right: @gutter*2;
+                border-right: 1px solid fade(white, 10);
+                letter-spacing: .5px;
+            }
+            
+            .value {
+                padding-left: @gutter*2;
+                border-left: 1px solid fade(black, 20);
+            }
+        }
+    }
+    
+    .streams-container,
+    .tournaments-container {
+        .title {
+            margin-bottom: @gutter;
+        }
+    }
+    
+    .streams-container {
+        .transition(all .3s ease-in-out 0s);
+        background: fade(@color-accent, 90);
+        position: relative;
+        
+        &:hover {
+            background: @color-accent;
+        }
+        
+        .streams {
+            .stream {
+                display: table;
+                table-layout: fixed;                
+                .transition(all .3s ease-in-out 0s);
+                
+                a {
+                    display: block;
+                }
+                .image {
+                    display: table-cell;
+                    vertical-align: top;
+                    position: relative;
+                    width: 40px;
+                    height: 40px;
+                    background-size: cover;
+                    background-position: center;
+                    
+                    &:after {
+                        content: '';
+                        display: block;
+                        position: absolute;
+                        right: @gutter/2;
+                        top: @gutter/2;
+                        width: @gutter;
+                        height: @gutter;
+                        border-radius: 50%;
+                        background: @color-active-light;
+                        .box-shadow(0 0 2px fade(black, 40%));
+                    }
+                }
+                .name {
+                    display: table-cell;
+                    vertical-align: middle;
+                    padding-left: @gutter;
+                    color: @color-light;
+                    .opacity(.75);
+                }
+                &:hover {
+                    background: darken(@color-accent, 2.5);
+                    .name {
+                        .opacity(1);
+                    }
+                }
+            }
+        }
+    }
+    
+    .tournaments-container {
+        .transition(all .3s ease-in-out 0s);
+        background: fade(darken(@color-accent, 2.5%), 90);
+        position: relative;
+        
+        &:hover {
+            background: @color-accent;
+        }
+    }
+    
+    .discussion-container {
+        .comments-container {
+            max-height: 50em;
+        }
+    }
+    
+}

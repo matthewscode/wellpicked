@@ -1,0 +1,135 @@
+p {
+    .reset;
+    margin: .25em 0;
+}
+
+h1, h2, h3,
+.h1, .h2, .h3 {
+    .reset;
+    font-weight: bold;
+    font-family: @accent-font-family;
+    
+    &.page-title {
+        margin-bottom: @gutter*2;
+    }
+}
+
+h4, h5, h6,
+.h4, .h5, .h6 {
+    .reset;
+    font-weight: normal;
+    font-family: @base-font-family;
+}
+
+h1, .h1 {
+    font-size: 2em;
+}
+
+h2, .h2 {
+    font-size: 1.5em;
+}
+
+h3, .h3 {
+    font-size: 1.25em;
+}
+
+h4, .h4 {
+    font-size: 1.1em;
+}
+
+h5, .h5 {
+    font-size: 1em;
+}
+
+h6, .h6 {
+    font-size: 1em;
+}
+
+ul, ol {
+    .reset;
+    text-align: left;
+    list-style-type: none;
+}
+ol {
+    counter-reset: i;
+    display: table;
+    width: 100%;
+    > li {
+        counter-increment: i;
+        display: table-row;
+        line-height: 1.5;
+        &:before {
+            content: counter(i) ".";
+            display: table-cell;
+            text-align: right;
+            padding-right: 1em;
+            width: 2.5em;
+        }
+    }
+}
+
+.uppercase {
+    text-transform: uppercase;
+}
+
+.lowercase {
+    text-transform: lowercase;
+}
+
+.capitalize {
+    text-transform: capitalize;
+}
+
+.text-left {
+    text-align: left;
+}
+
+.text-right {
+    text-align: right;
+}
+
+.text-center {
+    text-align: center;
+}
+
+.italic {
+    font-style: italic;
+}
+
+.bold {
+    font-weight: bold;
+}
+
+.small {
+    font-size: .8em;
+}
+
+.error {
+    color: @color-error;
+    font-weight: normal;
+    font-family: @base-font-family;
+}
+
+.hint {
+    color: @color-hint;
+    font-weight: normal;
+    font-family: @base-font-family;
+}
+
+.icon {
+  font-family: 'Material Icons', 'foundation-icons';
+  font-weight: normal;
+  font-style: normal;
+  font-size: @icon-size;
+  display: inline-block;
+  vertical-align: middle;
+  width: 1em;
+  height: 1em;
+  line-height: 1;
+  text-transform: none;
+  letter-spacing: normal;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+  -moz-osx-font-smoothing: grayscale;
+  font-feature-settings: 'liga';
+}

@@ -1,0 +1,148 @@
+/* Grid */
+.grid {
+    .grid-item {
+        .transition(all .3s ease-in-out 0s);
+        text-shadow: none;
+        text-align: center;
+        overflow: hidden;
+        word-break: break-word;
+        
+        > .wrapper {
+            .transition(all .3s ease-in-out 0s);
+            .clearfix;
+            overflow: hidden;
+            position: relative;
+        }
+        
+        &.image {
+            > .wrapper > .background {
+                z-index: 0;
+            }
+            > .wrapper > .wrapper {
+                display: table;
+            }
+            > .wrapper > .wrapper > .content {
+                display: table-cell;
+                vertical-align: middle;
+                background: none;
+                color: @color-light;
+                text-shadow: 0 0 1px rgba(0, 0, 0, 1), 0 0 1px rgba(0, 0, 0, 1), 0 0 2px rgba(0, 0, 0, 0.75);
+                padding: @gutter;
+                
+                @media @md-up {
+                    padding: 0 @gutter*2;
+                }
+                
+                .title ~ * {
+                    font-weight: bold;
+                    &:before {
+                        content: '';
+                        .box-shadow(0 0 2px rgba(0, 0, 0, 0.5));
+                        .transition(all .3s ease-in-out 0s);
+                        visibility: visible;
+                        content: '';
+                        display: block;
+                        width: 40%;
+                        margin: 1em auto .75em;
+                        height: 1px;
+                        background-color: @color-light;
+                    }
+                }
+            }
+            
+            &.hover:hover,
+            &.linked:hover {
+                > .wrapper > .background {
+                    .opacity(.5);
+                    .filter(blur(1px));
+                }
+            }
+        }
+        
+        &.content > .wrapper {
+            padding: 2em;
+            color: @color-dark;
+            background-color: @color-light;
+            
+            &:hover {
+                background-color: darken(@color-light, 10%);
+            }
+            
+            .title ~ * {
+                &:before {
+                    content: '';
+                    visibility: visible;
+                    content: '';
+                    display: block;
+                    width: 60%;
+                    margin: 1em auto .75em;
+                    height: 1px;
+                    background-color: @color-dark;
+                }
+            }
+        }
+        
+        &.linked {
+            cursor: pointer;
+        }
+        
+        &.iconed {
+            > .wrapper {
+                display: table;
+                padding: 1em;
+                
+                > .content {
+                    display: table-cell;
+                    vertical-align: middle;
+                }
+            }
+            .icon {
+              font-size: 3em;
+            }
+        }
+        
+        &.color-1 > .wrapper {
+            background: @color-accent;
+            color: @color-light;
+            &:hover {
+                background: darken(@color-accent, 10%);
+            }
+        }
+        
+        &.color-2 > .wrapper {
+            background: @color-light;
+            color: @color-accent;
+            &:hover {
+                background: darken(@color-light, 10%);
+            }
+        }
+        
+        &.color-3 > .wrapper {
+            background: lighten(@color-dark, 10%);
+            color: @color-light;
+            &:hover {
+                background: lighten(@color-dark, 5%);
+            }
+        }
+        
+        &.color-2 {
+            > .wrapper {
+                .box-shadow(0 0 3px rgba(0,0,0,.5));
+            }
+            &.hover:hover > .wrapper,
+            &.linked:hover > .wrapper {
+                .box-shadow(0 0 5px rgba(0, 0, 0, 0.75), inset 0 0 10px rgba(0, 0, 0, 0.5));
+            }
+        }
+        
+        &:not(.color-2) {
+            > .wrapper {
+                .box-shadow(0 0 3px rgba(0,0,0,.5), inset 0 0 3px rgba(255,255,255,.3));
+            }
+            &.hover:hover > .wrapper,
+            &.linked:hover > .wrapper {
+                .box-shadow(0 0 5px rgba(0,0,0,.75), inset 0 0 10px rgba(255,255,255,.5));
+            }
+        }
+    }
+}

@@ -1,0 +1,112 @@
+.page {
+    .sticky-navigation {
+        width: 100%;
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        background: @color-accent;
+        text-shadow: none;
+        .box-shadow(0 0 10px 1px rgba(0, 0, 0, 0.5));
+        text-align: center;
+        z-index: 1;
+        
+        > * {
+            .opacity(.75);
+            padding: @gutter*1.5 @gutter*2;
+            display: inline-block;
+            color: @color-light;
+            text-transform: uppercase;
+            font-size: .75em;
+            letter-spacing: .5px;
+            cursor: pointer;
+            
+            &:hover,
+            &.active {
+                .opacity(1);
+                background: darken(@color-accent, 5);
+            }
+        }
+        
+        &.sticky-scroll {
+            position: fixed;
+            bottom: auto;
+            top: 0;
+            left: auto;
+            z-index: 2;
+        }
+    }
+    
+    
+    .discussion-container {
+        .transition(all .3s ease-in-out 0s);
+        color: @color-dark;
+        background: fade(@color-light, 75);
+        position: relative;
+        
+        .title {
+            color: @color-accent;
+        }
+        
+        &:hover {
+            background: fade(@color-light, 80);
+        }
+        
+        .form-submit button {
+            width: 100%;
+        }
+        
+        .comments-container {
+            position: relative;
+            .ps-scrollbar-y-rail {
+                .opacity(.6);
+            }
+        }
+        
+        .comment-container {
+            .transition(all .3s ease-in-out 0s);
+            padding: 5px;
+            border-left-width: 3px;
+            border-left-style: solid;
+            border-left-color: transparent;
+            .clearfix;
+            
+            &:nth-child(even) {
+                background-color: fade(black, 2.5);
+            }
+            
+            &:hover {
+                border-left-color: @color-accent;
+                background-color: fade(black, 5);
+            }
+            
+            > * {
+                float: left;
+            }
+            
+            .avatar {
+                .wrapper {
+                    width: 2.5em;
+                    height: 2.5em;
+                    background-size: cover;
+                    background-position: center;
+                }
+            }
+            
+            .comment-wrapper {
+                padding-left: @gutter;
+            }
+            
+            .comment {
+                font-size: .9em;
+                display: block;
+            }
+            .user, .date {
+                font-size: .8em;
+            }
+            .date {
+                .opacity(.5);
+                cursor: default;
+            }
+        }
+    }
+}

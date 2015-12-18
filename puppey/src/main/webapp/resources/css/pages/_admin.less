@@ -1,0 +1,92 @@
+.admin {
+    
+    .navigation {
+        text-align: right;
+        
+        > *:first-child {
+            line-height: 1.2;
+        }
+        
+        > .nav-item {
+            font-size: 1.25em;
+            margin-bottom: @gutter;
+            
+            .nav-item {
+                font-size: .8em;
+                
+                > a:after {
+                    content: "\2039";
+                    padding-left: @gutter;
+                    font-size: 1.25em;
+                    line-height: 1;
+                    font-weight: bold;
+                    color: lighten(@color-dark, 10%);
+                    position: relative;
+                    top: 1px;
+                }
+            }
+        }
+        
+        .nav-item {
+            &:hover,
+            &.active {
+                > a {
+                    font-weight: bold;
+                    color: @anchor-color-hover;
+                    
+                    &:after {
+                        color: @anchor-color-hover;
+                    }
+                }
+            }
+        }
+        
+        + * {
+            > .title {
+                line-height: 1;
+                margin: 0;
+            }
+            position: relative;
+            padding-left: @gutter*4;
+        }
+    }
+    
+    &.tournament.add,
+    &.tournament.edit {
+        .add-tournament-form,
+        .edit-tournament-form {
+            
+            .tile-12.form-input {
+                
+                padding-top: 0;
+                padding-bottom: 0;
+                
+                &:not(:first-child) {
+                    .form-input {
+                        padding-top: 0;
+                    }
+                }
+                
+                .form-input {
+                    padding-bottom: 0;
+                }
+                    
+                input,
+                select,
+                textarea {
+                    margin-bottom: 0;
+                }
+            }
+        }
+    }
+    
+    &.tournament.update {
+        .update-tournament-form {
+            .round {
+                line-height: 2em;
+                vertical-align: middle;
+            }
+        }
+    }
+}
+

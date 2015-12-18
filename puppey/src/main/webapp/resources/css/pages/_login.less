@@ -1,0 +1,27 @@
+.login {
+    #container > .wrapper {
+        height: 100%;
+    }
+    
+    .login-form-alternate {
+      margin-top: -3.5em;
+      margin-left: 12em;
+        > * {
+            padding: 0 @gutter;
+            
+            &:first-child {
+                padding-left: 0;
+            }
+            
+            &:last-child {
+                padding-right: 0;
+            }
+        }
+    }
+
+    &.join {
+        .login-form-alternate {
+            margin-left: 10.75em;
+        }
+    }
+}
