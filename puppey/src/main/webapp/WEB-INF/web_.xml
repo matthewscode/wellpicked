@@ -12,11 +12,11 @@
 <!-- 	</listener> -->
 
 
-<!-- 	<!-- Loads Spring Security config file -->
+<!--  Loads Spring Security config file -->
 <!-- 	<context-param> -->
 <!-- 		<param-name>contextConfigLocation</param-name> -->
 <!-- 		<param-value> -->
-<!-- <!--             /WEB-INF/spring/webcontext/application-context.xml         -->
+<!--             /WEB-INF/spring/webcontext/application-context.xml         -->
 <!--             /WEB-INF/spring/webcontext/security-context.xml -->
 <!--         </param-value> -->
 <!-- 	</context-param> -->
