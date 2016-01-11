@@ -202,7 +202,6 @@
 							<goal>copy</goal>
 						</goals>
 						<configuration>
-						<failOnMissingWebXml>false</failOnMissingWebXml>
 							<artifactItems>
 								<artifactItem>
 									<groupId>org.mortbay.jetty</groupId>
