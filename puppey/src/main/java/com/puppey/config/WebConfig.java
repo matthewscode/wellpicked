@@ -47,10 +47,10 @@ public class WebConfig extends WebMvcConfigurerAdapter{
         return tc;
     }
     
-    @Override
-    public void addViewControllers(ViewControllerRegistry registry) {
-        registry.addViewController("/").setViewName("home");
-    }
+//    @Override
+//    public void addViewControllers(ViewControllerRegistry registry) {
+//        registry.addViewController("/").setViewName("home");
+//    }
     
     
 }
