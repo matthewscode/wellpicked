@@ -8,20 +8,20 @@
 
 <div class="container" style="height: 100%;">
     <div class="wrapper">
-        <div id="homeBanner" style="background-image: url(http://localhost:8080/puppey/resources/images/20150609/frankfurt_news.jpg)">
+        <div id="homeBanner" style="background-image: url(<c:url value="/resources/images/20150609/frankfurt_news.jpg" />)">
             <div id="homeBar"><h5>WELCOME</h5></div>
         </div>
         <div id="homeBotWrapper">
-            <div class="homeBotBox" style="background-image: url(http://localhost:8080/puppey/resources/images/20150609/news1.png)">
+            <div class="homeBotBox" style="background-image: url(<c:url value="/resources/images/20150609/news1.png" />)">
 
             </div>
-            <div class="homeBotBox" style="background-image: url(http://localhost:8080/puppey/resources/images/20150609/news2.png)">
+            <div class="homeBotBox" style="background-image: url(<c:url value="/resources/images/20150609/news2.png" />)">
 
             </div>
-            <div class="homeBotBox" style="background-image: url(http://localhost:8080/puppey/resources/images/20150609/news3.png)">
+            <div class="homeBotBox" style="background-image: url(<c:url value="/resources/images/20150609/news3.png" />)">
 
             </div>
-            <div class="homeBotBox" style="background-image: url(http://localhost:8080/puppey/resources/images/20150609/news4.png)">
+            <div class="homeBotBox" style="background-image: url(<c:url value="/resources/images/20150609/news4.png" />)">
 
             </div>
         </div>
