@@ -8,8 +8,12 @@
 
 <div class="container" style="height: 100%;">
     <div class="wrapper">
-        <div id="homeBanner" style="background-image: url(<c:url value="/resources/images/20150609/frankfurt_news.jpg" />)">
-            <div id="homeBar"><h5>WELCOME</h5></div>
+        <div id="homeBanner" style="background-image: url(<c:url value="/resources/images/news/shanghai.png" />)">
+        <div style="width: 520px; height:225px; left: 5%; top: 5%; position: absolute; background-image: url(<c:url value="/resources/images/news/shanghai-logo.png" />); z-index: 101;" >
+        </div>
+        <div style="width: 560px; height:225px; left: 5%; top: 5%; position: absolute; background: rgba(0, 0, 0, 0.5); background-opacity: 0.5; z-index: 5;" >
+		</div>
+            <div id="homeBar"></div>
         </div>
         <div id="homeBotWrapper">
             <div class="homeBotBox" style="background-image: url(<c:url value="/resources/images/20150609/news1.png" />)">
