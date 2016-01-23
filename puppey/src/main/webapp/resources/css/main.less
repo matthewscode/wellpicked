@@ -465,7 +465,7 @@
 #homeBar{
     width: 100%;
     top: auto;
-    background: #1e4880;
+    background: @color-accent;
     text-shadow: none;
     -webkit-box-shadow: 0 0 10px 1px rgba(0, 0, 0, 0.5);
     -moz-box-shadow: 0 0 10px 1px rgba(0, 0, 0, 0.5);
@@ -474,8 +474,8 @@
     z-index: 2;
     position: absolute;
     bottom: 0;
-    padding: 10px;
-    height: 6%;
+    padding: 3px;
+    height: 2%;
     white-space: normal;
 }
 #homeBar h5 {
@@ -500,6 +500,32 @@
     -webkit-box-shadow: 0 0 10px 1px rgba(0, 0, 0, 0.5);
     -moz-box-shadow: 0 0 10px 1px rgba(0, 0, 0, 0.5);
     box-shadow: 0 0 15px 0 rgba(0, 0, 0, 1.0);
+}
+.homeBoxTitle{
+	z-index: 10;
+	top: 0;
+	left: 0;
+	width: 100%;
+	position: absolute;
+	text-align: center;
+	padding-top: 8%;
+}
+.homeBoxNewsImage{
+	top: 0;
+	left: 0;
+	position: absolute;
+	height: 100%;
+	width: 100%;
+	background-repeat: no-repeat;
+    background-size: cover;
+}
+.homeBoxOverlay{
+	top: 0;
+	left: 0;
+	position: absolute;
+	height: 100%;
+	width: 100%;
+	background: rgba(0,0,0,0.5);
 }
 #profileBackground{
     width: 100%;
