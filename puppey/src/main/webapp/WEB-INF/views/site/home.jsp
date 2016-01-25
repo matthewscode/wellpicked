@@ -22,40 +22,61 @@
 				<div id="homeBotWrapper">
 					<div class="homeBotBox"
 						style="position: relative; padding-top: 5%; text-align: center;">
-						<div class="homeBoxTitle">
-							<h1>FRANKFURT</h1>
-						</div>
+
 						<div class="homeBoxNewsImage"
-							style="background-image: url(<c:url value="/resources/images/news/news-1.png" />)"></div>
-						<div class="homeBoxOverlay"></div>
+							style="background-image: url(<c:url value="/resources/images/news/news-1.png" />)">
+						</div>
+						<div class="homeBoxOverlay">
+							<div class="homeBoxTitle">
+								<h1>STARLADDER</h1>
+								
+
+							</div>
+						</div>
 					</div>
 					<div class="homeBotBox"
 						style="position: relative; padding-top: 5%; text-align: center;">
-						<div class="homeBoxTitle">
-							<h1>FRANKFURT</h1>
-						</div>
+
 						<div class="homeBoxNewsImage"
-							style="background-image: url(<c:url value="/resources/images/news/news-1.png" />)"></div>
-						<div class="homeBoxOverlay"></div>
+							style="background-image: url(<c:url value="/resources/images/news/news-2.png" />)">
+						</div>
+						<div class="homeBoxOverlay">
+							<div class="homeBoxTitle">
+								<h1>THE SUMMIT</h1><br/>
+								
+
+							</div>
+						</div>
+					</div>
+										<div class="homeBotBox"
+						style="position: relative; padding-top: 5%; text-align: center;">
+
+						<div class="homeBoxNewsImage"
+							style="background-image: url(<c:url value="/resources/images/news/news-3.png" />)">
+						</div>
+						<div class="homeBoxOverlay">
+							<div class="homeBoxTitle">
+								<h1>FRANKFURT</h1>
+								
+
+							</div>
+						</div>
 					</div>
 					<div class="homeBotBox"
 						style="position: relative; padding-top: 5%; text-align: center;">
-						<div class="homeBoxTitle">
-							<h1>FRANKFURT</h1>
-						</div>
+
 						<div class="homeBoxNewsImage"
-							style="background-image: url(<c:url value="/resources/images/news/news-1.png" />)"></div>
-						<div class="homeBoxOverlay"></div>
-					</div>
-					<div class="homeBotBox"
-						style="position: relative; padding-top: 5%; text-align: center;">
-						<div class="homeBoxTitle">
-							<h1>THE INTERNATIONAL</h1>
+							style="background-image: url(<c:url value="/resources/images/news/news-4.png" />)">
 						</div>
-						<div class="homeBoxNewsImage"
-							style="background-image: url(<c:url value="/resources/images/news/news-4.png" />)"></div>
-						<div class="homeBoxOverlay"></div>
+						<div class="homeBoxOverlay">
+							<div class="homeBoxTitle">
+								<h1>THE INTERNATIONAL</h1><br/>
+								
+
+							</div>
+						</div>
 					</div>
+
 				</div>
 			</div>
 		</div>

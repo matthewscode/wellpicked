@@ -210,7 +210,7 @@ public class HibernateTournamentDao implements TournamentDao {
     @SuppressWarnings("unchecked")
     @Override
     public List<Tournament> getCurrentTournaments() {
-        return sessionFactory.getCurrentSession().createCriteria(Tournament.class).add(Restrictions.lt("tournamentStart", currentTime)).add(Restrictions.gt("tournamentEnd", currentTime)).list();
+        return sessionFactory.getCurrentSession().createCriteria(Tournament.class).add(Restrictions.lt("tournamentStart", currentTime)).add(Restrictions.eq("deleted", 0)).add(Restrictions.gt("tournamentEnd", currentTime)).list();
    
     }
 

@@ -240,7 +240,7 @@
     <!-- /#NAVIGATION -->
 
     <!-- #SIDEBAR -->
-    <div id="sidebar" style="background: rgba(231, 231, 231, 1.0)">
+    <div id="sidebar" >
         <div class="wrapper">
         <c:choose>
         <c:when test="${not empty userData}">
@@ -264,14 +264,10 @@
             </c:otherwise>  
             </c:choose>       
             <div class="section">
-                    <div class="section sticky-navigation" style="height: 42px; background: #1e4880;">
-
-                    <div class="content" style="bottom: auto; background: #1e4880; height: 42px; padding: 13px">
-                        <h5 style="color: #e7e7e7; font: 12px/1.34 'Lato', sans-serif">LIVE STREAMS</h5>
+                    <div class="section side-head">
+                        <h5>LIVE STREAMS</h5>
                     </div>
-
-            </div>
-                            <div class="top-brackets tile-6" data-ng-controller="ApiController" data-ng-init="init('<c:url value="/api/streams/favorite_teams" />')">
+                            <div class="live-stream-box" data-ng-controller="ApiController" data-ng-init="init('<c:url value="/api/streams/favorite_teams" />')">
                             <div class="loader" data-ng-hide="data"></div>
                             <div data-ng-show="data">
                                 <div data-ng-repeat="team in data">
@@ -310,7 +306,7 @@
             </div>
             <div class="section" style="height: 100px">
                 <a href="http://www.dota2.com">
-                    <div class="background" data-ng-bg-image="<c:url value="/resources/images/news/frankfurt.png" />"></div>
+                    <div class="background" data-ng-bg-image="<c:url value="/resources/images/news/shanghai-logo.png" />"></div>
                     <div class="content">
 
                     </div>

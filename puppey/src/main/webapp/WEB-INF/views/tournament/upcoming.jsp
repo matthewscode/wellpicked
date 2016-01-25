@@ -22,7 +22,7 @@
             <c:set var="tournamentImage" value="" />
             <c:import url="/resources/images/tournaments/${item.tournamentSlug}.jpg" var="tournamentImage"/>
             
-<a href="${tournamentPath}${item.tournamentSlug}">
+				<a href="${tournamentPath}${item.tournamentSlug}">
             <div class="upcomingTournamentBox" data-ng-bg-image="<c:url value="/resources/images/tournaments/${empty tournamentImage ? 'default' : item.tournamentSlug}.jpg"/>">
                     
                     </div>
