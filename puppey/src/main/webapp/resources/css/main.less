@@ -238,7 +238,10 @@
     display: none;
     width: 100%;
     height: 25%;
-    background-color: darken(@color-accent, 20%);
+    background: darken(@color-accent, 10%);
+    background-image: url('dota.png');
+    background-repeat: no-repeat;
+    background-position: bottom; 
     position: absolute;
     top: 0;
     left: 0;
@@ -451,18 +454,18 @@
 /* added by matthew */
 /* profile */
 
-#homeBanner{
+.home-banner{
     text-shadow: 0 0 1px #000000, 0 0 1px #000000, 0 0 2px rgba(0, 0, 0, 0.5);
     padding: 30px 0 60px;
     text-align: center;
     cursor: default;
     background-repeat: no-repeat;
     background-size: cover;
-    min-height: 66.66vh;
+    min-height: 75.00vh;
     position: relative;
 }
 
-#homeBar{
+.homeBar{
     width: 100%;
     top: auto;
     background: @color-accent;
@@ -482,16 +485,16 @@
     color: #c7c7c7;
     font: 14px/1.34 'Lato', sans-serif;
 }
-#homeBotWrapper{
+.home-bot-wrapper{
     width:100%;
     padding: 0;
     margin: 0;
     box-sizing: border-box;
-    min-height: 33.33vh;
+    min-height: 25.00vh;
 }
-.homeBotBox{
+.home-bot-box{
     width: 25%;
-    min-height: 33.33vh;
+    min-height: 25.00vh;
     display: inline-block;
     background: @color-dark;
     float: left;
@@ -780,16 +783,16 @@
     -webkit-box-shadow: 0px 0px 15px 0px rgba(0,0,0,0.75);
 	-moz-box-shadow: 0px 0px 15px 0px rgba(0,0,0,0.75);
 	box-shadow: 0px 0px 15px 0px rgba(0,0,0,0.75);
+	position: relative;
 }
 
 .live-stream-box{
-	background: @color-light;
-	min-height: 100px;
-	max-height: 500px;
-	overflow: auto;
+padding-top: 5px;
+padding-left: 10px;
+	min-height: 20.00vh;
+	max-height: 30.00vh;
 	box-shadow: 0 0 10px 1px rgba(0, 0, 0, 0.5);
 	z-index: 20;
+	overflow: auto;
 
 }
-
-

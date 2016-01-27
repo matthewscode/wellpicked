@@ -1,4 +1,4 @@
-<%@ taglib uri="http://tiles.apache.org/tags-tiles" prefix="tiles" %>
+<%@ taglib uri="http://tiles.apache.org/tags-tiles" prefix="tiles"%>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
@@ -244,7 +244,7 @@
         <div class="wrapper">
         <c:choose>
         <c:when test="${not empty userData}">
-            <div class="section" style="height: 350px">
+            <div class="main-art">
 
                     <div class="background" data-ng-bg-image="<c:url value="/resources/images/achievements/${userData.avatarName}" />.png">
                     
@@ -253,7 +253,7 @@
             </div>
             </c:when>
             <c:otherwise>
-            <div class="section" style="height: 350px">
+            <div class="section" style="height: 40.00vh">
                 <a href="http://www.dota2.com">
                     <div class="background" data-ng-bg-image="<c:url value="/resources/images/news/linas.jpg" />">
                     
@@ -262,11 +262,11 @@
                 </a>
             </div>
             </c:otherwise>  
-            </c:choose>       
-            <div class="section">
-                    <div class="section side-head">
+            </c:choose>   
+            <div class="section side-head">
                         <h5>LIVE STREAMS</h5>
-                    </div>
+                    </div>    
+            <div class="section">
                             <div class="live-stream-box" data-ng-controller="ApiController" data-ng-init="init('<c:url value="/api/streams/favorite_teams" />')">
                             <div class="loader" data-ng-hide="data"></div>
                             <div data-ng-show="data">
@@ -279,31 +279,9 @@
 
 
             </div>
-            <div class="section sticky-navigation" style="height: 42px; background: #1e4880;">
-
-                    <div class="content" style="bottom: auto; background: #1e4880; height: 42px; padding: 13px">
-                        <h5 style="color: #e7e7e7; font: 12px/1.34 'Lato', sans-serif">BRACKET DUE</h5>
-                    </div>
-
-            </div>
-            <div class="section" style="height: 140px">
-                <a href="<c:url value="/tournament/${latestTournament.tournamentSlug}"/>">
-                    <div class="background" data-ng-bg-image="<c:url value="/resources/images/tournaments/${latestTournament.tournamentSlug}.jpg" />"></div>
-                    <div class="content">
-                        <h3 class="title">${latestTournament.tournamentName }</h3>
-                        <h4 class="subtitle">
-                        ${daysLeft} days
-                        </h4>
-                    </div>
-                </a>
-            </div>
-            <div class="section sticky-navigation" style="background: #1e4880;">
-
-                    <div class="content" style="bottom: auto; background: #1e4880; padding: 15px">
-                        <h5 style="color: #e7e7e7; font: 12px/1.34 'Lato', sans-serif">DOTA 2 UPDATE</h5>
-                    </div>
-
-            </div>
+			<div class="section side-head">
+                        <h5>NEXT MAJOR (${daysLeft} days)</h5>
+                    </div>    
             <div class="section" style="height: 100px">
                 <a href="http://www.dota2.com">
                     <div class="background" data-ng-bg-image="<c:url value="/resources/images/news/shanghai-logo.png" />"></div>
@@ -312,49 +290,11 @@
                     </div>
                 </a>
             </div>
+<!--             <div class="section side-head" style="height: 50%; min-height: 5.00vh; max-height: 22.00vh; padding-top: 10%"> -->
+<%-- 	             <img src="<c:url value="/resources/images/news/dota.png" />" style="height: 70%"/> --%>
+
+<!--             </div>     -->
           
-<!--             <div class="section"> -->
-<!--                 <a href="#"> -->
-<%--                     <div class="background" data-ng-bg-image="<c:url value="/resources/images/20150609/swords.jpg" />"></div> --%>
-<!--                     <div class="content"> -->
-<!--                         <h3 class="title">Fire & Swords!</h3> -->
-<!--                     </div> -->
-<!--                 </a> -->
-<!--             </div> -->
-<!--             <div class="section"> -->
-<!--                 <a href="#"> -->
-<%--                     <div class="background" data-ng-bg-image="<c:url value="/resources/images/20150609/whitewalker.jpg" />"></div> --%>
-<!--                     <div class="content"> -->
-<!--                         <h3 class="title">With Light Image</h3> -->
-<!--                         <h4 class="subtitle"> -->
-<!--                             <p>Is this a white walker? I'm not sure. It could be.</p> -->
-<!--                         </h4> -->
-<!--                     </div> -->
-<!--                 </a> -->
-<!--             </div> -->
-<!--             <div class="section"> -->
-<!--                 <a href="#"> -->
-<!--                     <div class="content"> -->
-<!--                         <h3 class="title">Report: Asian Ivy League Applicants Coached To Be 'Less Asian'</h3> -->
-<!--                         <p class="text"> -->
-<!--                             According to a profile in the Boston Globe, many consulting businesses catering to Asian-American students applying to Ivy League  -->
-<!--                             colleges coach them to appear 'less Asian' on their applications so they can distinguish themselves from other high-achieving  -->
-<!--                             Asian-American candidates. What do you think? -->
-<!--                         </p> -->
-<!--                     </div> -->
-<!--                 </a> -->
-<!--             </div> -->
-<!--             <div class="section"> -->
-<!--                 <a href="#"> -->
-<%--                     <div class="background" data-ng-bg-image="<c:url value="/resources/images/20150609/puppy.jpg" />"></div> --%>
-<!--                     <div class="content"> -->
-<!--                         <h3 class="title">Congratulations, it's a puppy!</h3> -->
-<!--                         <h4 class="subtitle"> -->
-<!--                             <p>Nawwwww.</p> -->
-<!--                         </h4> -->
-<!--                     </div> -->
-<!--                 </a> -->
-<!--             </div> -->
         </div>
     </div>
     <!-- /SIDEBAR -->
