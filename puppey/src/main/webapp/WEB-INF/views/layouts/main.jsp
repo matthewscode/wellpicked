@@ -244,16 +244,18 @@
         <div class="wrapper">
         <c:choose>
         <c:when test="${not empty userData}">
-            <div class="main-art">
-
-                    <div class="background" data-ng-bg-image="<c:url value="/resources/images/achievements/${userData.avatarName}" />.png">
+        
+          <div class="section" style="height: 42.00vh">
+                <a href="${profileUrl}">
+                     <div class="background" data-ng-bg-image="<c:url value="/resources/images/achievements/${userData.avatarName}" />.png">
                     
                     </div>
-
+                    
+                </a>
             </div>
             </c:when>
             <c:otherwise>
-            <div class="section" style="height: 40.00vh">
+            <div class="section" style="height: 42.00vh">
                 <a href="http://www.dota2.com">
                     <div class="background" data-ng-bg-image="<c:url value="/resources/images/news/linas.jpg" />">
                     
@@ -283,17 +285,27 @@
                         <h5>NEXT MAJOR (${daysLeft} days)</h5>
                     </div>    
             <div class="section" style="height: 100px">
-                <a href="http://www.dota2.com">
+                <a href="<c:url value="/tournament/the-shanghai-major" />">
                     <div class="background" data-ng-bg-image="<c:url value="/resources/images/news/shanghai-logo.png" />"></div>
                     <div class="content">
-
                     </div>
                 </a>
             </div>
-<!--             <div class="section side-head" style="height: 50%; min-height: 5.00vh; max-height: 22.00vh; padding-top: 10%"> -->
-<%-- 	             <img src="<c:url value="/resources/images/news/dota.png" />" style="height: 70%"/> --%>
-
-<!--             </div>     -->
+            <div class="section side-head">
+                        <h5>STATISTICS</h5>
+            </div>
+              <div class="section" style="height: 8%; padding: 10px;">
+                
+                    Users: 1,376 <br/>
+                    Brackets: 978<br/>	
+               </div>
+         
+            <div class="section side-head" style="height: 10%;min-height: 3.00vh; max-height: 20.00vh; padding: 20px; margin-bottom: 0px">
+	             <img src="<c:url value="/resources/images/news/dota.png" />"/>
+			<div style="height: 100px; margin-bottom: 0px">
+			
+			</div>
+            </div>    
           
         </div>
     </div>

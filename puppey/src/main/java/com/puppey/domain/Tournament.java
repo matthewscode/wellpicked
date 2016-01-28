@@ -70,6 +70,9 @@ public class Tournament {
     
     @Column(name = "finished",  columnDefinition = "boolean default false")
     private boolean finished;
+    
+    @Column(name = "bracketSet",  columnDefinition = "boolean default false")
+    private boolean bracketSet;
 
     // NEVER DELETE ONLY FLAG AS DELETED - Jen Huang April 2015
     @Column(name = "deleted")
@@ -200,5 +203,14 @@ public class Tournament {
         this.finished = finished;
     }
 
+	public boolean isBracketSet() {
+		return bracketSet;
+	}
+
+	public void setBracketSet(boolean bracketSet) {
+		this.bracketSet = bracketSet;
+	}
+
+    
     
 }

@@ -41,6 +41,10 @@ public class AppConfig {
         ds.setUrl("jdbc:mysql://us-cdbr-iron-east-03.cleardb.net:3306/heroku_f0266ed49738559");
         ds.setUsername("b8d5440926f742");
         ds.setPassword("500bb877");
+//        ds.setDriverClassName("com.mysql.jdbc.Driver");
+//        ds.setUrl("jdbc:mysql://104.131.247.9:3306/puppey");
+//        ds.setUsername("ad59543ab131");
+//        ds.setPassword("4852ba4cd6a062e9");
         return ds;
         
     }
