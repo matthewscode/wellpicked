@@ -36,7 +36,7 @@ public class ThreadStarter {
         StreamThread streamThread = new StreamThread(teamService.getAllTeams());
         TournamentPredictionAchievementConsumer tpac = new TournamentPredictionAchievementConsumer(tournamentPredictionAchievements);
         ScoreThread scoreThread = new ScoreThread(tournamentPredictionService);
-        new Thread(streamThread).start();
+        //new Thread(streamThread).start();
         new Thread(tpac).start();
         new Thread(scoreThread).start();
     }
