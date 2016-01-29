@@ -23,6 +23,7 @@ import com.puppey.domain.Template;
 import com.puppey.domain.Tournament;
 import com.puppey.domain.TournamentPrediction;
 import com.puppey.domain.User;
+import com.puppey.dto.MatchupDto;
 import com.puppey.service.TournamentCreationService;
 import com.puppey.service.TournamentPredictionService;
 import com.puppey.service.TeamService;
@@ -246,6 +247,15 @@ public class TournamentController {
     public List<TournamentPrediction> tournamentTopPredictionsForTournament(
             @PathVariable("tournamentId") int tournamentId, @PathVariable("amount") int amount) {
         return tournamentPredictionService.getTopPredictionsForTournament(tournamentId, amount);
+    }
+    
+    
+    //ADMIN API
+    @ResponseBody
+    @RequestMapping(value = "/admin/api/tournament/matchups/{tournamentId}")
+    public List<MatchupDto> matchupDtosForTournament(@PathVariable("tournamentId") int tournamentId){
+    	
+    	return tournamentService.getMatchupListDto(tournamentId);
     }
     
     @InitBinder

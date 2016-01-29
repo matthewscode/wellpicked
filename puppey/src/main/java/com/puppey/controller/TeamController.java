@@ -42,14 +42,6 @@ public class TeamController {
     	return "/team/view";
     }
     
-
-    //API 
-    @ResponseBody
-    @RequestMapping("/api/tournament/team/{teamId}")
-    public List<TournamentDto> tournamentsTeams(@PathVariable("teamId") int teamId) {
-        return teamService.getTeamTournamentDtoList(teamId);
-
-    }
     
     //ADMIN
     @RequestMapping(value = "/admin/team/add", method = RequestMethod.GET)
@@ -97,5 +89,14 @@ public class TeamController {
         // this is only non deleted tournaments
         model.addAttribute("Teams", teamService.getAllTeams());
         return "/team/admin/list";
+    }
+    
+    
+    //API 
+    @ResponseBody
+    @RequestMapping("/api/tournament/team/{teamId}")
+    public List<TournamentDto> tournamentsTeams(@PathVariable("teamId") int teamId) {
+        return teamService.getTeamTournamentDtoList(teamId);
+
     }
 }

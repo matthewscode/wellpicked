@@ -1,5 +1,6 @@
 package com.puppey.service;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,6 +12,7 @@ import com.puppey.dao.TournamentDao;
 import com.puppey.domain.Matchup;
 import com.puppey.domain.Team;
 import com.puppey.domain.Tournament;
+import com.puppey.dto.MatchupDto;
 import com.puppey.thread.ThreadStarter;
 import com.puppey.util.Utility;
 
@@ -275,4 +277,15 @@ public class TournamentServiceImpl implements TournamentService {
     public List<Tournament> getCurrentTournaments() {
         return tournamentDao.getCurrentTournaments();
     }
+
+	@Override
+	public List<MatchupDto> getMatchupListDto(int tournamentId) {
+		Tournament tournament = getTournament(tournamentId);
+		List<MatchupDto> matchupDtoList = new ArrayList<>();
+		for(Matchup matchup : tournament.getMatchups()){
+			MatchupDto mdto = new MatchupDto();
+			matchupDtoList.add(mdto);
+		}
+		return matchupDtoList;
+	}
 }

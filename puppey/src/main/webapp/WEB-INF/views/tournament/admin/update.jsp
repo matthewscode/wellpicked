@@ -17,6 +17,17 @@
     <tiles:insertDefinition name="admin">
         <tiles:putAttribute name="admin.body">
         
+        
+        <div data-ng-controller="ApiController" data-ng-init="init('<c:url value="/admin/api/tournament/matchups/${tournamentId}" />')">
+          <div class="loader" data-ng-hide="data"></div>
+          <div data-ng-show="data">
+              <div data-ng-repeat="matchup in data">
+                 id: {{ matchup.id }} <br/>
+                 team1Id: {{ matchup.team1Id }}<br/><br/>
+
+              </div>
+        </div>
+        </div>
             <div class="tile-12 container">
                 <h3 class="breadcrumbs title">
                     <span class="breadcrumb-item"><a href="${tournamentsUrl}">Tournaments</a></span>

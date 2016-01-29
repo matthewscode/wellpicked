@@ -9,13 +9,25 @@ public class MatchupDto {
     private Team team1;
     private Team team2;
     private int winnerId;
-    
+    private int team1Id;
+    private int team2Id;
     public MatchupDto(int matchupId, int date, Team team1, Team team2, int winnerId){
         this.matchupId = matchupId;
         this.date = date;
         this.team1 = team1;
         this.team2 = team2;
         this.winnerId = winnerId;
+    }
+    public MatchupDto(int matchupId, int date, int team1Id, int team2Id, int winnerId){
+        this.matchupId = matchupId;
+        this.date = date;
+        this.team1Id = team1Id;
+        this.team2Id = team2Id;
+        this.winnerId = winnerId;
+    }
+    
+    public MatchupDto(){
+    	
     }
     
     public int getMatchupId() {
@@ -48,6 +60,22 @@ public class MatchupDto {
     public void setWinnerId(int winnerId) {
         this.winnerId = winnerId;
     }
+
+	public int getTeam1Id() {
+		return team1Id;
+	}
+
+	public void setTeam1Id(int team1Id) {
+		this.team1Id = team1Id;
+	}
+
+	public int getTeam2Id() {
+		return team2Id;
+	}
+
+	public void setTeam2Id(int team2Id) {
+		this.team2Id = team2Id;
+	}
     
     
 }
