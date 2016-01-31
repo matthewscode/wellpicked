@@ -26,8 +26,6 @@ public class TournamentServiceImpl implements TournamentService {
     private TournamentCreationService tournamentCreationService;
     @Autowired
     private TeamService teamService;
-    @Autowired
-    private TournamentPredictionService tournamentPredictionService;
     
     @Override
     @Transactional
@@ -284,8 +282,37 @@ public class TournamentServiceImpl implements TournamentService {
 		List<MatchupDto> matchupDtoList = new ArrayList<>();
 		for(Matchup matchup : tournament.getMatchups()){
 			MatchupDto mdto = new MatchupDto();
+			mdto.setMatchupId(matchup.getMatchupId());
+			mdto.setMatchupType(matchup.getMatchupType());
+			mdto.setTeam1Name((matchup.getTeam1() == null)? "None" : matchup.getTeam1().getTeamName());
+			mdto.setTeam2Name((matchup.getTeam2() == null)? "None" : matchup.getTeam2().getTeamName());
+			mdto.setTeam1Slug((matchup.getTeam1() == null)? "none" : matchup.getTeam1().getTeamSlug());
+			mdto.setTeam2Slug((matchup.getTeam2() == null)? "none" : matchup.getTeam2().getTeamSlug());
+			mdto.setWinnerSlug((matchup.getWinnerId() == 0)? "none" : teamService.getTeam(matchup.getWinnerId()).getTeamSlug());
 			matchupDtoList.add(mdto);
 		}
 		return matchupDtoList;
+	}
+
+	@Override
+	public boolean updateMatchupTeam(int matchupId, int teamInt, int teamId) {
+		try{
+		Matchup matchup = tournamentDao.getMatchup(matchupId);
+		if(teamInt == 1){
+			matchup.setTeam1(teamService.getTeam(teamId));
+			tournamentDao.updateMatchup(matchup);
+			return true;
+		}else if(teamInt == 2){
+			matchup.setTeam2(teamService.getTeam(teamId));
+			tournamentDao.updateMatchup(matchup);
+			return true;
+		}else{
+			return false;
+		}
+		} catch(Exception e){
+			e.printStackTrace();
+			return false;
+		}
+		
 	}
 }

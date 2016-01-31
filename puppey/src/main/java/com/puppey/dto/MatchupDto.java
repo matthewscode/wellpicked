@@ -11,6 +11,14 @@ public class MatchupDto {
     private int winnerId;
     private int team1Id;
     private int team2Id;
+    private String matchupType;
+    private boolean showTeams1 = false;
+    private boolean showTeams2 = false;
+    private String team1Name;
+    private String team2Name;
+    private String team1Slug;
+    private String team2Slug;
+    private String winnerSlug;
     public MatchupDto(int matchupId, int date, Team team1, Team team2, int winnerId){
         this.matchupId = matchupId;
         this.date = date;
@@ -76,6 +84,58 @@ public class MatchupDto {
 	public void setTeam2Id(int team2Id) {
 		this.team2Id = team2Id;
 	}
+	public String getMatchupType() {
+		return matchupType;
+	}
+	public void setMatchupType(String matchupType) {
+		this.matchupType = matchupType;
+	}
+	public boolean isShowTeams1() {
+		return showTeams1;
+	}
+	public void setShowTeams1(boolean showTeams1) {
+		this.showTeams1 = showTeams1;
+	}
+	public boolean isShowTeams2() {
+		return showTeams2;
+	}
+	public void setShowTeams2(boolean showTeams2) {
+		this.showTeams2 = showTeams2;
+	}
+	public String getTeam1Name() {
+		return team1Name;
+	}
+	public void setTeam1Name(String team1Name) {
+		this.team1Name = team1Name;
+	}
+	public String getTeam2Name() {
+		return team2Name;
+	}
+	public void setTeam2Name(String team2Name) {
+		this.team2Name = team2Name;
+	}
+	public String getTeam1Slug() {
+		return team1Slug;
+	}
+	public void setTeam1Slug(String team1Slug) {
+		this.team1Slug = team1Slug;
+	}
+	public String getTeam2Slug() {
+		return team2Slug;
+	}
+	public void setTeam2Slug(String team2Slug) {
+		this.team2Slug = team2Slug;
+	}
+	public String getWinnerSlug() {
+		return winnerSlug;
+	}
+	public void setWinnerSlug(String winnerSlug) {
+		this.winnerSlug = winnerSlug;
+	}
+	
+
+	
     
+	
     
 }

@@ -104,8 +104,8 @@ public class HibernateTournamentDao implements TournamentDao {
 
     @Override
     public Tournament getTournamentByMatchupId(int matchupId) {
-        return ((Matchup) sessionFactory.getCurrentSession().get(Matchup.class, matchupId)).getTournament();
-
+        //return ((Matchup) sessionFactory.getCurrentSession().get(Matchup.class, matchupId)).getTournament();
+return null;
     }
 
     @SuppressWarnings("unchecked")

@@ -183,6 +183,10 @@ wpApp.directive('ngTimestamper', ['$window', function($window) {
 	    }
 	}
 }]);
+/*
+ * Matchup Update Directive
+ * Retrieves whatever URL you want
+ */
 
 /*
  * Api controller
@@ -214,11 +218,28 @@ wpApp.controller('ApiController', ['$scope', '$http', function($scope, $http) {
 				if($scope.options.callback && typeof $scope.options.callback === 'function') {
 					$scope.options.callback.apply(null, [$scope.data]);
 				}
-				console.log($scope.data);
 		    })
 		    .error(function(data, status, headers, config) {
 		    	$scope.data = {error: true};
 		    });
+	}
+	
+	$scope.updateMatchupTeam = function(url, matchupId, teamNum, newSlug){
+		$http.post(url)
+			.success(function(){
+				console.log($scope.data)
+				for(i = 0; i < $scope.data.length; i++ ){
+					if($scope.data[i].matchupId === matchupId){
+						if(teamNum === 1){
+							$scope.data[i].team1Slug = newSlug;
+							$scope.data[i].showTeams1 = !$scope.data[i].showTeams1;
+						} else if(teamNum === 2){
+							$scope.data[i].team2Slug = newSlug;
+							$scope.data[i].showTeams2 = !$scope.data[i].showTeams2;
+						}
+					}
+				}
+			});
 	}
 }]);
 
@@ -254,7 +275,6 @@ wpApp.controller('CommentController', ['$scope', '$http', function($scope, $http
 				$scope.data = _.sortBy(data, 'creation').reverse();
 				$scope.loading = false;
 				$scope.newComment.comment = '';
-				console.log($scope.data);
 		    })
 		    .error(function(data, status, headers, config) {
 		    	$scope.data = {error: true};
@@ -607,7 +627,6 @@ wpApp.controller('TournamentController', ['$scope', '$attrs', '$http', '$timeout
 		// Pass bracket to scope
 		$scope.prediction = bracketData;
 
-		console.log($scope);
 	};
 	
 	var parseData = function(data) {

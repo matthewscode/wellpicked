@@ -8,7 +8,7 @@
 <%-- Setting URL vars --%>
 <spring:url value="/admin/tournaments" var="tournamentsUrl" htmlEscape="true"/>
 <spring:url value="/admin/tournament/edit/" var="tournamentEditPath" htmlEscape="true" />
-
+<c:set var="updateMatchupUrl" value="/admin/api/tournament/matchup/update" />
 <tiles:insertDefinition name="main">
 <tiles:putAttribute name="pageTitle" value="Admin - Update Tournament" />
 <tiles:putAttribute name="pageId" value="admin tournament update" />
@@ -16,81 +16,49 @@
 
     <tiles:insertDefinition name="admin">
         <tiles:putAttribute name="admin.body">
-        
-        
-        <div data-ng-controller="ApiController" data-ng-init="init('<c:url value="/admin/api/tournament/matchups/${tournamentId}" />')">
-          <div class="loader" data-ng-hide="data"></div>
-          <div data-ng-show="data">
-              <div data-ng-repeat="matchup in data">
-                 id: {{ matchup.id }} <br/>
-                 team1Id: {{ matchup.team1Id }}<br/><br/>
-
-              </div>
-        </div>
-        </div>
-            <div class="tile-12 container">
+        <div class="tile-12 container">
                 <h3 class="breadcrumbs title">
                     <span class="breadcrumb-item"><a href="${tournamentsUrl}">Tournaments</a></span>
                     <span class="breadcrumb-item">${tournament.tournamentName}</span>
                 </h3>
             </div>
-            
-            <form:form modelAttribute="tournament" class="update-tournament-form" enctype="multipart/form-data">
-            <form:hidden path="tournamentId" />
-                <div class="tile-12 container list">
-                    <div class="list-header">
-                        <div class="tiles">
-                            <div class="tile-1">Round</div>
-                            <div class="tile-2">Date</div>
-                            <div class="tile-3">Team 1</div>
-                            <div class="tile-3">Team 2</div>
-                            <div class="tile-3 text-center">Winner</div>
-                        </div>
-                    </div>
-                    <c:forEach items="${tournament.matchups}" var="item" varStatus="status">
-                    <form:hidden path="matchups[${status.index}].matchupId" />
-                    <form:hidden path="matchups[${status.index}].weight" />
-                    <form:hidden path="matchups[${status.index}].tournament.tournamentId" />
-                    <form:hidden path="matchups[${status.index}].matchupType" />
-                    <form:hidden path="matchups[${status.index}].winnerNextMatchup" />
-                    <form:hidden path="matchups[${status.index}].winnerNextTeam" />
-                    <form:hidden path="matchups[${status.index}].loserNextMatchup" />
-                    <form:hidden path="matchups[${status.index}].loserNextTeam" />
-                        <div class="list-item">
-                            <div class="tiles">
-                                <div class="tile-1 round">${item.matchupType}</div>
-                                <div class="tile-2 form-input no-margin small">
-                                    <form:input path="matchups[${status.index}].date" type="text" size="6"/>
-                                </div>
-                                <div class="tile-3 form-input no-margin small">
-                                    <form:select path="matchups[${status.index}].team1.teamId"  items="${teamList}" itemValue="teamId" />
-                                </div>
-                                <div class="tile-3 form-input no-margin small">
-                                    <form:select path="matchups[${status.index}].team2.teamId"  items="${teamList}" itemValue="teamId" />
-                                </div>
-                                <div class="tile-3 form-input no-margin small">
-                                <form:select path="matchups[${status.index}].winnerId">
-                                    <form:option value="0" label="NONE" />
-                                    <form:option value="${tournament.matchups[status.index].team1.teamId}" label="${tournament.matchups[status.index].team1.teamName}" />
-                                    <form:option value="${tournament.matchups[status.index].team2.teamId}" label="${tournament.matchups[status.index].team2.teamName}" />
-                                </form:select>
-                                </div>
-                            </div>
-                        </div>
-                    </c:forEach>
-                </div>
-                <div class="tile-6">
-                    <div class="form-input form-submit no-margin">
-                        <button type="submit">Update Tournament</button>
-                    </div>
-                </div>
-                <div class="tile-6 text-right">
-                    <div class="form-input form-submit no-margin">
-                        <a class="button small secondary" href="${tournamentEditPath}${tournamentId}">Edit Tournament</a>
-                    </div>
-                </div>
-            </form:form>
-
+        
+        <div data-ng-controller="ApiController" data-ng-init="init('<c:url value="/admin/api/tournament/matchups/${tournamentId}" />')">
+          
+          <div class="loader" data-ng-hide="data"></div>
+          <div data-ng-show="data">
+          <button style="width:10%; padding: 0; background: #143157"></button>
+          <button style="width: 25%; background: #143157;" >Team 1</button>
+          <button style="width: 25%; background: #143157;" >Team 2</button>
+          <button style="width:10%; padding: 0; background: #143157">Winner</button>
+          
+              <div data-ng-repeat="matchup in data">
+                  <button style="width: 10%; padding: 0;  background: #143157"><span class="logo">{{ matchup.matchupType }}</span></button>
+                  <button style="width: 25%; padding: 5px;" ng-click="matchup.showTeams1 = !matchup.showTeams1"><img src="<c:url value="/resources/images/teams/logos/"/>{{ matchup.team1Slug }}.png" /></button>
+                  <button style="width: 25%; padding: 5px;" ng-click="matchup.showTeams2 = !matchup.showTeams2"><span class="logo"><img src="<c:url value="/resources/images/teams/logos/{{ matchup.team2Slug }}.png" />" /></span></button>
+                  <button style="width: 10%; padding: 0;  background: #CCC"><span class="logo"><img src="<c:url value="/resources/images/teams/logos/{{ matchup.winnerSlug }}.png" />" /></span></button>
+					<div class="team-list-box" ng-show="matchup.showTeams1">
+						<c:forEach var="team1" items="${teamList}">
+							<div class="team-list-logo">
+								<a href="" ng-click="updateMatchupTeam('<c:url value="${updateMatchupUrl}" />/' + matchup.matchupId +'/1/${team1.teamId}', matchup.matchupId, 1, '${team1.teamSlug}')">
+									<img src="<c:url value="/resources/images/teams/logos/${team1.teamSlug}.png" />" />
+								</a>
+							</div>
+						</c:forEach>
+					</div>
+					<div class="team-list-box" ng-show="matchup.showTeams2">
+						<c:forEach var="team2" items="${teamList}">
+							<div class="team-list-logo">
+								<a href="" ng-click="updateMatchupTeam('<c:url value="${updateMatchupUrl}" />/' + matchup.matchupId +'/2/${team2.teamId}', matchup.matchupId, 2, '${team2.teamSlug}')">
+									<img src="<c:url value="/resources/images/teams/logos/${team2.teamSlug}.png" />" />
+								</a>
+							</div>
+						</c:forEach>
+					</div>
+			</div>
+            </div>
+        </div>
+        </div>
         </tiles:putAttribute>
     </tiles:insertDefinition>
 </tiles:putAttribute>

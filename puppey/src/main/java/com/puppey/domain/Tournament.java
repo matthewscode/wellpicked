@@ -20,7 +20,6 @@ import javax.validation.constraints.NotNull;
 import org.hibernate.validator.constraints.NotEmpty;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 @Entity
 @Table(name = "tournament")
@@ -61,7 +60,7 @@ public class Tournament {
     @Column(name = "twitch_tag")
     private String twitchTag;
     
-    @JsonManagedReference
+
     @OneToMany(mappedBy = "tournament")
     private List<Matchup> matchups;
 

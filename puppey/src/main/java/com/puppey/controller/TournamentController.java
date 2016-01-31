@@ -258,6 +258,12 @@ public class TournamentController {
     	return tournamentService.getMatchupListDto(tournamentId);
     }
     
+    @ResponseBody
+    @RequestMapping(value = "/admin/api/tournament/matchup/update/{matchupId}/{teamInt}/{teamId}", method = RequestMethod.POST)
+    public boolean updateMatchupTeam(@PathVariable("matchupId") int matchupId, @PathVariable("teamInt") int teamInt, @PathVariable("teamId") int teamId){
+    	return tournamentService.updateMatchupTeam(matchupId, teamInt, teamId);
+    }
+    
     @InitBinder
     protected void initBinder(HttpServletRequest request, ServletRequestDataBinder binder) throws Exception {
         binder.registerCustomEditor(Template.class, "template", new PropertyEditorSupport() {

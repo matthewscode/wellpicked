@@ -22,14 +22,14 @@ public class TournamentCreationServiceImpl implements TournamentCreationService 
 	private TournamentDao tournamentDao;
     @Autowired
     private TemplateDao templateDao;
-//    @Autowired
-//    private Template template8SE;
+    @Autowired
+    private Template8SE template8SE;
     @Autowired
     private TournamentTemplate template4U4LDE; 
-//    @Autowired
-//    private Template template4U0LDE;
-//    @Autowired
-//    private Template template8U8LDE;
+    @Autowired
+    private Template4U0LDE template4U0LDE;
+    @Autowired
+    private Template8U8LDE template8U8LDE;
     
     @Override
     @Transactional(propagation=Propagation.REQUIRED, readOnly=false)
@@ -38,14 +38,14 @@ public class TournamentCreationServiceImpl implements TournamentCreationService 
         int id = template.getTemplateId();
         if(id == 1){
             template4U4LDE.createTournament(tournament);
-//        }else if("8U8LDE".equals(template)){
-//            template8U8LDE.createTournament(tournament);
-//        }else if("8SE".equals(template)){
-//            template8SE.createTournament(tournament);
-//        }else if("4U0LDE".equals(template)){
-//            template4U0LDE.createTournament(tournament);
-//        }else if("GS".equals(template)){
-//            createGroupStage(tournament, tournament.getNumTeams());
+        }else if("8U8LDE".equals(template.getTemplateName())){
+            template8U8LDE.createTournament(tournament);
+        }else if("8SE".equals(template.getTemplateName())){
+            template8SE.createTournament(tournament);
+        }else if("4U0LDE".equals(template.getTemplateName())){
+            template4U0LDE.createTournament(tournament);
+        }else if("GS".equals(template.getTemplateName())){
+            createGroupStage(tournament, tournament.getNumTeams());
         }
     }
     
