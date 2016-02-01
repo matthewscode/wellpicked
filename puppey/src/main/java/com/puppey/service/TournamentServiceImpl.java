@@ -284,6 +284,8 @@ public class TournamentServiceImpl implements TournamentService {
 			MatchupDto mdto = new MatchupDto();
 			mdto.setMatchupId(matchup.getMatchupId());
 			mdto.setMatchupType(matchup.getMatchupType());
+			mdto.setTeam1Id((matchup.getTeam1() == null)? 0 : matchup.getTeam1().getTeamId());
+			mdto.setTeam2Id((matchup.getTeam2() == null)? 0 : matchup.getTeam2().getTeamId());
 			mdto.setTeam1Name((matchup.getTeam1() == null)? "None" : matchup.getTeam1().getTeamName());
 			mdto.setTeam2Name((matchup.getTeam2() == null)? "None" : matchup.getTeam2().getTeamName());
 			mdto.setTeam1Slug((matchup.getTeam1() == null)? "none" : matchup.getTeam1().getTeamSlug());
@@ -305,6 +307,10 @@ public class TournamentServiceImpl implements TournamentService {
 		}else if(teamInt == 2){
 			matchup.setTeam2(teamService.getTeam(teamId));
 			tournamentDao.updateMatchup(matchup);
+			return true;
+		}else if(teamInt == 3){
+			matchup.setWinnerId(teamId);
+			updateMatchup(matchup); //method inside service places winner inside new matchup
 			return true;
 		}else{
 			return false;

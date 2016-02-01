@@ -19,6 +19,8 @@ public class MatchupDto {
     private String team1Slug;
     private String team2Slug;
     private String winnerSlug;
+    private int winnerNextMatchId;
+    private int loserNextMatchId;
     public MatchupDto(int matchupId, int date, Team team1, Team team2, int winnerId){
         this.matchupId = matchupId;
         this.date = date;
@@ -131,6 +133,18 @@ public class MatchupDto {
 	}
 	public void setWinnerSlug(String winnerSlug) {
 		this.winnerSlug = winnerSlug;
+	}
+	public int getWinnerNextMatchId() {
+		return winnerNextMatchId;
+	}
+	public void setWinnerNextMatchId(int winnerNextMatchId) {
+		this.winnerNextMatchId = winnerNextMatchId;
+	}
+	public int getLoserNextMatchId() {
+		return loserNextMatchId;
+	}
+	public void setLoserNextMatchId(int loserNextMatchId) {
+		this.loserNextMatchId = loserNextMatchId;
 	}
 	
 

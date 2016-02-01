@@ -45,19 +45,23 @@ public class AdviceController {
 	}
 	   @ModelAttribute("latestTournament")
 	    public Tournament getLatestTournamentId(){
+		   if(tournamentService.getCurrentAndUpcomingTournaments().size() > 0){
 	        return tournamentService.getCurrentAndUpcomingTournaments().get(0);
+		   }else{
+			   return null;
+		   }
 	    }
 	   
-	   @ModelAttribute("daysLeft")
-	   public Long getDaysLeft(@ModelAttribute("latestTournament") Tournament tournament){
-	       Long start = (long)tournament.getTournamentStart();
-	       Long today = (System.currentTimeMillis() / 1000);
-	       Long difference = (start - today)/((60 * 60 * 24));
-	       if(difference <= 0){
-	           return (long) 0;
-	       }
-	       return difference;
-	   }
+//	   @ModelAttribute("daysLeft")
+//	   public Long getDaysLeft(@ModelAttribute("latestTournament") Tournament tournament){
+//	       Long start = (long)tournament.getTournamentStart();
+//	       Long today = (System.currentTimeMillis() / 1000);
+//	       Long difference = (start - today)/((60 * 60 * 24));
+//	       if(difference <= 0){
+//	           return (long) 0;
+//	       }
+//	       return difference;
+//	   }
 
 	@ResponseBody
 	@RequestMapping("/api/streams/favorite_teams")

@@ -205,10 +205,13 @@ wpApp.controller('ApiController', ['$scope', '$http', function($scope, $http) {
 		return data;
 	};
 	
+	$scope.dataUrl;
+	
 	$scope.init = function(url, options) {
 		if(!url) {
 			return;
 		}
+		$scope.dataUrl = url;
 		
 		$scope.options = options || {};
 		
@@ -224,23 +227,34 @@ wpApp.controller('ApiController', ['$scope', '$http', function($scope, $http) {
 		    });
 	}
 	
-	$scope.updateMatchupTeam = function(url, matchupId, teamNum, newSlug){
+}]);
+
+wpApp.controller('TournamentUpdateController', ['$scope', '$http', function($scope, $http) {
+	
+	$scope.updateMatchupTeam = function(url, matchupId, teamNum, newSlug, newTeamId){
+		
 		$http.post(url)
 			.success(function(){
-				console.log($scope.data)
+				if(teamNum === 3){
+					$scope.data = false;
+					$scope.init($scope.dataUrl);
+				}
 				for(i = 0; i < $scope.data.length; i++ ){
 					if($scope.data[i].matchupId === matchupId){
 						if(teamNum === 1){
 							$scope.data[i].team1Slug = newSlug;
+							$scope.data[i].team1Id = newTeamId;
 							$scope.data[i].showTeams1 = !$scope.data[i].showTeams1;
 						} else if(teamNum === 2){
 							$scope.data[i].team2Slug = newSlug;
+							$scope.data[i].team2Id = newTeamId;
 							$scope.data[i].showTeams2 = !$scope.data[i].showTeams2;
 						}
 					}
 				}
 			});
 	}
+
 }]);
 
 /*

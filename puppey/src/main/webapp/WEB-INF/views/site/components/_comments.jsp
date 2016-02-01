@@ -4,7 +4,7 @@
 <c:url value="/profile/" var="profilePath" />
 <c:url value="/resources/images/achievements/" var="avatarPath" />
 <c:url value="/api/comments/${param.objectName}/${param.objectId}" var="dataUrl" />
-<c:url value="/api/comments/${param.objectName}/submit" var="submitUrl" />
+<c:url value="/api/comments/submit" var="submitUrl" />
 
 <div <c:if test="${not empty param.elId}">id="${param.elId}"</c:if> 
      class="discussion-container ${param.elClass}" data-ng-controller="CommentController" data-ng-cloak="true"
