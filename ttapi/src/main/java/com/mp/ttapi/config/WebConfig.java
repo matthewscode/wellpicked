@@ -11,7 +11,7 @@ import org.springframework.web.servlet.view.InternalResourceViewResolver;
 import org.springframework.web.util.UrlPathHelper;
 
 @EnableWebMvc
-@ComponentScan(basePackages = {"com.mp.ttapi.controller"})
+@ComponentScan(basePackages = {"com.mp.ttapi"})
 @Configuration
 public class WebConfig extends WebMvcConfigurerAdapter{
 

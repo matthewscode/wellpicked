@@ -14,4 +14,9 @@ public class HomeController {
     public String list() {
         return "site/home";
     }
+	
+	@RequestMapping("/util")
+	public String showUtility(){
+		return "site/util";
+	}
 }

@@ -12,6 +12,9 @@ import org.springframework.orm.hibernate4.LocalSessionFactoryBuilder;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 import org.springframework.web.multipart.commons.CommonsMultipartResolver;
 
+import com.mp.ttapi.domain.FileTranslation;
+import com.mp.ttapi.domain.ImageChecksum;
+
 @ComponentScan(basePackages = { "com.mp.ttapi.config" })
 @Configuration
 @EnableTransactionManagement
@@ -25,16 +28,14 @@ public class AppConfig {
         ds.setUsername("bd50b7900ba27a");
         ds.setPassword("a01f13ba");
         return ds;
-        
     }
 
     @Bean(name = "sessionFactory")
     public SessionFactory sessionFactory() {
         LocalSessionFactoryBuilder sessionBuilder = new LocalSessionFactoryBuilder(dataSource());
-        sessionBuilder.addAnnotatedClasses(/*classes */);
+        sessionBuilder.addAnnotatedClasses(ImageChecksum.class, FileTranslation.class);
         sessionBuilder.addProperties(getHibernateProperties());
        return sessionBuilder.buildSessionFactory();
-
     }
     
     public Properties getHibernateProperties(){
