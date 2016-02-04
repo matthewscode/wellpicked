@@ -4,6 +4,7 @@ import java.util.List;
 
 import com.mp.ttapi.domain.FileTranslation;
 import com.mp.ttapi.domain.ImageChecksum;
+import com.mp.ttapi.dto.FileTranslationDTO;
 
 public interface FileTranslationService {
 	
@@ -14,5 +15,7 @@ public interface FileTranslationService {
 	public boolean createFileTranslation(int checksum, String originUrl);
 	
 	public ImageChecksum getImageChecksumByChecksum(int checksum);
+
+	public List<FileTranslationDTO> getAllFileTranslationsForDisplay();
 	
 }

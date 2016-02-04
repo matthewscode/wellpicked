@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import com.mp.ttapi.domain.FileTranslation;
+import com.mp.ttapi.dto.FileTranslationDTO;
 import com.mp.ttapi.service.FileTranslationService;
 
 
@@ -21,8 +21,8 @@ public class ApiController {
 
 	@ResponseBody
 	@RequestMapping("/ft/all")
-	public List<FileTranslation> tournaments() {
-	    return fileTranslationService.getAllFileTranslations();
+	public List<FileTranslationDTO> tournaments() {
+	    return fileTranslationService.getAllFileTranslationsForDisplay();
 	}
 	
 	@ResponseBody
