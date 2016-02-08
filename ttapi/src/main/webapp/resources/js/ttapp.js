@@ -33,7 +33,16 @@ ttApp.controller('ApiController', ['$scope', '$http', function($scope, $http) {
 		    	$scope.data = {error: true};
 		    });
 	}
+	
 }]);
+
+ttApp.controller('FileController', ['$scope', '$http', function($scope, $http) {
+	$scope.showDetail = false;
+}]);
+
+//ttApp.directive('editFile', function(){
+//	showDetail = false;
+//});
 
 ttApp.controller('utilController', ['$scope', '$http', function($scope, $http) {
 	

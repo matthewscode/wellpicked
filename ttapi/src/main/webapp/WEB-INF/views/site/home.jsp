@@ -11,14 +11,38 @@
 <script src="<c:url value="/resources/js/ttapp.js" />"></script> 
 </head>
 <body data-ng-app="ttApp">
+<div class="ft-wrapper">
+<div class="ft-top-nav">
+<div class="title">mp.com</div>
+</div>
 <div data-ng-controller="ApiController" data-ng-init="init('<c:url value="/api/ft/all" />')">
   <div data-ng-show="data">
   	<div data-ng-repeat="ft in data" class="ft-list">
-  		<div class="ft-box">
+  	<div ng-controller="FileController">
+  		<div class="ft-box" ng-click="showDetails = !showDetails">
   			<img src="{{ ft.originUrl }}" class="ft-list-image"/>
   		</div>
+  		<div class="ft-detail-box" ng-show="showDetails" ng-click="showDetails = !showDetails">
+  			<div class="ft-detail-image">
+  				<div class="ft-detail-image-top">
+  				<img src="{{ ft.originUrl }}" class="ft-list-image" />
+  				</div>
+  				<div class="ft-detail-image-bot">
+  				details
+  				</div>
+  			</div>
+  			<div class="ft-detail-detail">
+  				checksum: etc etc
+  			</div>
+  		</div>
+  		
+  	</div>
   	</div>
   </div>
+</div>
+</div>
+<div class="ft-bottom">
+mp
 </div>
 </body>
 </html>
