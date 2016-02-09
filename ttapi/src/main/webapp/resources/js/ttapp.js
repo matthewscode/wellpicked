@@ -1,5 +1,29 @@
 var ttApp = angular.module('ttApp', []);
 
+ttApp.directive('ckEditor', [function () {
+    return {
+        require: '?ngModel',
+        link: function ($scope, elm, attr, ngModel) {
+        	   var config = {
+                       toolbar:[[ 'Bold', 'Italic', 'Underline', 'Strike', 'TextColor', 'FontSize', '-', 'JustifyLeft', 'JustifyCenter', 'JustifyRight' ]],
+                       width: '100%',
+                       height: '32vh'
+                   };
+            var ck = CKEDITOR.replace(elm[0], config);
+
+            ck.on('change', function () {
+                $scope.$apply(function () {
+                    ngModel.$setViewValue(ck.getData());
+                });
+            });
+
+            ngModel.$render = function (value) {
+                ck.setData(ngModel.$modelValue);
+            };
+        }
+    };
+}])
+
 ttApp.controller('ApiController', ['$scope', '$http', function($scope, $http) {
 	var processData = function(data) {
 		// Sort
@@ -11,9 +35,7 @@ ttApp.controller('ApiController', ['$scope', '$http', function($scope, $http) {
 		}		
 		return data;
 	};
-	
-	$scope.dataUrl;
-	
+		
 	$scope.init = function(url, options) {
 		if(!url) {
 			return;
@@ -21,6 +43,8 @@ ttApp.controller('ApiController', ['$scope', '$http', function($scope, $http) {
 		$scope.dataUrl = url;
 		
 		$scope.options = options || {};
+		$scope.options.start = $scope.options.start || 0;
+		$scope.options.amount = $scope.options.amount || 50;
 		
 		$http.get(url)
 			.success(function(data, status, headers, config) {
@@ -32,17 +56,30 @@ ttApp.controller('ApiController', ['$scope', '$http', function($scope, $http) {
 		    .error(function(data, status, headers, config) {
 		    	$scope.data = {error: true};
 		    });
-	}
+	};
+	
+	$scope.loadMore = function(url) {
+		if(!url) {
+			return;
+		}
+		url = url;
+		
+		$http.get(url)
+			.success(function(data, status, headers, config) {
+				$scope.data = $scope.data.concat(processData(data));
+				$scope.options.start += $scope.options.amount;
+			})
+		    .error(function(data, status, headers, config) {
+	    		 console.log('lol u errored')
+		    });
+		
+	};
 	
 }]);
 
 ttApp.controller('FileController', ['$scope', '$http', function($scope, $http) {
 	$scope.showDetail = false;
 }]);
-
-//ttApp.directive('editFile', function(){
-//	showDetail = false;
-//});
 
 ttApp.controller('utilController', ['$scope', '$http', function($scope, $http) {
 	
