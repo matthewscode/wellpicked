@@ -48,5 +48,11 @@ public class AlphaFileTranslationDAO implements FileTranslationDAO{
 		}
 	}
 
+	@SuppressWarnings("unchecked")
+	@Override
+	public List<FileTranslation> getFileTranslationsByRow(int start, int stop) {
+		return sessionFactory.getCurrentSession().createCriteria(FileTranslation.class).setFirstResult(start).setMaxResults(stop-start).list();
+	}
+
 
 }

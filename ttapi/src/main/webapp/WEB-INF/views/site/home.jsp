@@ -10,44 +10,51 @@
 <script src="//cdnjs.cloudflare.com/ajax/libs/angular.js/1.3.16/angular.min.js"></script>
 <script src="resources/js/ttapp.js"></script> 
 <script src="resources/js/ckeditor/ckeditor.js"></script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/textAngular/1.5.0/textAngular.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/textAngular/1.5.0/textAngular-rangy.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/textAngular/1.5.0/textAngular-sanitize.min.js"></script>
+<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/textAngular/1.5.0/textAngular.css">
+<link rel="stylesheet" href="http://netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css">
+
 </head>
 <body data-ng-app="ttApp">
 <div class="ft-wrapper">
 <div class="ft-top-nav">
 <div class="title">mp.com</div>
 </div>
-<div data-ng-controller="ApiController" data-ng-init="init('<c:url value="/api/ft/all" />')" class="ft-container">
+<div data-ng-controller="ApiController" data-ng-init="init('<c:url value="/api/ft/start/0/end/25" />')" class="ft-container">
+  <div ng-controller="FileController">
+	<div class="ft-work-box" ng-show="showEditor">
+		<div class="ft-work-image-box">
+			<img src="{{ imgUrl }}" class="ft-work-image" ng-click="showEditor = false">
+		</div>
+		<div class="ft-work-editors">
+		 <div class="ft-detail-transcription">
+			<textarea data-ng-model="ft.transcription" data-ck-editor></textarea>
+		</div>
+		<div class="ft-detail-translation">
+			<textarea data-ng-model="ft.translation" data-ck-editor></textarea>
+	  	</div>
+		</div>
+	</div>
   <div data-ng-show="data" class="ft-list">
-  	<div data-ng-repeat="ft in data" class="ft-box">
-	  	<div ng-controller="FileController" ng-click="showDetails = !showDetails" class="ft-box-wrapper">
+  	<div data-ng-repeat="ft in data" class="ft-box" ng-click="setEditor(ft.originUrl, ft.id)">
+
+  		<div class="ft-overlay"></div>
+
+	  	<div ng-click="showDetails = !showDetails" class="ft-box-wrapper">
   			<img ng-src="{{ ft.originUrl }}" class="ft-list-image"/>
-	  		<div class="ft-detail-box" ng-show="showDetails" ng-click="showDetails = !showDetails">
-	  			<div class="ft-detail-image">
-	  				<div class="ft-detail-image-top">
-	  				<img ng-src="{{ ft.originUrl }}" class="ft-list-image" />
-	  				</div>
-	  				<div class="ft-detail-image-bot">
-	  				<span>Checksum: {{ ft.checksum }}</span><br/>
-	  				<span>URL: {{ ft.originUrl }}</span>
-	  				</div>
-	  			</div>
-	  			<div class="ft-detail-detail">
-		  			<div class="ft-detail-transcription">
-						<textarea data-ng-model="ft.transcription" data-ck-editor></textarea>
-					</div>
-					<div class="ft-detail-translation">
-						<textarea data-ng-model="ft.translation" data-ck-editor></textarea>
-					</div>
-	  			</div>
-	  		</div>
 	  	</div>
   	</div>
-  	<button ng-click="loadMore('<c:url value="/api/ft/all" />')">load more</button>
+
   </div>
 </div>
-</div>
+
 <div class="ft-bottom">
-mp
+	<center><button ng-click="loadMore(25)">load more</button></center>
+</div>
+</div>
 </div>
 </body>
 </html>

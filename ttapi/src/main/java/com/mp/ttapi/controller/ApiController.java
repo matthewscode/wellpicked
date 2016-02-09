@@ -21,8 +21,14 @@ public class ApiController {
 
 	@ResponseBody
 	@RequestMapping("/ft/all")
-	public List<FileTranslationDTO> tournaments() {
+	public List<FileTranslationDTO> fileTranslations() {
 	    return fileTranslationService.getAllFileTranslationsForDisplay();
+	}
+	
+	@ResponseBody
+	@RequestMapping("/ft/start/{startRow}/end/{endRow}")
+	public List<FileTranslationDTO> specifiedFileTranslation(@PathVariable("startRow") int start, @PathVariable("endRow") int stop) {
+	    return fileTranslationService.getFileTranslationsByRow(start,stop);
 	}
 	
 	@ResponseBody

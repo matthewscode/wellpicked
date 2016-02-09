@@ -53,17 +53,28 @@ public class AlphaFileTranslationService implements FileTranslationService {
 	@Override
 	public List<FileTranslationDTO> getAllFileTranslationsForDisplay() {
 		List<FileTranslation> fileTranslationList = getAllFileTranslations();
+		List<FileTranslationDTO> ftDtoList = convertFileTranslationsToDTO(fileTranslationList);
+		return ftDtoList;
+	}
+	
+	@Override
+	public List<FileTranslationDTO> convertFileTranslationsToDTO(List<FileTranslation> fileTranslationList){
 		List<FileTranslationDTO> ftDtoList = new ArrayList<>();
 		for(FileTranslation ft : fileTranslationList){
-			FileTranslationDTO newDto = new FileTranslationDTO();
-			newDto.setId(ft.getId());
-			if(ft.getImageChecksum()!=null){
-			newDto.setChecksum(ft.getImageChecksum().getChecksum());
-			}
-			newDto.setOriginUrl(ft.getOriginUrl());
-			ftDtoList.add(newDto);
+			FileTranslationDTO newFt = new FileTranslationDTO();
+			newFt.setId(ft.getId());
+			newFt.setChecksum(ft.getImageChecksum().getChecksum());
+			newFt.setOriginUrl(ft.getOriginUrl());
+			ftDtoList.add(newFt);
 		}
 		return ftDtoList;
+	}
+
+	@Override
+	@Transactional
+	public List<FileTranslationDTO> getFileTranslationsByRow(int start, int stop) {
+		List<FileTranslation> ftList = fileTranslationDAO.getFileTranslationsByRow(start, stop);
+		return convertFileTranslationsToDTO(ftList);
 	}
 
 }

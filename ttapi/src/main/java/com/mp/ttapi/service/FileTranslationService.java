@@ -17,5 +17,10 @@ public interface FileTranslationService {
 	public ImageChecksum getImageChecksumByChecksum(int checksum);
 
 	public List<FileTranslationDTO> getAllFileTranslationsForDisplay();
+
+	public List<FileTranslationDTO> getFileTranslationsByRow(int start, int stop);
+
+	List<FileTranslationDTO> convertFileTranslationsToDTO(
+			List<FileTranslation> fileTranslationList);
 	
 }

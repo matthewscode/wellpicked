@@ -1,4 +1,4 @@
-var ttApp = angular.module('ttApp', []);
+var ttApp = angular.module('ttApp', ['textAngular']);
 
 ttApp.directive('ckEditor', [function () {
     return {
@@ -49,6 +49,7 @@ ttApp.controller('ApiController', ['$scope', '$http', function($scope, $http) {
 		$http.get(url)
 			.success(function(data, status, headers, config) {
 				$scope.data = processData(data);
+				$scope.nextStart = 25;
 				if($scope.options.callback && typeof $scope.options.callback === 'function') {
 					$scope.options.callback.apply(null, [$scope.data]);
 				}
@@ -58,12 +59,17 @@ ttApp.controller('ApiController', ['$scope', '$http', function($scope, $http) {
 		    });
 	};
 	
-	$scope.loadMore = function(url) {
-		if(!url) {
-			return;
+	$scope.loadMore = function(increment) {
+		console.log('loading');
+		if(increment){
+			$scope.increment = increment
+		}else{
+			$scope.increment = 25;
 		}
-		url = url;
-		
+		$scope.nextEnd = $scope.nextStart + $scope.increment;
+		url = 'api/ft/start/' +$scope.nextStart + '/end/' + $scope.nextEnd;
+		$scope.nextStart = $scope.nextEnd + 1;
+		$scope.nextEnd = $scope.nextStart + $scope.increment;
 		$http.get(url)
 			.success(function(data, status, headers, config) {
 				$scope.data = $scope.data.concat(processData(data));
@@ -78,7 +84,14 @@ ttApp.controller('ApiController', ['$scope', '$http', function($scope, $http) {
 }]);
 
 ttApp.controller('FileController', ['$scope', '$http', function($scope, $http) {
-	$scope.showDetail = false;
+	$scope.imgUrl = '';
+	$scope.showEditor = false;
+	$scope.imageChecksumId;
+	$scope.setEditor = function(imageUrl, imageChecksumId){
+		$scope.imgUrl = imageUrl;
+		$scope.imageChecksumId = imageChecksumId;
+		$scope.showEditor = true;
+	}
 }]);
 
 ttApp.controller('utilController', ['$scope', '$http', function($scope, $http) {
