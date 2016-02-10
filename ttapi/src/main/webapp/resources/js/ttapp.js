@@ -6,8 +6,8 @@ ttApp.directive('ckEditor', [function () {
         link: function ($scope, elm, attr, ngModel) {
         	   var config = {
                        toolbar:[[ 'Bold', 'Italic', 'Underline', 'Strike', 'TextColor', 'FontSize', '-', 'JustifyLeft', 'JustifyCenter', 'JustifyRight' ]],
-                       width: '99%',
-                       height: '31.5vh'
+                       width: '100%',
+                       height: '30.00vh'
                    };
             var ck = CKEDITOR.replace(elm[0], config);
 

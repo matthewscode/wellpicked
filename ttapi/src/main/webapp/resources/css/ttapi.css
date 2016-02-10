@@ -2,7 +2,7 @@
 @import url(https://fonts.googleapis.com/css?family=Roboto);
 
 * {
-	box-sizing: border-box;
+	box-sizing: border-box !important;
 }
 
 body {
@@ -43,6 +43,9 @@ body {
 	overflow: auto;
 	padding: 10px;
 	height: 93.00vh;
+}
+.ft-list.has-editor {
+	height: 53.00vh;
 }
 
 .ft-box {

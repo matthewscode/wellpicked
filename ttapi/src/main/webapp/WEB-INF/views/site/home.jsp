@@ -41,7 +41,7 @@
 	  	</div>
 		</div>
 	</div>
-  <div data-ng-show="data" class="ft-list">
+  <div data-ng-show="data" class="ft-list"  ng-class="{'has-editor': showEditor}">
   	<div data-ng-repeat="ft in data" class="ft-box" ng-click="setEditor(ft.originUrl, ft.id)">
 
   		<div class="ft-overlay"></div>
