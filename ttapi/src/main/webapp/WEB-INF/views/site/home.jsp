@@ -21,7 +21,8 @@
 <body data-ng-app="ttApp">
 <div class="ft-wrapper">
 <div class="ft-top-nav">
-<div class="title">mp.com</div>
+	<div class="ft-top-logo"></div>
+	<div class="title">WORKBENCH</div>
 </div>
 <div data-ng-controller="ApiController" data-ng-init="init('<c:url value="/api/ft/start/0/end/25" />')" class="ft-container">
   <div ng-controller="FileController">
@@ -31,10 +32,12 @@
 		</div>
 		<div class="ft-work-editors">
 		 <div class="ft-detail-transcription">
-			<textarea data-ng-model="ft.transcription" data-ck-editor></textarea>
+			<textarea data-ng-model="transcriptionText" data-ck-editor></textarea>
+			<div class="button-full" ng-click="submitTranscription(transcriptionText, imageChecksumId)">TRANSCRIPTION</div>
 		</div>
 		<div class="ft-detail-translation">
 			<textarea data-ng-model="ft.translation" data-ck-editor></textarea>
+			<div class="button-full">TRANSLATION</div>
 	  	</div>
 		</div>
 	</div>

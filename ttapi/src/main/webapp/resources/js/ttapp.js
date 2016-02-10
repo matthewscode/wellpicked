@@ -6,8 +6,8 @@ ttApp.directive('ckEditor', [function () {
         link: function ($scope, elm, attr, ngModel) {
         	   var config = {
                        toolbar:[[ 'Bold', 'Italic', 'Underline', 'Strike', 'TextColor', 'FontSize', '-', 'JustifyLeft', 'JustifyCenter', 'JustifyRight' ]],
-                       width: '100%',
-                       height: '32vh'
+                       width: '99%',
+                       height: '31.5vh'
                    };
             var ck = CKEDITOR.replace(elm[0], config);
 
@@ -91,6 +91,9 @@ ttApp.controller('FileController', ['$scope', '$http', function($scope, $http) {
 		$scope.imgUrl = imageUrl;
 		$scope.imageChecksumId = imageChecksumId;
 		$scope.showEditor = true;
+	}
+	$scope.submitTranscription = function(transcriptionText,checksumId){
+		console.log(transcriptionText,checksumId);
 	}
 }]);
 

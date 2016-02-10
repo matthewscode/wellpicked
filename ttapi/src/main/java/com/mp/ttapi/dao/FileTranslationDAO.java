@@ -16,5 +16,7 @@ public interface FileTranslationDAO {
 	public boolean createFileTranslation(FileTranslation ft);
 
 	public List<FileTranslation> getFileTranslationsByRow(int start, int stop);
+
+	public ImageChecksum getImageChecksum(int id);
 	
 }

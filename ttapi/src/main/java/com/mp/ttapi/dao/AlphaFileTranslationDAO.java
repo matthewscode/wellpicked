@@ -54,5 +54,10 @@ public class AlphaFileTranslationDAO implements FileTranslationDAO{
 		return sessionFactory.getCurrentSession().createCriteria(FileTranslation.class).setFirstResult(start).setMaxResults(stop-start).list();
 	}
 
+	@Override
+	public ImageChecksum getImageChecksum(int id) {
+		return (ImageChecksum) sessionFactory.getCurrentSession().get(ImageChecksum.class, id);
+	}
+
 
 }

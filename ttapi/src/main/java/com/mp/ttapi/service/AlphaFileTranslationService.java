@@ -43,6 +43,12 @@ public class AlphaFileTranslationService implements FileTranslationService {
 		ft.setOriginUrl(originUrl);
 		return fileTranslationDAO.createFileTranslation(ft);
 	}
+	
+	@Override
+	@Transactional
+	public ImageChecksum getImageChecksum(int id) {
+		return fileTranslationDAO.getImageChecksum(id);
+	}
 
 	@Override
 	@Transactional
@@ -76,5 +82,4 @@ public class AlphaFileTranslationService implements FileTranslationService {
 		List<FileTranslation> ftList = fileTranslationDAO.getFileTranslationsByRow(start, stop);
 		return convertFileTranslationsToDTO(ftList);
 	}
-
 }

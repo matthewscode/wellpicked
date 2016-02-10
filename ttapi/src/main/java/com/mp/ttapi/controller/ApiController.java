@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.mp.ttapi.dto.FileTranslationDTO;
 import com.mp.ttapi.service.FileTranslationService;
+import com.mp.ttapi.service.ImageTranscriptionService;
 
 
 @Controller
@@ -18,6 +19,8 @@ public class ApiController {
 	
 	@Autowired
 	private FileTranslationService fileTranslationService;
+	@Autowired
+	private ImageTranscriptionService imageTranscriptionService;
 
 	@ResponseBody
 	@RequestMapping("/ft/all")
@@ -42,4 +45,10 @@ public class ApiController {
     public boolean createFileTranslation(@PathVariable("checksum") int checksum, @PathVariable("originUrl") String originUrl){
     	return fileTranslationService.createFileTranslation(checksum, "a");
     }
+	
+	@ResponseBody
+	@RequestMapping(value = "/transcription/create/{checksumId}/{transcriptionText")
+	public boolean createImageTranscription(@PathVariable("checksumId")int checksumId, @PathVariable("transcriptionText") String transcriptionText){
+		return imageTranscriptionService.createImageTranscription(checksumId, transcriptionText);
+	}
 }

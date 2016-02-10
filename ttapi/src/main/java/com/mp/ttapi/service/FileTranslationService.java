@@ -14,6 +14,8 @@ public interface FileTranslationService {
 
 	public boolean createFileTranslation(int checksum, String originUrl);
 	
+	public ImageChecksum getImageChecksum(int id);
+	
 	public ImageChecksum getImageChecksumByChecksum(int checksum);
 
 	public List<FileTranslationDTO> getAllFileTranslationsForDisplay();
