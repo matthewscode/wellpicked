@@ -33,11 +33,15 @@
 		<div class="ft-work-editors">
 		 <div class="ft-detail-transcription">
 			<textarea data-ng-model="transcriptionText" data-ck-editor></textarea>
-			<div class="button-full" ng-click="submitTranscription(transcriptionText, imageChecksumId)">TRANSCRIPTION</div>
+			<div class="ft-button-wrapper">
+				<button  type="button" class="button-full" ng-click="submitTranscription(transcriptionText, imageChecksumId)">TRANSCRIPTION</button>
+			</div>
 		</div>
 		<div class="ft-detail-translation">
 			<textarea data-ng-model="ft.translation" data-ck-editor></textarea>
-			<div class="button-full">TRANSLATION</div>
+			<div class="ft-button-wrapper">
+				<button type="button" class="button-full">TRANSLATION</button>
+			</div>
 	  	</div>
 		</div>
 	</div>
