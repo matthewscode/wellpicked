@@ -5,6 +5,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.mp.ttapi.dao.FileTranslationDAO;
 import com.mp.ttapi.dao.ImageTranscriptionDAO;
 import com.mp.ttapi.domain.ImageChecksum;
 import com.mp.ttapi.domain.ImageTranscription;
@@ -18,6 +19,8 @@ public class AlphaImageTranscriptionService implements ImageTranscriptionService
 	
 	@Autowired
 	private ImageTranscriptionDAO imageTranscriptionDao;
+	@Autowired 
+	private FileTranslationDAO fileTranslationDao;
 	
 	@Override
 	@Transactional
@@ -35,11 +38,9 @@ public class AlphaImageTranscriptionService implements ImageTranscriptionService
 		it.setTranscription(transcriptionText);
 		it.setWordCount(transcriptionText.length() - transcriptionText.replaceAll(" ", "").length());
 		it.setImageChecksum(ic);
-		try{
-			imageTranscriptionDao.addImageTranscription(it);
-			return true;
-		} catch (Exception e){
-			return false;
-		}
+		imageTranscriptionDao.addImageTranscription(it);
+		ic.setImageTranscription(it);
+		fileTranslationDao.createImageChecksum(ic);
+		return fileTranslationDao.createImageChecksum(ic);
 	}
 }

@@ -85,21 +85,24 @@ ttApp.controller('ApiController', ['$scope', '$http', function($scope, $http) {
 }]);
 
 ttApp.controller('FileController', ['$scope', '$http', function($scope, $http) {
-	$scope.imgUrl = '';
 	$scope.showEditor = false;
-	$scope.imageChecksumId;
-	$scope.transcriptionId;
-	$scope.transcriptionText;
-	$scope.translationId;
-	$scope.translationText;
-	$scope.setEditor = function(imageUrl, checksumId, transcriptionId, transcriptionText, translationId, translationText){
-		$scope.imgUrl = imageUrl;
-		$scope.imageChecksumId = checksumId;
-		$scope.transcriptionId = transcriptionId;
-		$scope.transcriptionText = transcriptionText;
-		$scope.translationId = translationId;
-		$scope.translationText = translationText;
-		$scope.showEditor = true;
+	
+	$scope.setEditor = function(url, checksumId, imgUrl){
+		var fullUrl = url + checksumId;
+		$http.get(fullUrl).success(function(data, status, headers, config) {
+			$scope.showEditor = true;
+			$scope.imgUrl = imgUrl;
+			$scope.checkSumId = data.checksumId;
+			$scope.transcriptionText = data.transcriptionText;
+			$scope.transcriptionWords = data.transcriptionNoWords;
+			$scope.translationText = data.translationText;
+			$scope.translationWords = data.translationNoWords;
+			console.log('yay');
+			console.log(data);
+		})
+		 .error(function(data, status, headers, config) {
+    		 console.log('lol u errored')
+	    });
 	}
 	$scope.submitTranscription = function(url, transcriptionId, text, cid){
 		console.log('test: ' +cid);

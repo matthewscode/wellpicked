@@ -2,7 +2,6 @@ package com.mp.ttapi.domain;
 
 import java.util.List;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -34,8 +33,8 @@ public class ImageTranscription {
 		@OneToMany(mappedBy = "imageTranscription")
 		private List<ImageTranslation> imageTranslationList;
 		
-		@OneToOne(cascade = CascadeType.ALL)
-		@JoinColumn(name = "image_checksum", unique = true)
+		@OneToOne
+		@JoinColumn(name = "image_checksum")
 		private ImageChecksum imageChecksum;
 		
 		public int getId() {

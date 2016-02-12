@@ -8,10 +8,8 @@ public class FileTranslationDTO {
 	private int checksum;
 	private String originUrl;
 	private int creationDate;
-	private int transcriptionId;
-	private String transcriptionText;
-	private int translationId;
-	private String translationText;
+	private boolean hasTranscription;
+	private boolean hasTranslation;
 	
 	public long getId() {
 		return id;
@@ -43,29 +41,17 @@ public class FileTranslationDTO {
 	public void setCreationDate(int creationDate) {
 		this.creationDate = creationDate;
 	}
-	public String getTranscriptionText() {
-		return transcriptionText;
+	public boolean isHasTranscription() {
+		return hasTranscription;
 	}
-	public void setTranscriptionText(String transcriptionText) {
-		this.transcriptionText = transcriptionText;
+	public void setHasTranscription(boolean hasTranscription) {
+		this.hasTranscription = hasTranscription;
 	}
-	public String getTranslationText() {
-		return translationText;
+	public boolean isHasTranslation() {
+		return hasTranslation;
 	}
-	public void setTranslationText(String translationText) {
-		this.translationText = translationText;
-	}
-	public int getTranscriptionId() {
-		return transcriptionId;
-	}
-	public void setTranscriptionId(int transcriptionId) {
-		this.transcriptionId = transcriptionId;
-	}
-	public int getTranslationId() {
-		return translationId;
-	}
-	public void setTranslationId(int translationId) {
-		this.translationId = translationId;
+	public void setHasTranslation(boolean hasTranslation) {
+		this.hasTranslation = hasTranslation;
 	}
 	
 }

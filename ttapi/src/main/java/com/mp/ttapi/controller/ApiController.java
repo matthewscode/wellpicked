@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import com.mp.ttapi.domain.ImageTranscription;
 import com.mp.ttapi.domain.ImageTranslation;
 import com.mp.ttapi.dto.FileTranslationDTO;
+import com.mp.ttapi.dto.ImageChecksumDTO;
 import com.mp.ttapi.service.FileTranslationService;
 import com.mp.ttapi.service.ImageTranscriptionService;
 import com.mp.ttapi.service.ImageTranslationService;
@@ -39,6 +40,12 @@ public class ApiController {
 	@RequestMapping("/ft/start/{startRow}/end/{endRow}")
 	public List<FileTranslationDTO> specifiedFileTranslation(@PathVariable("startRow") int start, @PathVariable("endRow") int stop) {
 	    return fileTranslationService.getFileTranslationsByRow(start,stop);
+	}
+	
+	@ResponseBody
+	@RequestMapping("/ic/get/transription/translation/{checksumId}")
+	public ImageChecksumDTO specifiedFileTranslation(@PathVariable("checksumId") int checksumId) {
+	    return fileTranslationService.getImageChecksumDto(checksumId);
 	}
 	
 	@ResponseBody

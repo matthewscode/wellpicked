@@ -46,11 +46,12 @@
 		</div>
 	</div>
   <div data-ng-show="data" class="ft-list"  ng-class="{'has-editor': showEditor}">
-  	<div data-ng-repeat="ft in data" class="ft-box" ng-click="setEditor(ft.originUrl, ft.checksumId, ft.transcriptionId, ft.transcriptionText, ft.translationId, ft.translationText)">
+  	<div data-ng-repeat="ft in data" class="ft-box" ng-click="setEditor('<c:url value="/api/ic/get/transription/translation/" />', ft.checksumId, ft.originUrl)">
 
   		<div class="ft-overlay"></div>
 
 	  	<div ng-click="showDetails = !showDetails" class="ft-box-wrapper">
+	  	<div ng-show="ft.hasTranscription" class="ft-ts-ind"></div><div ng-show="ft.hasTranslation" class="ft-tl-ind"></div>
   			<img ng-src="{{ ft.originUrl }}" class="ft-list-image"/>
 	  	</div>
   	</div>

@@ -5,6 +5,7 @@ import java.util.List;
 import com.mp.ttapi.domain.FileTranslation;
 import com.mp.ttapi.domain.ImageChecksum;
 import com.mp.ttapi.dto.FileTranslationDTO;
+import com.mp.ttapi.dto.ImageChecksumDTO;
 
 public interface FileTranslationService {
 	
@@ -24,5 +25,7 @@ public interface FileTranslationService {
 
 	List<FileTranslationDTO> convertFileTranslationsToDTO(
 			List<FileTranslation> fileTranslationList);
+
+	public ImageChecksumDTO getImageChecksumDto(int checksumId);
 	
 }

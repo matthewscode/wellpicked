@@ -199,6 +199,7 @@ body {
 	z-index: 10;
 	position: absolute;
 	display: block;
+	cursor: pointer;
 }
 
 .ft-overlay:hover {
@@ -214,4 +215,24 @@ body {
 	font-weight: 700;
 	color: #f1f1f1;
 	line-height: 32px;
+}
+
+.ft-ts-ind {
+	position: absolute;
+	top: 5px;
+	right: 22px;
+	height: 15px;
+	width: 15px;
+	border: 1px solid #333;
+	background: #f8f8f8;
+}
+.ft-tl-ind {
+	position: absolute;
+	top: 5px;
+	right: 5px;
+	height: 15px;
+	width: 15px;
+	border: 1px solid #333;
+	background: #0080C7;
+	border: 1px solid #004D94;
 }
