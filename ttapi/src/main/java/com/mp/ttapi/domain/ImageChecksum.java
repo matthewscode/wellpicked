@@ -2,12 +2,15 @@ package com.mp.ttapi.domain;
 
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -17,7 +20,7 @@ public class ImageChecksum {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "id")
-	private long id;
+	private int id;
 	
 	@Column(name = "checksum")
 	private int checksum;
@@ -25,11 +28,15 @@ public class ImageChecksum {
 	@OneToMany(mappedBy = "imageChecksum")
 	private List<FileTranslation> fileTranslationList;
 
-	public long getId() {
+	@OneToOne(cascade = CascadeType.ALL)
+	@JoinColumn(name = "image_transcription", unique = true)
+	private ImageTranscription imageTranscription;
+	
+	public int getId() {
 		return id;
 	}
 
-	public void setId(long id) {
+	public void setId(int id) {
 		this.id = id;
 	}
 
@@ -47,6 +54,14 @@ public class ImageChecksum {
 
 	public void setFileTranslationList(List<FileTranslation> fileTranslationList) {
 		this.fileTranslationList = fileTranslationList;
+	}
+
+	public ImageTranscription getImageTranscription() {
+		return imageTranscription;
+	}
+
+	public void setImageTranscription(ImageTranscription imageTranscription) {
+		this.imageTranscription = imageTranscription;
 	}
 	
 	

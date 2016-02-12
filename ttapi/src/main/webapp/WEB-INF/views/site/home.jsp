@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Insert title here</title>
+<title>MP:Workbench</title>
 <link rel="stylesheet" type="text/css" href="<c:url value="/resources/css/ttapi.css" />">
 <script src="//cdnjs.cloudflare.com/ajax/libs/angular.js/1.3.16/angular.min.js"></script>
 <script src="resources/js/ttapp.js"></script> 
@@ -34,19 +34,19 @@
 		 <div class="ft-detail-transcription">
 			<textarea data-ng-model="transcriptionText" data-ck-editor></textarea>
 			<div class="ft-button-wrapper">
-				<button  type="button" class="button-full" ng-click="submitTranscription(transcriptionText, imageChecksumId)">TRANSCRIPTION</button>
+				<button  type="button" class="button-full" ng-click="submitTranscription('<c:url value="/api/transcription/create/" />', transcriptionId, transcriptionText, imageChecksumId)">TRANSCRIPTION</button>
 			</div>
 		</div>
 		<div class="ft-detail-translation">
-			<textarea data-ng-model="ft.translation" data-ck-editor></textarea>
+			<textarea data-ng-model="translationText" data-ck-editor></textarea>
 			<div class="ft-button-wrapper">
-				<button type="button" class="button-full">TRANSLATION</button>
+				<button type="button" class="button-full" ng-click="submitTranslation('<c:url value="/api/translation/create/" />', translationText, transcriptionId)">TRANSLATION</button>
 			</div>
 	  	</div>
 		</div>
 	</div>
   <div data-ng-show="data" class="ft-list"  ng-class="{'has-editor': showEditor}">
-  	<div data-ng-repeat="ft in data" class="ft-box" ng-click="setEditor(ft.originUrl, ft.id)">
+  	<div data-ng-repeat="ft in data" class="ft-box" ng-click="setEditor(ft.originUrl, ft.checksumId, ft.transcriptionId, ft.transcriptionText, ft.translationId, ft.translationText)">
 
   		<div class="ft-overlay"></div>
 

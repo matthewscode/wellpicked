@@ -14,13 +14,13 @@ import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "ImageTranscription")
+@Table(name = "image_transcription")
 public class ImageTranscription {
 
 		@Id
 		@GeneratedValue(strategy = GenerationType.IDENTITY)
 		@Column(name = "id")
-		private long id;
+		private int id;
 		
 		@Column(name = "transcription")
 		private String transcription;
@@ -29,20 +29,20 @@ public class ImageTranscription {
 		private int wordCount;
 		
 		@Column(name = "creation_date", insertable = false, updatable = false)
-		private long creation = System.currentTimeMillis() / 1000L;
+		private Integer creation = (int) (System.currentTimeMillis() / 1000);
 		
 		@OneToMany(mappedBy = "imageTranscription")
 		private List<ImageTranslation> imageTranslationList;
 		
 		@OneToOne(cascade = CascadeType.ALL)
-		@JoinColumn(name = "image_checksum")
+		@JoinColumn(name = "image_checksum", unique = true)
 		private ImageChecksum imageChecksum;
 		
-		public long getId() {
+		public int getId() {
 			return id;
 		}
 
-		public void setId(long id) {
+		public void setId(int id) {
 			this.id = id;
 		}
 
@@ -77,5 +77,13 @@ public class ImageTranscription {
 		public void setImageChecksum(ImageChecksum imageChecksum) {
 			this.imageChecksum = imageChecksum;
 		}
+		
+	    public Integer getCreation() {
+	        return creation;
+	    }
+
+	    public void setCreation(Integer creation) {
+	        this.creation = creation;
+	    }
 		
 }

@@ -10,16 +10,16 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "ImageTranscription")
+@Table(name = "image_translation")
 public class ImageTranslation {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "id")
-	private long id;
+	private int id;
 
 	@Column(name = "translation")
-	private String transcription;
+	private String translation;
 
 	@Column(name = "language")
 	private String language;
@@ -32,22 +32,22 @@ public class ImageTranslation {
 	private ImageTranscription imageTranscription;
 
 	@Column(name = "creation_date", insertable = false, updatable = false)
-	private long creation = System.currentTimeMillis() / 1000L;
+	private Integer creation = (int) (System.currentTimeMillis() / 1000);
 	
-	public long getId() {
+	public int getId() {
 		return id;
 	}
 
-	public void setId(long id) {
+	public void setId(int id) {
 		this.id = id;
 	}
 
-	public String getTranscription() {
-		return transcription;
+	public String getTranslation() {
+		return translation;
 	}
 
-	public void setTranscription(String transcription) {
-		this.transcription = transcription;
+	public void setTranslation(String translation) {
+		this.translation = translation;
 	}
 
 	public int getWordCount() {
@@ -57,7 +57,30 @@ public class ImageTranslation {
 	public void setWordCount(int wordCount) {
 		this.wordCount = wordCount;
 	}
-			
-			
+
+	public String getLanguage() {
+		return language;
+	}
+
+	public void setLanguage(String language) {
+		this.language = language;
+	}
+
+	public ImageTranscription getImageTranscription() {
+		return imageTranscription;
+	}
+
+	public void setImageTranscription(ImageTranscription imageTranscription) {
+		this.imageTranscription = imageTranscription;
+	}
+
+	public Integer getCreation() {
+		return creation;
+	}
+
+	public void setCreation(Integer creation) {
+		this.creation = creation;
+	}
+	
 }
 

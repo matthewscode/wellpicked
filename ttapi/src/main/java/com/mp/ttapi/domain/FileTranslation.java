@@ -16,7 +16,7 @@ public class FileTranslation {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "id")
-	private long id;
+	private int id;
 	
 	@Column(name = "originUrl")
 	private String originUrl;
@@ -25,11 +25,11 @@ public class FileTranslation {
 	@JoinColumn(name="image_checksum")
 	private ImageChecksum imageChecksum;
 
-	public long getId() {
+	public int getId() {
 		return id;
 	}
 
-	public void setId(long id) {
+	public void setId(int id) {
 		this.id = id;
 	}
 

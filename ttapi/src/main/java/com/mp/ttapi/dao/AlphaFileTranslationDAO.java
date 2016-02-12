@@ -26,7 +26,7 @@ public class AlphaFileTranslationDAO implements FileTranslationDAO{
 	@Override
 	public boolean createImageChecksum(ImageChecksum ic) {
 		try{
-			sessionFactory.getCurrentSession().saveOrUpdate(ic);
+			sessionFactory.getCurrentSession().save(ic);
 			return true;
 		}catch(HibernateException e){
 			return false;

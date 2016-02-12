@@ -5,12 +5,17 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.mp.ttapi.domain.ImageTranscription;
+import com.mp.ttapi.domain.ImageTranslation;
 import com.mp.ttapi.dto.FileTranslationDTO;
 import com.mp.ttapi.service.FileTranslationService;
 import com.mp.ttapi.service.ImageTranscriptionService;
+import com.mp.ttapi.service.ImageTranslationService;
 
 
 @Controller
@@ -21,6 +26,8 @@ public class ApiController {
 	private FileTranslationService fileTranslationService;
 	@Autowired
 	private ImageTranscriptionService imageTranscriptionService;
+	@Autowired
+	private ImageTranslationService imageTranslationService;
 
 	@ResponseBody
 	@RequestMapping("/ft/all")
@@ -43,12 +50,18 @@ public class ApiController {
 	@ResponseBody
     @RequestMapping(value = "/ft/create/{checksum}/{originUrl}")
     public boolean createFileTranslation(@PathVariable("checksum") int checksum, @PathVariable("originUrl") String originUrl){
-    	return fileTranslationService.createFileTranslation(checksum, "a");
+    	return fileTranslationService.createFileTranslation(checksum, "http://test.com");
     }
 	
 	@ResponseBody
-	@RequestMapping(value = "/transcription/create/{checksumId}/{transcriptionText")
-	public boolean createImageTranscription(@PathVariable("checksumId")int checksumId, @PathVariable("transcriptionText") String transcriptionText){
-		return imageTranscriptionService.createImageTranscription(checksumId, transcriptionText);
+	@RequestMapping(value = "/transcription/create/", method = RequestMethod.POST)
+	public boolean createImageTranscription(@RequestBody ImageTranscription it){
+		return imageTranscriptionService.createImageTranscription(it.getImageChecksum().getId(), it.getTranscription());
+	}
+	
+	@ResponseBody
+	@RequestMapping(value = "/translation/create/", method = RequestMethod.POST)
+	public boolean createImageTranscription(@RequestBody ImageTranslation it){
+		return imageTranslationService.createImageTranslation(it.getImageTranscription().getId(), it.getTranslation());
 	}
 }

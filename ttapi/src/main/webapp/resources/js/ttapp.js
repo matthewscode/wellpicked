@@ -7,7 +7,8 @@ ttApp.directive('ckEditor', [function () {
         	   var config = {
                        toolbar:[[ 'Bold', 'Italic', 'Underline', 'Strike', 'TextColor', 'FontSize', '-', 'JustifyLeft', 'JustifyCenter', 'JustifyRight' ]],
                        width: '100%',
-                       height: '30.00vh'
+                       height: '30.00vh',
+                       autoParagraph: false
                    };
             var ck = CKEDITOR.replace(elm[0], config);
 
@@ -87,13 +88,48 @@ ttApp.controller('FileController', ['$scope', '$http', function($scope, $http) {
 	$scope.imgUrl = '';
 	$scope.showEditor = false;
 	$scope.imageChecksumId;
-	$scope.setEditor = function(imageUrl, imageChecksumId){
+	$scope.transcriptionId;
+	$scope.transcriptionText;
+	$scope.translationId;
+	$scope.translationText;
+	$scope.setEditor = function(imageUrl, checksumId, transcriptionId, transcriptionText, translationId, translationText){
 		$scope.imgUrl = imageUrl;
-		$scope.imageChecksumId = imageChecksumId;
+		$scope.imageChecksumId = checksumId;
+		$scope.transcriptionId = transcriptionId;
+		$scope.transcriptionText = transcriptionText;
+		$scope.translationId = translationId;
+		$scope.translationText = translationText;
 		$scope.showEditor = true;
 	}
-	$scope.submitTranscription = function(transcriptionText,checksumId){
-		console.log(transcriptionText,checksumId);
+	$scope.submitTranscription = function(url, transcriptionId, text, cid){
+		console.log('test: ' +cid);
+		var data = {
+				id: transcriptionId,
+				imageChecksum: {id: cid},
+				transcription: text
+		};
+		console.log(data);
+		$http.post(url, data)
+		.success(function(data, status, headers, config) {
+			console.log('yay');
+		})
+	    .error(function(data, status, headers, config) {
+    		 console.log('lol u errored')
+	    });
+	}
+	$scope.submitTranslation = function(url, text, tid){
+		var data = {
+				imageTranscription: {id: tid},
+				translation: text
+		};
+		console.log(data);
+		$http.post(url, data)
+		.success(function(data, status, headers, config) {
+			console.log('yay');
+		})
+	    .error(function(data, status, headers, config) {
+    		 console.log('lol u errored')
+	    });
 	}
 }]);
 
