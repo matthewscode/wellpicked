@@ -22,7 +22,7 @@ public class ImageTranscription {
 		private int id;
 		
 		@Column(name = "transcription")
-		private String transcription;
+		private String transcriptionText;
 		
 		@Column(name = "word_count")
 		private int wordCount;
@@ -45,12 +45,12 @@ public class ImageTranscription {
 			this.id = id;
 		}
 
-		public String getTranscription() {
-			return transcription;
+		public String getTranscriptionText() {
+			return transcriptionText;
 		}
 
-		public void setTranscription(String transcription) {
-			this.transcription = transcription;
+		public void setTranscriptionText(String transcriptionText) {
+			this.transcriptionText = transcriptionText;
 		}
 
 		public int getWordCount() {

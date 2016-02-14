@@ -34,13 +34,13 @@
 		 <div class="ft-detail-transcription">
 			<textarea data-ng-model="transcriptionText" data-ck-editor></textarea>
 			<div class="ft-button-wrapper">
-				<button  type="button" class="button-full" ng-click="submitTranscription('<c:url value="/api/transcription/create/" />', transcriptionId, transcriptionText, imageChecksumId)">TRANSCRIPTION</button>
+				{{ transcriptionWordCount }} <button  type="button" class="button-full" ng-click="submitTranscription('<c:url value="/api/transcription/create/" />', transcriptionId, transcriptionText, checksumId)">TRANSCRIPTION</button>
 			</div>
 		</div>
 		<div class="ft-detail-translation">
 			<textarea data-ng-model="translationText" data-ck-editor></textarea>
 			<div class="ft-button-wrapper">
-				<button type="button" class="button-full" ng-click="submitTranslation('<c:url value="/api/translation/create/" />', translationText, transcriptionId)">TRANSLATION</button>
+				{{ translationWordCount }} <button type="button" class="button-full" ng-click="submitTranslation('<c:url value="/api/translation/create/" />', translationText, transcriptionId)">TRANSLATION</button>
 			</div>
 	  	</div>
 		</div>

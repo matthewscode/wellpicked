@@ -19,7 +19,7 @@ public class ImageTranslation {
 	private int id;
 
 	@Column(name = "translation")
-	private String translation;
+	private String translationText;
 
 	@Column(name = "language")
 	private String language;
@@ -41,13 +41,12 @@ public class ImageTranslation {
 	public void setId(int id) {
 		this.id = id;
 	}
-
-	public String getTranslation() {
-		return translation;
+	public String getTranslationText() {
+		return translationText;
 	}
 
-	public void setTranslation(String translation) {
-		this.translation = translation;
+	public void setTranslationText(String translationText) {
+		this.translationText = translationText;
 	}
 
 	public int getWordCount() {

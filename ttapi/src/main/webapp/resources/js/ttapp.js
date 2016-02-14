@@ -92,11 +92,13 @@ ttApp.controller('FileController', ['$scope', '$http', function($scope, $http) {
 		$http.get(fullUrl).success(function(data, status, headers, config) {
 			$scope.showEditor = true;
 			$scope.imgUrl = imgUrl;
-			$scope.checkSumId = data.checksumId;
+			$scope.checksumId = data.checksumId;
+			$scope.transcriptionId = data.transcriptionId;
 			$scope.transcriptionText = data.transcriptionText;
-			$scope.transcriptionWords = data.transcriptionNoWords;
+			$scope.transcriptionWordCount = data.transcriptionWordCount;
+			$scope.translationId = data.translationId;
 			$scope.translationText = data.translationText;
-			$scope.translationWords = data.translationNoWords;
+			$scope.translationWordCount = data.translationWordCount;
 			console.log('yay');
 			console.log(data);
 		})
@@ -109,12 +111,20 @@ ttApp.controller('FileController', ['$scope', '$http', function($scope, $http) {
 		var data = {
 				id: transcriptionId,
 				imageChecksum: {id: cid},
-				transcription: text
+				transcriptionText: text
 		};
-		console.log(data);
 		$http.post(url, data)
 		.success(function(data, status, headers, config) {
-			console.log('yay');
+			console.log(data);
+			$scope.checksumId = data.checksumId;
+			$scope.transcriptionId = data.transcriptionId;
+			$scope.transcriptionText = data.transcriptionText;
+			$scope.transcriptionWordCount = data.transcriptionWordCount;
+			if(data.imageTranslationList != null && data.imageTranslationList[0].translationText > 0){
+				$scope.translationId = data.imageTranslationList[0].id;
+				$scope.translationText = data.imageTranslationList[0].translationText;
+				$scope.translationNoWords = data.imageTranslationList[0].translationNoWords;
+			}
 		})
 	    .error(function(data, status, headers, config) {
     		 console.log('lol u errored')
@@ -123,12 +133,14 @@ ttApp.controller('FileController', ['$scope', '$http', function($scope, $http) {
 	$scope.submitTranslation = function(url, text, tid){
 		var data = {
 				imageTranscription: {id: tid},
-				translation: text
+				translationText: text
 		};
 		console.log(data);
 		$http.post(url, data)
 		.success(function(data, status, headers, config) {
-			console.log('yay');
+			$scope.translationId = data.translationId;
+			$scope.translationText = data.translationText;
+			$scope.translationWordCount = data.translationWordCount;
 		})
 	    .error(function(data, status, headers, config) {
     		 console.log('lol u errored')

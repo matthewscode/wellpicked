@@ -3,16 +3,30 @@ package com.mp.ttapi.dto;
 public class ImageChecksumDTO {
 	
 	private int checksumId;
+	private int transcriptionId;
 	private String transcriptionText;
-	private int transcriptionNoWords;
+	private int transcriptionWordCount;
+	private int translationId;
 	private String translationText;
-	private int translationNoWords;
+	private int translationWordCount;
 	
 	public int getChecksumId() {
 		return checksumId;
 	}
 	public void setChecksumId(int checksumId) {
 		this.checksumId = checksumId;
+	}
+	public int getTranscriptionId() {
+		return transcriptionId;
+	}
+	public void setTranscriptionId(int transcriptionId) {
+		this.transcriptionId = transcriptionId;
+	}
+	public int getTranslationId() {
+		return translationId;
+	}
+	public void setTranslationId(int translationId) {
+		this.translationId = translationId;
 	}
 	public String getTranscriptionText() {
 		return transcriptionText;
@@ -26,17 +40,17 @@ public class ImageChecksumDTO {
 	public void setTranslationText(String translationText) {
 		this.translationText = translationText;
 	}
-	public int getTranscriptionNoWords() {
-		return transcriptionNoWords;
+	public int getTranscriptionWordCount() {
+		return transcriptionWordCount;
 	}
-	public void setTranscriptionNoWords(int transcriptionNoWords) {
-		this.transcriptionNoWords = transcriptionNoWords;
+	public void setTranscriptionWordCount(int transcriptionNoWords) {
+		this.transcriptionWordCount = transcriptionNoWords;
 	}
-	public int getTranslationNoWords() {
-		return translationNoWords;
+	public int getTranslationWordCount() {
+		return translationWordCount;
 	}
-	public void setTranslationNoWords(int translationNoWords) {
-		this.translationNoWords = translationNoWords;
+	public void setTranslationWordCount(int translationNoWords) {
+		this.translationWordCount = translationNoWords;
 	}
 
 }

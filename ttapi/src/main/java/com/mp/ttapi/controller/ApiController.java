@@ -62,13 +62,13 @@ public class ApiController {
 	
 	@ResponseBody
 	@RequestMapping(value = "/transcription/create/", method = RequestMethod.POST)
-	public boolean createImageTranscription(@RequestBody ImageTranscription it){
-		return imageTranscriptionService.createImageTranscription(it.getImageChecksum().getId(), it.getTranscription());
+	public ImageChecksumDTO createImageTranscription(@RequestBody ImageTranscription it){
+		return imageTranscriptionService.createImageTranscription(it.getImageChecksum().getId(), it.getTranscriptionText());
 	}
 	
 	@ResponseBody
 	@RequestMapping(value = "/translation/create/", method = RequestMethod.POST)
-	public boolean createImageTranscription(@RequestBody ImageTranslation it){
-		return imageTranslationService.createImageTranslation(it.getImageTranscription().getId(), it.getTranslation());
+	public ImageChecksumDTO createImageTranslation(@RequestBody ImageTranslation it){
+		return imageTranslationService.createImageTranslation(it.getImageTranscription().getId(), it.getTranslationText());
 	}
 }

@@ -26,10 +26,19 @@ public class AppConfig {
     public DriverManagerDataSource dataSource() {
         DriverManagerDataSource ds = new DriverManagerDataSource();
         ds.setDriverClassName("com.mysql.jdbc.Driver");
-        ds.setUrl("jdbc:mysql://us-cdbr-iron-east-03.cleardb.net:3306/heroku_dd00d9c9d065aef");
-        ds.setUsername("bd50b7900ba27a");
-        ds.setPassword("a01f13ba");
-        return ds;
+        
+        //SNOW DB
+//        ds.setUrl("jdbc:mysql://us-cdbr-iron-east-03.cleardb.net:3306/heroku_dd00d9c9d065aef");
+//        ds.setUsername("b2dd12543c59b8");
+//        ds.setPassword("a01f13ba");
+//        return ds;
+        
+      //zen-pencils DB
+      ds.setUrl("jdbc:mysql://us-cdbr-iron-east-03.cleardb.net/heroku_fa54bbc759fd73e");
+      ds.setUsername("b2dd12543c59b8");
+      ds.setPassword("19f267a1");
+      return ds;
+        
     }
 
     @Bean(name = "sessionFactory")

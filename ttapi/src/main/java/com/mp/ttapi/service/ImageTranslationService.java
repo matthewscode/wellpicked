@@ -1,7 +1,9 @@
 package com.mp.ttapi.service;
 
+import com.mp.ttapi.dto.ImageChecksumDTO;
+
 public interface ImageTranslationService {
 	
-	public boolean createImageTranslation(int transcriptionId, String transcriptionText);
+	public ImageChecksumDTO createImageTranslation(int transcriptionId, String transcriptionText);
 	
 }

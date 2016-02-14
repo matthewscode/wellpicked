@@ -9,7 +9,6 @@ import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.mp.ttapi.dao.FileTranslationDAO;
-import com.mp.ttapi.dao.ImageTranscriptionDAO;
 import com.mp.ttapi.domain.FileTranslation;
 import com.mp.ttapi.domain.ImageChecksum;
 import com.mp.ttapi.domain.ImageTranscription;
@@ -23,8 +22,6 @@ public class AlphaFileTranslationService implements FileTranslationService {
 	
 	@Autowired
 	private FileTranslationDAO fileTranslationDAO;
-	@Autowired
-	private ImageTranscriptionDAO imageTranscriptionDao;
 	
 	@Override
 	@Transactional
@@ -82,10 +79,10 @@ public class AlphaFileTranslationService implements FileTranslationService {
 			newFt.setOriginUrl(ft.getOriginUrl());
 			boolean hasTranscription = false;
 			boolean hasTranslation = false;
-			if(transcription != null && transcription.getTranscription().length() > 0){
+			if(transcription != null && transcription.getTranscriptionText().length() > 0){
 				hasTranscription = true;
 				List<ImageTranslation> itList = transcription.getImageTranslationList();
-				if(itList != null && itList.size() > 0 && itList.get(0).getTranslation().length() > 0){
+				if(itList != null && itList.size() > 0 && itList.get(0).getTranslationText().length() > 0){
 					hasTranslation = true;
 				}
 			newFt.setHasTranscription(hasTranscription);
@@ -110,13 +107,15 @@ public class AlphaFileTranslationService implements FileTranslationService {
 		ImageChecksum ic = getImageChecksum(checksumId);
 		icDto.setChecksumId(ic.getId());
 		ImageTranscription transcription = ic.getImageTranscription();
-		if(transcription != null && transcription.getTranscription().length() > 0){
-			icDto.setTranscriptionText(transcription.getTranscription());
-			icDto.setTranscriptionNoWords(transcription.getWordCount());
+		if(transcription != null && transcription.getTranscriptionText().length() > 0){
+			icDto.setTranscriptionId(transcription.getId());
+			icDto.setTranscriptionText(transcription.getTranscriptionText());
+			icDto.setTranscriptionWordCount(transcription.getWordCount());
 			List<ImageTranslation> itList = transcription.getImageTranslationList();
-			if(itList != null && itList.size() > 0 && itList.get(0).getTranslation().length() > 0){
-				icDto.setTranslationText(itList.get(0).getTranslation());
-				icDto.setTranslationNoWords(itList.get(0).getWordCount());
+			if(itList != null && itList.size() > 0 && itList.get(0).getTranslationText().length() > 0){
+				icDto.setTranslationId(itList.get(0).getId());
+				icDto.setTranslationText(itList.get(0).getTranslationText());
+				icDto.setTranslationWordCount(itList.get(0).getWordCount());
 			}
 		}
 		return icDto;	
