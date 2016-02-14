@@ -86,8 +86,9 @@ ttApp.controller('ApiController', ['$scope', '$http', function($scope, $http) {
 
 ttApp.controller('FileController', ['$scope', '$http', function($scope, $http) {
 	$scope.showEditor = false;
-	
-	$scope.setEditor = function(url, checksumId, imgUrl){
+	$scope.currentFile = { };
+	$scope.setEditor = function(url, checksumId, imgUrl, model){
+		$scope.currentFile = model;
 		var fullUrl = url + checksumId;
 		$http.get(fullUrl).success(function(data, status, headers, config) {
 			$scope.showEditor = true;
@@ -115,11 +116,12 @@ ttApp.controller('FileController', ['$scope', '$http', function($scope, $http) {
 		};
 		$http.post(url, data)
 		.success(function(data, status, headers, config) {
-			console.log(data);
+			$scope.currentFile.hasTranscription = true;
 			$scope.checksumId = data.checksumId;
 			$scope.transcriptionId = data.transcriptionId;
 			$scope.transcriptionText = data.transcriptionText;
 			$scope.transcriptionWordCount = data.transcriptionWordCount;
+			console.log($scope.data);
 			if(data.imageTranslationList != null && data.imageTranslationList[0].translationText > 0){
 				$scope.translationId = data.imageTranslationList[0].id;
 				$scope.translationText = data.imageTranslationList[0].translationText;
@@ -135,9 +137,9 @@ ttApp.controller('FileController', ['$scope', '$http', function($scope, $http) {
 				imageTranscription: {id: tid},
 				translationText: text
 		};
-		console.log(data);
 		$http.post(url, data)
 		.success(function(data, status, headers, config) {
+			$scope.currentFile.hasTranslation= true;
 			$scope.translationId = data.translationId;
 			$scope.translationText = data.translationText;
 			$scope.translationWordCount = data.translationWordCount;

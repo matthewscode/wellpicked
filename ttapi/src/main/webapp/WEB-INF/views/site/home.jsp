@@ -46,7 +46,7 @@
 		</div>
 	</div>
   <div data-ng-show="data" class="ft-list"  ng-class="{'has-editor': showEditor}">
-  	<div data-ng-repeat="ft in data" class="ft-box" ng-click="setEditor('<c:url value="/api/ic/get/transription/translation/" />', ft.checksumId, ft.originUrl)">
+  	<div data-ng-repeat="ft in data" class="ft-box" ng-click="setEditor('<c:url value="/api/ic/get/transription/translation/" />', ft.checksumId, ft.originUrl, ft)">
 
   		<div class="ft-overlay"></div>
 
