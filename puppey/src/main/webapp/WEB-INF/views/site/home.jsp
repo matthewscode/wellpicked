@@ -10,14 +10,14 @@
 		<div class="container" style="height: 100%;">
 			<div class="wrapper">
 				<div class="home-banner"
-					style="background-image: url(<c:url value="/resources/images/news/shanghai-art.jpg" />)">
+					style="background-image: url(<c:url value="/resources/images/news/manila-major1.png" />)">
 					<div
-						style="width: 520px; height:225px; left: 5%; top: 5%; position: absolute; background-image: url(<c:url value="/resources/images/news/shanghai-logo.png" />); z-index: 101;">
+						style="width: 565px; height:225px; left: 5%; top: 5%; position: absolute; background-image: url(<c:url value="/resources/images/news/manila-logo.png" />); z-index: 101;">
 					</div>
 					<div
-						style="width: 560px; height: 225px; left: 5%; top: 5%; position: absolute; background: rgba(0, 0, 0, 0.5); background-opacity: 0.5; z-index: 5;">
+						style="width: 570px; height: 230px; left: 5%; top: 5%; position: absolute; background: rgba(0, 0, 0, 0.5); background-opacity: 0.5; z-index: 5;">
 					</div>
-					<div class="homeBar"></div>
+					<div class="home-bar"></div>
 				</div>
 				<div class="home-bot-wrapper">
 					<div class="home-bot-box"
@@ -26,9 +26,9 @@
 						<div class="homeBoxNewsImage"
 							style="background-image: url(<c:url value="/resources/images/news/news-1.png" />)">
 						</div>
-						<div class="homeBoxOverlay">
+						<div class="home-box-overlay">
 							<div class="homeBoxTitle">
-								<h1>STARLADDER</h1>
+								<h1>SHANGHAI</h1>
 								
 
 							</div>
@@ -40,9 +40,9 @@
 						<div class="homeBoxNewsImage"
 							style="background-image: url(<c:url value="/resources/images/news/news-2.png" />)">
 						</div>
-						<div class="homeBoxOverlay">
+						<div class="home-box-overlay">
 							<div class="homeBoxTitle">
-								<h1>THE SUMMIT</h1><br/>
+								<h1>SUMMIT</h1><br/>
 								
 
 							</div>
@@ -54,7 +54,7 @@
 						<div class="homeBoxNewsImage"
 							style="background-image: url(<c:url value="/resources/images/news/news-3.png" />)">
 						</div>
-						<div class="homeBoxOverlay">
+						<div class="home-box-overlay">
 							<div class="homeBoxTitle">
 								<h1>FRANKFURT</h1>
 								
@@ -68,9 +68,9 @@
 						<div class="homeBoxNewsImage"
 							style="background-image: url(<c:url value="/resources/images/news/news-4.png" />)">
 						</div>
-						<div class="homeBoxOverlay">
+						<div class="home-box-overlay">
 							<div class="homeBoxTitle">
-								<h1>THE INTERNATIONAL</h1><br/>
+								<h1>INTERNATIONAL</h1><br/>
 								
 
 							</div>
