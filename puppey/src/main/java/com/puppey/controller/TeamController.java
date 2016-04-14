@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.puppey.domain.Team;
+import com.puppey.dto.TeamDto;
 import com.puppey.dto.TournamentDto;
 import com.puppey.service.TeamService;
 import com.puppey.service.UserService;
@@ -98,5 +99,11 @@ public class TeamController {
     public List<TournamentDto> tournamentsTeams(@PathVariable("teamId") int teamId) {
         return teamService.getTeamTournamentDtoList(teamId);
 
+    }
+    
+    @ResponseBody
+    @RequestMapping("/api/team/list/active/{numResults}")
+    public List<TeamDto> getActiveTeams(@PathVariable("numResults") int numResults){
+    	return teamService.getActiveTeams(numResults);
     }
 }

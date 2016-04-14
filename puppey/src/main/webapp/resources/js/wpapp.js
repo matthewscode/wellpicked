@@ -805,3 +805,46 @@ wpApp.controller('TeamController', ['$scope', '$http', function($scope, $http) {
 		
 	};
 }]);
+
+wpApp.controller('tournamentListCtrl', ['$scope', '$http', function($scope, $http) {
+	$scope.init = function(url) {
+		$http.get(url)
+			.success(function(data) {
+				$scope.data = data;
+				console.log('here is the list' + data);
+				
+			})
+			.error(function(){
+				console.log('error');
+			})
+	};
+}]);
+
+wpApp.controller('teamListCtrl', ['$scope', '$http', function($scope, $http) {
+	$scope.northAmerica = [];
+	$scope.europe = [];
+	$scope.china = [];
+	$scope.sea = [];
+	$scope.init = function(url) {
+		$http.get(url)
+			.success(function(data) {
+				for(i = 0; i < data.length; i++){
+					if(data[i].teamRegion == 'NA'){
+						$scope.northAmerica.push(data[i]);
+						
+					}else if(data[i].teamRegion == 'EU'){
+						$scope.europe.push(data[i]);
+					}else if(data[i].teamRegion == 'CN'){
+						$scope.china.push(data[i]);
+					}else if(data[i].teamRegion == 'SEA'){
+						$scope.sea.push(data[i]);
+					}
+					
+				}
+				
+			})
+			.error(function(){
+				console.log('error');
+			})
+	};
+}]);

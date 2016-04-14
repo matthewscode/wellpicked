@@ -14,12 +14,7 @@ public class TournamentDto {
         this.tournamentSlug = tournamentSlug;
     }
     
-    public TournamentDto(int tournamentId, String tournamentName, String tournamentSlug, int tournamentStart, int tournamentEnd){
-        this.tournamentId = tournamentId;
-        this.tournamentName = tournamentName;
-        this.tournamentSlug = tournamentSlug;
-        this.tournamentStart = tournamentStart;
-        this.tournamentEnd = tournamentEnd;
+    public TournamentDto(){
     }
 
     public int getTournamentId() {

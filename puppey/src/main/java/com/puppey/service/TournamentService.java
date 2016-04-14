@@ -5,6 +5,7 @@ import java.util.List;
 import com.puppey.domain.Matchup;
 import com.puppey.domain.Tournament;
 import com.puppey.dto.MatchupDto;
+import com.puppey.dto.TournamentDto;
 
 public interface TournamentService {
 
@@ -44,7 +45,7 @@ public interface TournamentService {
 
     public void updateTournament(Tournament editedTournament);
 
-    public List<Tournament> getCurrentAndUpcomingTournaments();
+    public List<TournamentDto> getLatestTournaments(int numResults);
 
     public List<Tournament> getCompletedTournaments();
 

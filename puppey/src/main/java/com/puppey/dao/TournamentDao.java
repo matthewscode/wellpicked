@@ -46,7 +46,7 @@ public interface TournamentDao {
 
     public void updateTournament(Tournament editedTournament);
 
-    public List<Tournament> getCurrentAndUpcomingTournaments(int currentTime);
+    public List<Tournament> getLatestTournaments(int numRows, int currentTime);
 
     public List<Tournament> getCompletedTournaments(int currentTime);
 

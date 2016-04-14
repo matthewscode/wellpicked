@@ -15,29 +15,11 @@
 <tiles:putAttribute name="panelOpen" value="0" />
 <tiles:putAttribute name="body">
     
-    <div class="upcomingTournamentsContainer">
-        <c:forEach items="${currentTournaments}" var="item" varStatus="status">
-        
-            <%-- Check if tournament image exists --%>
-            <c:set var="tournamentImage" value="" />
-            <c:import url="/resources/images/tournaments/${item.tournamentSlug}.jpg" var="tournamentImage"/>
-            
-				<a href="${tournamentPath}${item.tournamentSlug}">
-            <div class="upcomingTournamentBox" data-ng-bg-image="<c:url value="/resources/images/tournaments/${empty tournamentImage ? 'default' : item.tournamentSlug}.jpg"/>">
-                    
-                    </div>
-                    </a>
-        </c:forEach>
-        <c:if test="${not empty oldTournaments}">
-        <c:forEach items="${oldTournaments}" var="item" varStatus="status">
-        <c:set var="tournamentImage" value="" />
-            <c:import url="/resources/images/tournaments/${item.tournamentSlug}.jpg" var="tournamentImage"/>
-            <a href="${tournamentPath}${item.tournamentSlug}">
-            <div class="upcomingTournamentBox upcomingTournamentOldBox" style="z-index: ${5 - status.index*2}" data-ng-bg-image="<c:url value="/resources/images/tournaments/${empty tournamentImage ? 'default' : item.tournamentSlug}.jpg"/>">
-                    </div>
-                    </a>
-        </c:forEach>
-        </c:if>
+    <div class="upcoming-tournaments-container" ng-controller="tournamentListCtrl" data-ng-init="init('<c:url value="/api/tournament/list/latest/4" />'); hover = 0;">
+    
+    	<a href="tournament/{{ entry.tournamentSlug }}" class="tournament-list-box" data-ng-repeat="entry in data" ng-mouseenter="hover = entry.id" ng-mouseleave="hover = 0" style="background-image: url(resources/images/tournaments/{{ entry.tournamentSlug }}.jpg)">
+    		<div class="box-title-hidden" ng-class="{ 'box-title-shown' : hover == entry.id }" >{{ entry.tournamentName }}</div>
+    	</a>
     </div>
 </tiles:putAttribute>
 </tiles:insertDefinition>

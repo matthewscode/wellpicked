@@ -24,6 +24,7 @@ import com.puppey.domain.Tournament;
 import com.puppey.domain.TournamentPrediction;
 import com.puppey.domain.User;
 import com.puppey.dto.MatchupDto;
+import com.puppey.dto.TournamentDto;
 import com.puppey.service.TournamentCreationService;
 import com.puppey.service.TournamentPredictionService;
 import com.puppey.service.TeamService;
@@ -51,12 +52,12 @@ public class TournamentController {
 
     @RequestMapping(value = "/tournaments", method = RequestMethod.GET)
     public String listCurrentAndUpcomingTournaments(Model model) {
-        List<Tournament> tournaments = tournamentService.getCurrentAndUpcomingTournaments();
-        int listSize = tournaments.size();
-        if(listSize < 3){
-            model.addAttribute("oldTournaments", tournamentService.getCompletedTournaments(3 - listSize));
-        }
-        model.addAttribute("currentTournaments", tournaments);
+//        List<Tournament> tournaments = tournamentService.getCurrentAndUpcomingTournaments();
+//        int listSize = tournaments.size();
+//        if(listSize < 3){
+//            model.addAttribute("oldTournaments", tournamentService.getCompletedTournaments(3 - listSize));
+//        }
+//        model.addAttribute("currentTournaments", tournaments);
         return "/tournament/upcoming";
     }
 
@@ -247,6 +248,12 @@ public class TournamentController {
     public List<TournamentPrediction> tournamentTopPredictionsForTournament(
             @PathVariable("tournamentId") int tournamentId, @PathVariable("amount") int amount) {
         return tournamentPredictionService.getTopPredictionsForTournament(tournamentId, amount);
+    }
+    
+    @ResponseBody
+    @RequestMapping("/api/tournament/list/latest/{numberOfResults}")
+    public List<TournamentDto> lastestTournamentList(@PathVariable("numberOfResults") int numResults){
+    	return tournamentService.getLatestTournaments(numResults);
     }
     
     

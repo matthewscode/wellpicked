@@ -13,6 +13,7 @@ import com.puppey.domain.Matchup;
 import com.puppey.domain.Team;
 import com.puppey.domain.Tournament;
 import com.puppey.dto.MatchupDto;
+import com.puppey.dto.TournamentDto;
 import com.puppey.thread.ThreadStarter;
 import com.puppey.util.Utility;
 
@@ -209,10 +210,20 @@ public class TournamentServiceImpl implements TournamentService {
 
     @Override
     @Transactional
-    public List<Tournament> getCurrentAndUpcomingTournaments() {
+    public List<TournamentDto> getLatestTournaments(int numResults) {
         int currentTime = (int) (System.currentTimeMillis() / 1000);
-        List<Tournament> tournaments = tournamentDao.getCurrentAndUpcomingTournaments(currentTime);
-        return tournaments;
+        List<Tournament> tournaments = tournamentDao.getLatestTournaments(numResults, currentTime);
+        List<TournamentDto> dtoList = new ArrayList<>();
+        for(Tournament tourn : tournaments){
+        	TournamentDto tdto = new TournamentDto();
+        	tdto.setTournamentName(tourn.getTournamentName());
+        	tdto.setTournamentSlug(tourn.getTournamentSlug());
+        	tdto.setTournamentId(tourn.getTournamentId());
+        	tdto.setTournamentStart(tourn.getTournamentStart());
+        	tdto.setTournamentEnd(tourn.getTournamentEnd());
+        	dtoList.add(tdto);
+        }
+        return dtoList;
     }
     
     @Override

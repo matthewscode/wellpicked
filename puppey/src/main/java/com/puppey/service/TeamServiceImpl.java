@@ -13,13 +13,12 @@ import com.puppey.dao.TeamDao;
 import com.puppey.domain.Team;
 import com.puppey.domain.Tournament;
 import com.puppey.domain.User;
+import com.puppey.dto.TeamDto;
 import com.puppey.dto.TournamentDto;
 
 @Service("teamService")
 @Transactional(propagation = Propagation.SUPPORTS, readOnly = true)
 public class TeamServiceImpl implements TeamService {
-    
-
 
     @Autowired
     private TeamDao teamDao;
@@ -133,8 +132,29 @@ public class TeamServiceImpl implements TeamService {
         List<TournamentDto> tournamentDtos = new ArrayList<>();
         Team team = getTeam(teamId);
         for(Tournament tournament : team.getTeamTournaments()){
-            tournamentDtos.add(new TournamentDto(tournament.getTournamentId(), tournament.getTournamentName(), tournament.getTournamentSlug(), tournament.getTournamentStart(), tournament.getTournamentEnd()));
+        	TournamentDto tdto = new TournamentDto();
+        	tdto.setTournamentId(tournament.getTournamentId());
+        	tdto.setTournamentName(tournament.getTournamentName());
+        	tdto.setTournamentSlug(tournament.getTournamentSlug());
+        	tdto.setTournamentStart(tournament.getTournamentStart());
+        	tdto.setTournamentEnd(tournament.getTournamentEnd());
+            tournamentDtos.add(tdto);
         }
         return tournamentDtos;
     }
+
+	@Override
+	public List<TeamDto> getActiveTeams(int numResults) {
+		List<TeamDto> teamDtoList = new ArrayList<>();
+		List<Team> teamList = getAllTeams();
+		for(Team team : teamList){
+			TeamDto td = new TeamDto();
+			td.setId(team.getTeamId());
+			td.setTeamName(team.getTeamName());
+			td.setTeamSlug(team.getTeamSlug());
+			td.setTeamRegion(team.getRegion());
+			teamDtoList.add(td);
+		}
+		return teamDtoList;
+	}
 }

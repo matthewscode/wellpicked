@@ -170,9 +170,9 @@ return null;
 
     @SuppressWarnings("unchecked")
     @Override
-    public List<Tournament> getCurrentAndUpcomingTournaments(int currentTime) {
+    public List<Tournament> getLatestTournaments(int numResults, int currentTime) {
         return sessionFactory.getCurrentSession().createCriteria(Tournament.class).add(Restrictions.eq("deleted", 0))
-                .add(Restrictions.gt("tournamentEnd", currentTime)).addOrder(Order.asc("tournamentStart")).list();
+                .addOrder(Order.desc("tournamentStart")).setMaxResults(numResults).list();
     }
 
     @SuppressWarnings("unchecked")

@@ -5,6 +5,7 @@ import java.util.List;
 import com.puppey.domain.Team;
 import com.puppey.domain.Tournament;
 import com.puppey.domain.User;
+import com.puppey.dto.TeamDto;
 import com.puppey.dto.TournamentDto;
 
 public interface TeamService {
@@ -34,4 +35,6 @@ public interface TeamService {
     public List<Tournament> getTeamTournaments(int teamId);
 
     public List<TournamentDto> getTeamTournamentDtoList(int teamId);
+
+	public List<TeamDto> getActiveTeams(int numResults);
 }

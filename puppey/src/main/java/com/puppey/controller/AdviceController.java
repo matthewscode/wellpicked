@@ -45,11 +45,11 @@ public class AdviceController {
 	}
 	   @ModelAttribute("latestTournament")
 	    public Tournament getLatestTournamentId(){
-		   if(tournamentService.getCurrentAndUpcomingTournaments().size() > 0){
-	        return tournamentService.getCurrentAndUpcomingTournaments().get(0);
-		   }else{
+//		   if(tournamentService.getCurrentAndUpcomingTournaments().size() > 0){
+//	        return tournamentService.getCurrentAndUpcomingTournaments().get(0);
+//		   }else{
 			   return null;
-		   }
+//		   }
 	    }
 	   
 //	   @ModelAttribute("daysLeft")
