@@ -849,22 +849,7 @@ wpApp.controller('teamListCtrl', ['$scope', '$http', function($scope, $http) {
 	};
 }]);
 wpApp.controller('bracketListCtrl', ['$scope', '$http', function($scope, $http) {
-	$scope.tournamentOne = {};
-	$scope.tournamentOne.name = '';
-	$scope.tournamentOne.slug = '';
-	$scope.tournamentOne.predictions = [];
-	$scope.tournamentTwo = {};
-	$scope.tournamentTwo.name = '';
-	$scope.tournamentTwo.slug = '';
-	$scope.tournamentTwo.predictions = [];
-	$scope.tournamentThree = {};
-	$scope.tournamentThree.name = '';
-	$scope.tournamentThree.slug = '';
-	$scope.tournamentThree.predictions = [];
-	$scope.tournamentFour = {};
-	$scope.tournamentFour.name = '';
-	$scope.tournamentFour.slug = '';
-	$scope.tournamentFour.predictions = [];
+	//get to showing 4 but only pulling one
 	var tournamentsFilled = false;
 	$scope.init = function(url) {
 		$http.get(url)

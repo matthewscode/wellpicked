@@ -28,7 +28,7 @@
 	<tiles:putAttribute name="body">
 
 
-		<div class="container" ng-controller="bracketListCtrl" data-ng-init="init('<c:url value="/api/predictions/list/latest/25" />'); tab = 1;">
+		<div class="container" ng-controller="bracketListCtrl" data-ng-init="init('<c:url value="/api/tournament/list/latest/4" />'); tab = 1;">
 			<div class="bracket-list-tournament-countainer">
 				<div class="bracket-list-tournament-entry" style="background-image: url(<c:url value="/resources/images/tournaments/{{ tournamentOne.slug }}.jpg" />);" ng-click="tab = 1"></div>
 				<div class="bracket-list-tournament-entry" style="background-image: url(<c:url value="/resources/images/tournaments/{{ tournamentTwo.slug }}.jpg" />);" ng-click="tab = 2"></div>
