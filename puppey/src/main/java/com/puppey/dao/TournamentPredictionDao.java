@@ -48,4 +48,9 @@ public interface TournamentPredictionDao {
 
     List<TournamentPrediction> getTournamentPredictionsForTournamentByUser(
             Tournament tournament, User user);
+
+	List<TournamentPrediction> getLatestTournamentPredictions(int numResults);
+
+	List<TournamentPrediction> getTournamentPredictionsByScore(
+			Tournament tournamentOne, int numResults);
 }

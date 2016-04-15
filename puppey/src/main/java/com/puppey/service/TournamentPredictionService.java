@@ -84,4 +84,6 @@ public interface TournamentPredictionService {
 
     List<TournamentPredictionDto> getPopularPredictionsForTournament(int tournamentId, int amount);
 
+	List<TournamentPredictionDto> getLatestTournamentPredictions(int numResults);
+
 }

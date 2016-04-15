@@ -147,7 +147,12 @@ public class TournamentPredictionController {
         }else{
             return tournamentPredictionService.createApiTournamentPrediction(jsonTP);
         }
-        
+    }
+    
+    @ResponseBody
+    @RequestMapping(value = "/api/predictions/list/latest/{numResults}", method = RequestMethod.GET)
+    public List<TournamentPredictionDto> latestBrackets (@PathVariable("numResults") int numResults){
+    	return tournamentPredictionService.getLatestTournamentPredictions(numResults);
     }
     
 }

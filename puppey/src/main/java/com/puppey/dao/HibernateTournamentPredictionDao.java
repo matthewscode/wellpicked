@@ -161,4 +161,21 @@ public class HibernateTournamentPredictionDao implements TournamentPredictionDao
        return sessionFactory.getCurrentSession().createCriteria(TournamentPrediction.class).add(Restrictions.eq("user", user)).add(Restrictions.eq("tournament", tournament)).list(); 
     }
 
+	@SuppressWarnings("unchecked")
+	@Override
+	public List<TournamentPrediction> getLatestTournamentPredictions(
+			int numResults) {
+		return sessionFactory.getCurrentSession().createCriteria(TournamentPrediction.class)
+                .setMaxResults(numResults)
+                .addOrder(Order.desc("tournamentPredictionScore")).list();
+	}
+
+	@Override
+	public List<TournamentPrediction> getTournamentPredictionsByScore(
+			Tournament tournament, int numResults) {
+		return sessionFactory.getCurrentSession().createCriteria(TournamentPrediction.class).add(Restrictions.eq("tournament", tournament))
+                .setMaxResults(numResults)
+                .addOrder(Order.desc("tournamentPredictionScore")).list();
+	}
+
 }

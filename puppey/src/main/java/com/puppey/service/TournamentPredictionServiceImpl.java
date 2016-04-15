@@ -18,6 +18,7 @@ import com.puppey.domain.MatchupPrediction;
 import com.puppey.domain.TournamentPrediction;
 import com.puppey.domain.Tournament;
 import com.puppey.domain.User;
+import com.puppey.dto.TournamentDto;
 import com.puppey.dto.TournamentPredictionDto;
 import com.puppey.util.Message;
 import com.puppey.util.SiteUser;
@@ -451,6 +452,41 @@ public class TournamentPredictionServiceImpl implements TournamentPredictionServ
     public static void setPopularTournamentPredictions(Deque<TournamentPrediction> popularTournamentPredictions) {
         TournamentPredictionServiceImpl.popularTournamentPredictions = popularTournamentPredictions;
     }
+
+	@Override
+	@Transactional
+	public List<TournamentPredictionDto> getLatestTournamentPredictions(
+			int numResults) {
+		//need 4 latest tournaments
+		List<TournamentDto> tournamentList = tournamentService.getLatestTournaments(4);
+		List<TournamentPredictionDto> tpdList = new ArrayList<>();
+		Tournament tournamentOne = tournamentService.getTournament(tournamentList.get(0).getTournamentId());
+		Tournament tournamentTwo = tournamentService.getTournament(tournamentList.get(1).getTournamentId());
+		Tournament tournamentThree = tournamentService.getTournament(tournamentList.get(2).getTournamentId());
+		Tournament tournamentFour = tournamentService.getTournament(tournamentList.get(3).getTournamentId());
+		List<TournamentPrediction> firstList = tournamentPredictionDao.getTournamentPredictionsByScore(tournamentOne , numResults);
+		List<TournamentPrediction> secondList = tournamentPredictionDao.getTournamentPredictionsByScore(tournamentTwo, numResults);
+		List<TournamentPrediction> thirdList = tournamentPredictionDao.getTournamentPredictionsByScore(tournamentThree, numResults);
+		List<TournamentPrediction> fourthList = tournamentPredictionDao.getTournamentPredictionsByScore(tournamentFour, numResults);
+		firstList.addAll(secondList);
+		firstList.addAll(thirdList);
+		firstList.addAll(fourthList);
+		//List<TournamentPrediction> tpList = tournamentPredictionDao.getLatestTournamentPredictions(numResults);
+			for(TournamentPrediction tp : firstList){
+				TournamentPredictionDto dto = new TournamentPredictionDto();
+				dto.setTournamentId(tp.getTournament().getTournamentId());
+				dto.setTournamentName(tp.getTournament().getTournamentName());
+				dto.setTournamentSlug(tp.getTournament().getTournamentSlug());
+				dto.setTournamentPredictionId(tp.getTournamentPredictionId());
+				dto.setTournamentPredictionName(tp.getTournamentPredictionName());
+				dto.setUsername(tp.getUser().getUsername());
+				dto.setUserAvatar(tp.getUser().getAvatarName());
+				dto.setUserId(tp.getUser().getUserId());
+				dto.setScore(tp.getTournamentPredictionScore());
+				tpdList.add(dto);
+			}
+		return tpdList;
+	}
     
 
 }

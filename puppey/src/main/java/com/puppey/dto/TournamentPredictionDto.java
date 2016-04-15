@@ -10,9 +10,14 @@ public class TournamentPredictionDto {
         private int tournamentPredictionId;
         private int tournamentPredictionScore;
         private int tournamentId;
-        private User user;
+        private String tournamentName;
+        private String tournamentSlug;
+        private int userId;
+        private String username;
+        private String userAvatar;
         private int creation;
         private String tournamentPredictionName;
+        private int score;
         private List<MatchupPrediction> matchupPredictionList;
         
         
@@ -20,14 +25,16 @@ public class TournamentPredictionDto {
             this.tournamentPredictionId = tournamentPredictionId;
             this.tournamentPredictionScore = tournamentPredictionScore;
             this.tournamentId = tournamentId;
-            this.user = user;
             this.creation = creation;
             this.tournamentPredictionName = tournamentPredictionName;
         }
         
         
         
-        public int getTournamentPredictionId() {
+        public TournamentPredictionDto() {
+			
+		}
+		public int getTournamentPredictionId() {
             return tournamentPredictionId;
         }
         public void setTournamentPredictionId(int tournamentPredictionId) {
@@ -45,11 +52,11 @@ public class TournamentPredictionDto {
         public void setTournamentId(int tournamentId) {
             this.tournamentId = tournamentId;
         }
-        public User getUser() {
-            return user;
+        public int getUserId() {
+            return userId;
         }
-        public void setUser(User user) {
-            this.user = user;
+        public void setUserId(int userId) {
+            this.userId = userId;
         }
         public int getCreation() {
             return creation;
@@ -66,6 +73,37 @@ public class TournamentPredictionDto {
         public void setMatchupPredictionList(List<MatchupPrediction> matchupPredictionList) {
             this.matchupPredictionList = matchupPredictionList;
         }
+		public String getTournamentName() {
+			return tournamentName;
+		}
+		public void setTournamentName(String tournamentName) {
+			this.tournamentName = tournamentName;
+		}
+		public String getTournamentSlug() {
+			return tournamentSlug;
+		}
+		public void setTournamentSlug(String tournamentSlug) {
+			this.tournamentSlug = tournamentSlug;
+		}
+		public String getUsername() {
+			return username;
+		}
+		public void setUsername(String username) {
+			this.username = username;
+		}
+		public String getUserAvatar() {
+			return userAvatar;
+		}
+		public void setUserAvatar(String userAvatar) {
+			this.userAvatar = userAvatar;
+		}
+		public int getScore() {
+			return score;
+		}
+		public void setScore(int score) {
+			this.score = score;
+		}
+
         
         
 }
