@@ -332,4 +332,14 @@ public class TournamentServiceImpl implements TournamentService {
 		}
 		
 	}
+
+	@Override
+	public TournamentDto getTournamentDto(int id) {
+		Tournament tournament = getTournament(id);
+		TournamentDto dto = new TournamentDto();
+		dto.setTournamentName(tournament.getTournamentName());
+		dto.setTournamentSlug(tournament.getTournamentSlug());
+		dto.setTournamentDesc(tournament.getTournamentDescription());
+		return dto;
+	}
 }

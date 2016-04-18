@@ -28,13 +28,7 @@
 	<tiles:putAttribute name="body">
 
 
-		<div class="container" ng-controller="bracketListCtrl" data-ng-init="init('<c:url value="/api/tournament/list/latest/4" />', '<c:url value="/api/predictions/list/latest/20/" />');">
-			<div class="list-tournament-countainer">
-				<a class="list-tournament-entry" ng-repeat="entry in data" 
-					style="background-image: url(<c:url value="/resources/images/tournaments/{{ entry.tournamentSlug }}.jpg" />);"  
-					ng-click="getBrackets('<c:url value="/api/predictions/list/latest/20/" />' + entry.tournamentId); $parent.selectedTournament = entry.tournamentId;"
-					ng-class="{'bracket-list-selected' : $parent.selectedTournament == entry.tournamentId}"></a>
-			</div>
+		<div class="upcoming-tournaments-container" ng-controller="bracketListCtrl" data-ng-init="init('<c:url value="/api/tournament/list/latest/4" />', '<c:url value="/api/predictions/list/latest/20/" />');">
 			<div class="bracket-list-master">
 			<div class="bracket-list-bar">
 				<div class="bracket-bar-user">
@@ -59,6 +53,12 @@
 						<div class="bracket-list-entry-name"> {{ entry.score }}</div>
 					</div>
 				</div>
+			</div>
+	<div class="bottom-container">
+				<a class="list-tournament-entry" ng-repeat="entry in data" 
+					style="background-image: url(<c:url value="/resources/images/tournaments/{{ entry.tournamentSlug }}.jpg" />);"  
+					ng-click="getBrackets('<c:url value="/api/predictions/list/latest/20/" />' + entry.tournamentId); $parent.selectedTournament = entry.tournamentId;"
+					ng-class="{'bracket-list-selected' : $parent.selectedTournament == entry.tournamentId}"></a>
 			</div>
 		</div>
 	</tiles:putAttribute>

@@ -42,7 +42,7 @@ public class HomeController {
     
     @RequestMapping
     public String list() {
-        return "/site/home";
+        return "index";
     }
 
     @RequestMapping("/achievements")

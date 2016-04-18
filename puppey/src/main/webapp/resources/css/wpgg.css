@@ -1,0 +1,66 @@
+//light #31353D
+//dark  #1C1D21
+//white #EFF4FF
+
+html {
+	font-family: 'Roboto', serif;
+}
+* {
+  -webkit-transition: all 0.2s ease;
+  -moz-transition:    all 0.2s ease;
+  -ms-transition:     all 0.2s ease;
+  -o-transition:      all 0.2s ease;
+}
+body {
+	background-color: #EFF4FF;
+	margin: 0;
+	font-family: 'Roboto', serif;
+		overflow: hidden;
+}
+
+
+
+#nav-container {
+	width: 120px;
+	height: 100.00vh;
+	background: #1C1D21;
+	padding-top: 5px;
+
+}
+.nav-logo {
+	height: 10%;
+	width: 90px;
+	text-decoration: none;
+	color: #EFF4FF;
+	padding: 2px;
+	display: block;
+	text-align: left;
+	vertical-align: middle;
+    font-family: 'Roboto', serif;
+    font-size: 22px;
+    font-weight: 700;
+    text-transform: lowercase;
+    padding: 10px;
+    border-radius: 7px;
+    background: #31353D;
+    margin-left:5px;
+    margin-bottom: 0px;
+}
+.nav-logo:hover {
+	background: #1C1D21;
+}
+
+.nav-tournament {
+	margin-left: 5px;
+	height: 8%;
+	width: 110px;
+	background: #333;
+	margin-top: 5px;
+    background-size: cover;
+    background-position: center;
+    border-radius: 7px;
+}
+.nav-tournament:hover {
+	cursor: pointer;
+	margin-left: 10px;
+}

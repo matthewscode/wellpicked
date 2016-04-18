@@ -5,6 +5,7 @@ public class TournamentDto {
     private int tournamentId;
     private String tournamentName;
     private String tournamentSlug;
+    private String tournamentDesc;
     private int tournamentStart;
     private int tournamentEnd;
     
@@ -55,6 +56,14 @@ public class TournamentDto {
 
 	public void setTournamentEnd(int tournamentEnd) {
 		this.tournamentEnd = tournamentEnd;
+	}
+
+	public String getTournamentDesc() {
+		return tournamentDesc;
+	}
+
+	public void setTournamentDesc(String tournamentDesc) {
+		this.tournamentDesc = tournamentDesc;
 	}
     
     

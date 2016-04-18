@@ -239,8 +239,8 @@ public class TournamentController {
     
     @ResponseBody
     @RequestMapping("/api/tournament/{id}")
-    public Tournament tournament(@PathVariable int id) {
-        return tournamentService.getTournament(id);
+    public TournamentDto tournament(@PathVariable int id) {
+        return tournamentService.getTournamentDto(id);
     }
     
     @ResponseBody

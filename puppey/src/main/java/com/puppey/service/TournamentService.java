@@ -68,4 +68,6 @@ public interface TournamentService {
 	public List<MatchupDto> getMatchupListDto(int tournamentId);
 
 	public boolean updateMatchupTeam(int matchupId, int teamInt, int teamId);
+
+	public TournamentDto getTournamentDto(int id);
 }

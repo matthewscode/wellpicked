@@ -807,16 +807,33 @@ wpApp.controller('TeamController', ['$scope', '$http', function($scope, $http) {
 }]);
 
 wpApp.controller('tournamentListCtrl', ['$scope', '$http', function($scope, $http) {
-	$scope.init = function(url) {
+	$scope.tournamentUrl;
+	$scope.tournamentSelected = false;
+	$scope.init = function(url, tournamentUrl) {
 		$http.get(url)
 			.success(function(data) {
 				$scope.selectedTournament = data[0].tournamentId;
+				$scope.tournamentUrl = tournamentUrl;
+				$scope.getTournament($scope.selectedTournament);
 				$scope.data = data;
 			})
 			.error(function(){
 				console.log('error');
 			})
 	};
+	
+	$scope.getTournament = function(tournamentId) {
+		$scope.tournamentSelected = false;
+		$http.get($scope.tournamentUrl + tournamentId)
+		.success(function(data) {
+				$scope.tournamentName = data.tournamentName;
+				$scope.tournamentSlug = data.tournamentSlug;
+				$scope.tournamentSelected = true;
+			})
+			.error(function(){
+				console.log('error');
+			})
+	}
 }]);
 
 wpApp.controller('teamListCtrl', ['$scope', '$http', function($scope, $http) {
