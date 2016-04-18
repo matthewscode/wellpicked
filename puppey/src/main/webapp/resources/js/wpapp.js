@@ -810,9 +810,8 @@ wpApp.controller('tournamentListCtrl', ['$scope', '$http', function($scope, $htt
 	$scope.init = function(url) {
 		$http.get(url)
 			.success(function(data) {
+				$scope.selectedTournament = data[0].tournamentId;
 				$scope.data = data;
-				console.log('here is the list' + data);
-				
 			})
 			.error(function(){
 				console.log('error');
@@ -863,10 +862,12 @@ wpApp.controller('bracketListCtrl', ['$scope', '$http', function($scope, $http) 
 			})
 	};
 	$scope.getBrackets = function(url){
+		$scope.loadIt = false;
 		console.log($scope.selectedTournament);
 		$http.get(url)
 		.success(function(data) {
 				$scope.bData = data;
+				$scope.loadIt = true;
 			})
 			.error(function(){
 				console.log('error on bracketListCtrl data init');

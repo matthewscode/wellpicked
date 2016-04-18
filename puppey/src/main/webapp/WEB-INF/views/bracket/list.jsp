@@ -29,9 +29,13 @@
 
 
 		<div class="container" ng-controller="bracketListCtrl" data-ng-init="init('<c:url value="/api/tournament/list/latest/4" />', '<c:url value="/api/predictions/list/latest/20/" />');">
-			<div class="bracket-list-tournament-countainer">
-				<a class="bracket-list-tournament-entry" ng-repeat="entry in data"  style="background-image: url(<c:url value="/resources/images/tournaments/{{ entry.tournamentSlug }}.jpg" />);"  ng-click="getBrackets('<c:url value="/api/predictions/list/latest/20/" />' + entry.tournamentId);"></a>
+			<div class="list-tournament-countainer">
+				<a class="list-tournament-entry" ng-repeat="entry in data" 
+					style="background-image: url(<c:url value="/resources/images/tournaments/{{ entry.tournamentSlug }}.jpg" />);"  
+					ng-click="getBrackets('<c:url value="/api/predictions/list/latest/20/" />' + entry.tournamentId); $parent.selectedTournament = entry.tournamentId;"
+					ng-class="{'bracket-list-selected' : $parent.selectedTournament == entry.tournamentId}"></a>
 			</div>
+			<div class="bracket-list-master">
 			<div class="bracket-list-bar">
 				<div class="bracket-bar-user">
 				</div>
@@ -42,15 +46,18 @@
 					Score
 				</div>
 			</div>
-			<div class="bracket-list-container">
-				<div href="<c:url value="/bracket/{{ entry.tournamentPredictionId }}" />" class="bracket-list-entry" ng-repeat="entry in bData">
-					
-					<div class="bracket-list-entry-text">
-						<a href="<c:url value="profile/{{ entry.userId }}" />" class="bracket-list-entry-img" style="background-image: url(<c:url value="/resources/images/achievements/{{ entry.userAvatar }}.png" />)"></a>
-						 {{ entry.username }} 
-					 </div>
-					<div class="bracket-list-entry-name"> {{ entry.tournamentPredictionName }}</div>
-					<div class="bracket-list-entry-name"> {{ entry.score }}</div>
+				<div class="load-box" data-ng-hide="loadIt"></div>
+				<div class="bracket-list-container" data-ng-hide="!loadIt">
+				
+					<div href="<c:url value="/bracket/{{ entry.tournamentPredictionId }}" />" class="bracket-list-entry" ng-repeat="entry in bData">
+						
+						<div class="bracket-list-entry-text">
+							<a href="<c:url value="profile/{{ entry.userId }}" />" class="bracket-list-entry-img" style="background-image: url(<c:url value="/resources/images/achievements/{{ entry.userAvatar }}.png" />)"></a>
+							 {{ entry.username }} 
+						 </div>
+						<div class="bracket-list-entry-name"> {{ entry.tournamentPredictionName }}</div>
+						<div class="bracket-list-entry-name"> {{ entry.score }}</div>
+					</div>
 				</div>
 			</div>
 		</div>

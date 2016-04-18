@@ -243,3 +243,24 @@ img {
         margin-left: -.5em;
     }
 }
+.load-box {
+	position: relative;
+    width: 100%;
+    padding: 50%;
+    height: 100%;
+    background: rgba(0,0,0,.5);
+    z-index: 100;
+    overflow: hidden;
+    &:before {
+        .icon;
+        .animation(loaderSpin 2s linear 0s infinite);
+        position: relative;
+        display: block;
+        content: '\E028';
+        top: 50%;
+        left: 50%;
+        font-size: 3em;
+        margin-top: -.5em;
+        margin-left: -.5em;
+    }
+}

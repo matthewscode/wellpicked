@@ -17,9 +17,12 @@
     
     <div class="upcoming-tournaments-container" ng-controller="tournamentListCtrl" data-ng-init="init('<c:url value="/api/tournament/list/latest/4" />'); hover = 0;">
     
-    	<a href="tournament/{{ entry.tournamentSlug }}" class="tournament-list-box" data-ng-repeat="entry in data" ng-mouseenter="hover = entry.id" ng-mouseleave="hover = 0" style="background-image: url(resources/images/tournaments/{{ entry.tournamentSlug }}.jpg)">
-    		<div class="box-title-hidden" ng-class="{ 'box-title-shown' : hover == entry.id }" >{{ entry.tournamentName }}</div>
-    	</a>
+    	<div class="list-tournament-countainer">
+				<a class="list-tournament-entry" ng-repeat="entry in data" 
+					style="background-image: url(<c:url value="/resources/images/tournaments/{{ entry.tournamentSlug }}.jpg" />);"  
+					ng-click="getBrackets('<c:url value="/api/predictions/list/latest/20/" />' + entry.tournamentId); $parent.selectedTournament = entry.tournamentId;"
+					ng-class="{'bracket-list-selected' : $parent.selectedTournament == entry.tournamentId}"></a>
+			</div>
     </div>
 </tiles:putAttribute>
 </tiles:insertDefinition>

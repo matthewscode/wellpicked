@@ -10,13 +10,7 @@
 		<div class="container" style="height: 100%;">
 			<div class="wrapper">
 				<div class="home-banner"
-					style="background-image: url(<c:url value="/resources/images/news/manila-major1.png" />)">
-					<div
-						style="width: 565px; height:225px; left: 5%; top: 5%; position: absolute; background-image: url(<c:url value="/resources/images/news/manila-logo.png" />); z-index: 101;">
-					</div>
-					<div
-						style="width: 570px; height: 230px; left: 5%; top: 5%; position: absolute; background: rgba(0, 0, 0, 0.5); background-opacity: 0.5; z-index: 5;">
-					</div>
+					style="background-image: url(<c:url value="/resources/images/news/manila-major.png" />)">
 					<div class="home-bar"></div>
 				</div>
 				<div class="home-bot-wrapper">

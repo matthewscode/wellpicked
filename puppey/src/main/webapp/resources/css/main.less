@@ -894,11 +894,11 @@
 
 .bracket-list-container {
 	display: inline-block;
-	width: 60%;
-	height: 100.00vh;
+	width: 100%;
+	height: calc(100% - 30px);
 	max-height: 100.00vh;
 	overflow: auto;
-	background: #1e4880;
+	background: #143157;
 	float: left;
 }
 .bracket-list-entry {
@@ -917,11 +917,10 @@
 .bracket-list-entry-img {
 	width: 50px;
 	height: 50px;
-	background-repeat: no-repeat;
     background-size: cover;
     background-position: center;
     float: left;
-    margin-left: 2%;
+    margin: 0;
     margin-right: 2%;
 }
 .bracket-list-entry-img:hover {
@@ -946,44 +945,49 @@
 	font-weight: 500;
 }
 
-.bracket-list-tournament-countainer {
+.list-tournament-countainer {
+	position: relative;
 	display: inline-block;
 	height: 100.00vh;
 	width: 40%;
 	float: left;
-	background: #1e4880;
-
+	background: #000;
 }
-.bracket-list-tournament-entry {
-display: block;
-	opacity: 0.8;
+.list-tournament-entry {
+	display: block;
+	opacity: 0.9;
 	width: 100%;
-	height: 25%;
+	height: 20%;
 	background-repeat: no-repeat;
     background-size: cover;
     background-position: center;
     float: left;
+    -webkit-box-shadow: inset -10px 0px 0px 0px rgba(85,85,85,1);
+	-moz-box-shadow: inset -10px 0px 0px 0px rgba(85,85,85,1);
+	box-shadow: inset -10px 0px 0px 0px rgba(85,85,85,1);
 }
-.bracket-list-tournament-entry:hover {
+.list-tournament-entry:hover {
 	opacity: 1.0;
 	cursor: pointer;	
 }
-.bracket-list-selected{
+.bracket-list-selected {
 	opacity: 1.0;
-	-webkit-box-shadow: 0px 0px 13px 2px rgba(30,72,128,1);
-	-moz-box-shadow: 0px 0px 13px 2px rgba(30,72,128,1);
-	box-shadow: 0px 0px 13px 2px rgba(30,72,128,1);
+	height: 40%;
+	z-index: 500;
+	-webkit-box-shadow: inset -10px 0px 0px 0px rgba(20,49,87,1);
+	-moz-box-shadow: inset -10px 0px 0px 0px rgba(20,49,87,1);
+	box-shadow: inset -10px 0px 0px 0px rgba(20,49,87,1);
 }
 .bracket-list-bar {
+	display: block;
     box-sizing: content-box;
-	width: 60%;
-	height: 10%;
+	width: 100%;
+	height: 30px;
 	font-size: 16px;
-	background: #1e4880;
-	-webkit-box-shadow: 0 0 10px 1px rgba(0, 0, 0, 0.5);
-    -moz-box-shadow: 0 0 10px 1px rgba(0, 0, 0, 0.5);
-    box-shadow: 0 0 10px 1px rgba(0, 0, 0, 0.5);
+	background: #143157;
     float: left;
+    line-height: 30px;
+    border-bottom: 2px solid #143157;
 }
 .bracket-bar-user {
 	display: inline-block;
@@ -1000,5 +1004,14 @@ display: block;
 	color: #f8f8f8;
 	width: 39%;
 }
+.bracket-list-master {
+	float: left;
+	display: inline-block;
+	width: 60%;
+	height: 100.00vh;
+	overflow: hidden;
+	background: #143157;
+}
+
 
 
