@@ -850,43 +850,26 @@ wpApp.controller('teamListCtrl', ['$scope', '$http', function($scope, $http) {
 }]);
 wpApp.controller('bracketListCtrl', ['$scope', '$http', function($scope, $http) {
 	//get to showing 4 but only pulling one
-	var tournamentsFilled = false;
-	$scope.init = function(url) {
+	$scope.selectedTournament;
+	$scope.init = function(url, bracketUrl) {
 		$http.get(url)
 			.success(function(data) {
-				for(i = 0; i < data.length; i++){
-					if(!tournamentsFilled){
-						if($scope.tournamentOne.name == ''){
-							$scope.tournamentOne.name = data[i].tournamentName;
-							$scope.tournamentOne.slug = data[i].tournamentSlug;
-						}else if($scope.tournamentTwo.name == ''){
-							$scope.tournamentTwo.name = data[i].tournamentName;
-							$scope.tournamentTwo.slug = data[i].tournamentSlug;
-						}else if($scope.tournamentThree.name == ''){
-							$scope.tournamentThree.name = data[i].tournamentName;
-							$scope.tournamentThree.slug = data[i].tournamentSlug;
-						}else if($scope.tournamentFour.name == ''){
-							$scope.tournamentFour.name = data[i].tournamentName;
-							$scope.tournamentFour.slug = data[i].tournamentSlug;
-							tournamentsFilled = true;
-						}
-					}
-					
-					if(data[i].tournamentName == $scope.tournamentOne.name){
-						$scope.tournamentOne.predictions.push(data[i]);
-					}else if(data[i].tournamentName == $scope.tournamentTwo.name){
-						$scope.tournamentTwo.predictions.push(data[i]);
-					}else if(data[i].tournamentName == $scope.tournamentThree.name){
-						$scope.tournamentThree.predictions.push(data[i]);
-					}else if(data[i].tournamentName == $scope.tournamentFour.name){
-						$scope.tournamentFour.predictions.push(data[i]);
-					}
-				}
-				//console.log('tournament one :' + $scope.tournamentOne.predictions[0]);
-
+				$scope.data = data;
+				$scope.selectedTournament = data[0].tournamentId;
+				$scope.getBrackets(bracketUrl + $scope.selectedTournament);
 			})
 			.error(function(){
 				console.log('error on bracketListCtrl data init');
 			})
 	};
+	$scope.getBrackets = function(url){
+		console.log($scope.selectedTournament);
+		$http.get(url)
+		.success(function(data) {
+				$scope.bData = data;
+			})
+			.error(function(){
+				console.log('error on bracketListCtrl data init');
+			})
+	}
 }]);

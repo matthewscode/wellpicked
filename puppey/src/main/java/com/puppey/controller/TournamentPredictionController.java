@@ -150,9 +150,9 @@ public class TournamentPredictionController {
     }
     
     @ResponseBody
-    @RequestMapping(value = "/api/predictions/list/latest/{numResults}", method = RequestMethod.GET)
-    public List<TournamentPredictionDto> latestBrackets (@PathVariable("numResults") int numResults){
-    	return tournamentPredictionService.getLatestTournamentPredictions(numResults);
+    @RequestMapping(value = "/api/predictions/list/latest/{numResults}/{tournamentId}", method = RequestMethod.GET)
+    public List<TournamentPredictionDto> latestBrackets (@PathVariable("numResults") int numResults, @PathVariable("tournamentId") int tournamentId){
+    	return tournamentPredictionService.getLatestTournamentPredictions(tournamentId, numResults);
     }
     
 }
