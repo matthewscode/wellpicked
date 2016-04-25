@@ -71,12 +71,10 @@ public class Team implements Serializable {
     @Column(name = "creation", updatable = false)
     private Integer creation = (int) (System.currentTimeMillis() / 1000);
     
-    @JsonIgnore
     @ManyToMany
     @JoinTable(name = "user_favorite_teams", joinColumns = { @JoinColumn(name = "team_id") }, inverseJoinColumns = { @JoinColumn(name = "user_id") })
     private List<User> usersWhoFavor;
     
-    @JsonIgnore
     @ManyToMany
     @JoinTable(name = "team_tournament", joinColumns = { @JoinColumn(name = "team_id") }, inverseJoinColumns = { @JoinColumn(name = "tournament_id") })
     private List<Tournament> teamTournaments;

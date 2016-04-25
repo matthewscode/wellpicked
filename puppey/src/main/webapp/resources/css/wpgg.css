@@ -1,15 +1,17 @@
-//light #31353D
-//dark  #1C1D21
+//light #41444C
+//dark  #151B1E
+//darkwhite: #D1D6E1
 //white #EFF4FF
+//back to basics kuler
 
 html {
 	font-family: 'Roboto', serif;
 }
 * {
-  -webkit-transition: all 0.2s ease;
-  -moz-transition:    all 0.2s ease;
-  -ms-transition:     all 0.2s ease;
-  -o-transition:      all 0.2s ease;
+/*   -webkit-transition: all 0.2s ease; */
+/*   -moz-transition:    all 0.2s ease; */
+/*   -ms-transition:     all 0.2s ease; */
+/*   -o-transition:      all 0.2s ease; */
 }
 body {
 	background-color: #EFF4FF;
@@ -18,49 +20,166 @@ body {
 		overflow: hidden;
 }
 
-
+#main-container {
+	height: 100.00vh;
+	width: 100%;
+	margin: 0;
+	background-size: cover;
+    background-position: center;
+	
+}
+.main {
+	position: absolute;
+	left: 2%;
+	top: 5%;
+	height:  90%;
+	width: 96%;
+	border: 1px solid #41444C;
+}
+.icons {
+	margin-bottom: 0px;
+    font-family: 'Material Icons';
+    font-weight: 700;
+    font-style: normal;
+    font-size: 12px;
+    line-height: 45px;
+    letter-spacing: normal;
+    text-transform: none;
+    display: inline-block;
+    white-space: nowrap;
+    word-wrap: normal;
+    direction: ltr;
+    -webkit-font-feature-settings: 'liga';
+    -webkit-font-smoothing: antialiased;
+}
+.big-icon {
+	font-size: 72px;
+	font-weight: 100;
+}
 
 #nav-container {
-	width: 120px;
-	height: 100.00vh;
-	background: #1C1D21;
-	padding-top: 5px;
-
+	position: absolute;
+	left: 2%;
+	height: 50px;
+	width: 92%;
+	color: #41444C;
 }
-.nav-logo {
-	height: 10%;
-	width: 90px;
+.nav-link-container{
+	display: inline-block;
+	width: 10%;
+	height: 200px;
+	float: left;
+}
+.nav-link-entry {
+	padding-left: 2px;
+	padding-right: 2px;
+	height: 40px;
+	display: inline-block;
 	text-decoration: none;
-	color: #EFF4FF;
-	padding: 2px;
-	display: block;
-	text-align: left;
-	vertical-align: middle;
-    font-family: 'Roboto', serif;
-    font-size: 22px;
-    font-weight: 700;
-    text-transform: lowercase;
-    padding: 10px;
-    border-radius: 7px;
-    background: #31353D;
-    margin-left:5px;
-    margin-bottom: 0px;
+	text-transform: uppercase;
+	color: inherit;
+	font-weight: 700;
+	line-height: 40px;
 }
-.nav-logo:hover {
-	background: #1C1D21;
+.nav-link-entry:hover {
+	cursor: pointer;
+	color: #D1D6E1;
 }
 
-.nav-tournament {
-	margin-left: 5px;
-	height: 8%;
-	width: 110px;
-	background: #333;
-	margin-top: 5px;
-    background-size: cover;
-    background-position: center;
-    border-radius: 7px;
+
+.nav-link-menu {
+	position: absolute;
+	text-transform: uppercase;
+	padding: 5px;
+	white-space: nowrap;
+	width: 260px;
+	visibility: hidden;
+	z-index: 5;
+	font-size: 12px;
 }
-.nav-tournament:hover {
+.sub-menu-link{
+	height: 40px;
+	line-height: 40px;
+	border-bottom: 1px solid #D1D6E1;
+	display: block;
+	text-decoration: none;
+	color: inherit;
+}
+.sub-menu-link:hover {
 	cursor: pointer;
-	margin-left: 10px;
+	text-decoration: none;
+	background: #333;
+	color: #EFF4FF;
 }
+.nav-selected {
+	background: #41444C;
+	visibility: initial;
+	color: #D1D6E1;
+	z-index: 101;
+}
+
+
+.tournament-container {
+	height: 100%;
+	width: 100%;
+}
+
+.tournament-teams-container {
+	padding: 10px;
+	position: absolute;
+	left: 5%;
+	top: 5%;
+	height: 40%;
+	height-max: 45%;
+	width: 30%;
+	text-align: center;
+	background: rgba(65,68,76,0.3);
+	
+}
+.box-inner {
+	padding: 5px;
+	border: 1px solid #41444C;
+	height: 100%;
+	width: 100%;
+	box-sizing: border-box;
+}
+.team-list {
+	height: 80%;
+	width: 100%;
+}
+.team-box-small {
+	height: 100px;
+	width: 100px;
+	background-size: contain;
+    background-position: center;
+  	background-repeat: no-repeat;
+    display: inline-block;
+}
+.tournament-desc-container {
+	padding: 10px;
+	position: absolute;
+	left: 5%;
+	bottom: 5%;
+	height: 40%;
+	height-max: 45%;
+	width: 30%;
+	text-align: center;
+	background: rgba(65,68,76,0.3);
+}
+
+.tournament-bracket-container {
+	padding: 10px;
+	position: absolute;
+	right: 5%;
+	top: 5%;
+	bottom: 5%;
+	width: 55%;
+	text-align: center;
+	background: rgba(65,68,76,0.3);
+}
+.match {
+	background: rgba(65,68,76,0.3);
+	height: 100%;
+	width: 100%;
+}
+

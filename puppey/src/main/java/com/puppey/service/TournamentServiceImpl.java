@@ -13,6 +13,7 @@ import com.puppey.domain.Matchup;
 import com.puppey.domain.Team;
 import com.puppey.domain.Tournament;
 import com.puppey.dto.MatchupDto;
+import com.puppey.dto.TeamDto;
 import com.puppey.dto.TournamentDto;
 import com.puppey.thread.ThreadStarter;
 import com.puppey.util.Utility;
@@ -337,9 +338,49 @@ public class TournamentServiceImpl implements TournamentService {
 	public TournamentDto getTournamentDto(int id) {
 		Tournament tournament = getTournament(id);
 		TournamentDto dto = new TournamentDto();
+		dto.setTournamentId(tournament.getTournamentId());
 		dto.setTournamentName(tournament.getTournamentName());
 		dto.setTournamentSlug(tournament.getTournamentSlug());
 		dto.setTournamentDesc(tournament.getTournamentDescription());
 		return dto;
+	}
+
+	@Override
+	@Transactional
+	public List<TeamDto> getTournamentTeamList(int tournamentId) {
+		List<TeamDto> dtoList = new ArrayList<>();
+		List<Team> teamList = getTournament(tournamentId).getTeams();
+		for(Team team : teamList){
+			TeamDto dto = new TeamDto();
+			dto.setTeamName(team.getTeamName());
+			dto.setId(team.getTeamId());
+			dto.setTeamSlug(team.getTeamSlug());
+			dto.setTeamRegion(team.getRegion());
+			dtoList.add(dto);
+		}
+		return dtoList;
+	}
+
+	@Override
+	public List<MatchupDto> getTournamentMatchups(int tournamentId) {
+		List<MatchupDto> dtoList = new ArrayList<>();
+		List<Matchup> matchupList = getMatchupsByTournamentId(tournamentId);
+		for(Matchup matchup: matchupList){
+			MatchupDto dto = new MatchupDto();
+			dto.setMatchupId(matchup.getMatchupId());
+			dto.setDate(matchup.getDate());
+			if(matchup.getTeam1() != null){
+				dto.setTeam1Id(matchup.getTeam1().getTeamId());
+				dto.setTeam1Name(matchup.getTeam1().getTeamName());
+				dto.setTeam1Slug(matchup.getTeam1().getTeamSlug());
+			}
+			if(matchup.getTeam2() != null){
+				dto.setTeam2Id(matchup.getTeam2().getTeamId());
+				dto.setTeam2Slug(matchup.getTeam2().getTeamSlug());
+				dto.setTeam2Name(matchup.getTeam2().getTeamName());
+			}
+			dtoList.add(dto);
+		}
+		return dtoList;
 	}
 }

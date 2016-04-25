@@ -2,32 +2,62 @@ var wpApp = angular.module('wpApp', []);
 
 wpApp.controller('mainCtrl', ['$scope', '$http', function($scope, $http) {
 	$scope.tournamentUrl;
-	$scope.tournamentSelected = false;
+	$scope.tournamentTeamUrl;
+	$scope.matchupListUrl = 'api/tournament/matchup/list/'
+	$scope.selectedTournament = {};
 	$scope.init = function(url, tournamentUrl) {
 		$http.get(url)
 			.success(function(data) {
-				$scope.selectedTournament = data[0].tournamentId;
+				$scope.ctrl = 'news';
+				$scope.selectedTournament.id = data[0].tournamentId;
+				$scope.selectedTournament.slug = data[0].tournamentSlug;
 				$scope.tournamentUrl = tournamentUrl;
-				$scope.getTournament($scope.selectedTournament);
-				$scope.data = data;
+				$scope.tData = data;
 			})
 			.error(function(){
-				console.log('error');
+				console.log('didnt init 4 tournaments');
 			})
 	};
 	
-	$scope.getTournament = function(tournamentId) {
-		$scope.tournamentSelected = false;
-		$http.get($scope.tournamentUrl + tournamentId)
+	$scope.getTournament = function(id) {
+		$http.get($scope.tournamentUrl + id)
 		.success(function(data) {
-				$scope.tournamentName = data.tournamentName;
-				$scope.tournamentSlug = data.tournamentSlug;
-				$scope.tournamentSelected = true;
+				$scope.ctrl = 'tournament';
+				$scope.selectedTournament.id = data.tournamentId;
+				$scope.selectedTournament.name = data.tournamentName;
+				$scope.selectedTournament.slug = data.tournamentSlug;
+				$scope.selectedTournament.desc = data.tournamentDesc;
+				$scope.selectedTournament.template = '4SE';
+				$scope.getTournamentTeams();
+				$scope.getTournamentMatchups();
 			})
 			.error(function(){
-				console.log('error');
+				console.log('error didnt set it');
 			})
 	}
+	$scope.getTournamentTeams = function() {
+		$http.get($scope.tournamentTeamUrl + $scope.selectedTournament.id)
+		.success(function(data) {
+			$scope.selectedTournament.teamList = data;
+			})
+			.error(function(){
+				console.log('error in getting teams');
+			})
+	}
+	
+	$scope.getTournamentMatchups = function(){
+		$http.get($scope.matchupListUrl + $scope.selectedTournament.id)
+		.success(function(data) {
+			$scope.selectedTournament.matchupList = data;
+			})
+			.error(function(){
+				console.log('error in getting matchups');
+			})
+	}
+}]);
+
+wpApp.controller('tournamentCtrl', ['$scope', '$http', function($scope, $http) {
+	
 }]);
 
 wpApp.controller('teamListCtrl', ['$scope', '$http', function($scope, $http) {

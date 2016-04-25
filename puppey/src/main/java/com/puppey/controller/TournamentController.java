@@ -24,6 +24,7 @@ import com.puppey.domain.Tournament;
 import com.puppey.domain.TournamentPrediction;
 import com.puppey.domain.User;
 import com.puppey.dto.MatchupDto;
+import com.puppey.dto.TeamDto;
 import com.puppey.dto.TournamentDto;
 import com.puppey.service.TournamentCreationService;
 import com.puppey.service.TournamentPredictionService;
@@ -241,6 +242,16 @@ public class TournamentController {
     @RequestMapping("/api/tournament/{id}")
     public TournamentDto tournament(@PathVariable int id) {
         return tournamentService.getTournamentDto(id);
+    }
+    @ResponseBody
+    @RequestMapping("/api/tournament/team/list/{tournamentId}")
+    public List<TeamDto> tournamentTeamList(@PathVariable int tournamentId) {
+        return tournamentService.getTournamentTeamList(tournamentId);
+    }
+    @ResponseBody
+    @RequestMapping("/api/tournament/matchup/list/{tournamentId}")
+    public List<MatchupDto> tournamentMatchupList(@PathVariable int tournamentId) {
+        return tournamentService.getTournamentMatchups(tournamentId);
     }
     
     @ResponseBody

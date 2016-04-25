@@ -5,6 +5,7 @@ import java.util.List;
 import com.puppey.domain.Matchup;
 import com.puppey.domain.Tournament;
 import com.puppey.dto.MatchupDto;
+import com.puppey.dto.TeamDto;
 import com.puppey.dto.TournamentDto;
 
 public interface TournamentService {
@@ -70,4 +71,8 @@ public interface TournamentService {
 	public boolean updateMatchupTeam(int matchupId, int teamInt, int teamId);
 
 	public TournamentDto getTournamentDto(int id);
+
+	public List<TeamDto> getTournamentTeamList(int tournamentId);
+
+	public List<MatchupDto> getTournamentMatchups(int tournamentId);
 }
