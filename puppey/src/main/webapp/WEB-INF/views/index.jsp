@@ -17,11 +17,8 @@
 </head>
 <body data-ng-app="wpApp">
 	<div id="main-container" data-ng-controller="mainCtrl"
-		data-ng-init="init('<c:url value="/api/tournament/list/latest/4" />', '<c:url value="/api/tournament/" />');
-	tournamentTeamUrl = '<c:url value="/api/tournament/team/list/" />';
-	showTournaments = false;
-					showTeams = false;"
-		style="background-image: url(<c:url value="/resources/images/tournaments/" />{{ selectedTournament.slug }}.jpg);">
+		data-ng-init="init();"
+		style="background-image: url(<c:url value="/resources/images/tournaments/" />{{ homeTournament.slug }}.jpg);">
 
 		<!-- NAVIGATION -->
 		<div id="nav-container">
@@ -45,17 +42,18 @@
 					<a class="sub-menu-link" href="">teams</a>
 				</div>
 			</div>
+			<div class="steam-id-container" ng-show="userId == '0'">
+				<form action="login/openid" method="post">
+	              <input name="openid_identifier" type="hidden" value="http://steamcommunity.com/openid" />
+	              <input type="image" src="<c:url value="/resources/images/pages/login--sits.png" />" alt="Sign In Through Steam"/>
+	             </form>
+			</div>
+			 
 		</div>
 
 		<!-- MAIN -->
 		<div class="main">
-		 <form action="login/openid" method="post" class="valign-container login-form-alternate">
-                        <input name="openid_identifier" type="hidden" value="http://steamcommunity.com/openid" />
-                        <div class="valign small italic">or</div>
-                        <div class="valign">
-                            <input type="image" src="<c:url value="/resources/images/pages/login--sits.png" />" alt="Sign In Through Steam"/>
-                        </div>
-                    </form>
+		hello {{ username }} !
 			<div ng-view></div>
 		</div>
 

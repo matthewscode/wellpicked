@@ -234,6 +234,8 @@ public class UserController {
         return userService.getUsersByTopScores(amount);
     }
     
+    
+    
     @ResponseBody
     @RequestMapping(value = "/api/comments/submit", method=RequestMethod.POST)
     public Message submitComment(@RequestBody Comment jsonComment){
@@ -256,6 +258,18 @@ public class UserController {
     @RequestMapping("/api/team/{teamId}/unfavorite")
     public Message unfavorTeam(@PathVariable("teamId") int teamId){
         return userService.removeUserFavoriteTeam(teamId);
+    }
+    
+    @ResponseBody
+    @RequestMapping("/api/user/current")
+    public String loggedIn(){
+    	
+    	if(SecurityContextHolder.getContext().getAuthentication().getPrincipal().toString().equals("anonymousUser")){
+    		return "{ \"userId\": \"0\", \"username\":  \"none\" }";
+    	}else{
+    		SiteUser user = (SiteUser)(SecurityContextHolder.getContext().getAuthentication().getPrincipal());
+    		return user.toString();
+    	}
     }
     
    

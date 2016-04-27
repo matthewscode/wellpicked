@@ -117,15 +117,24 @@ body {
 	color: #D1D6E1;
 	z-index: 101;
 }
+.steam-id-container {
+	text-align: center;
+	width: 160px;
+	float: right;
+	padding: 5px;
+	background: green;
+	margin-top: 3px;
+	background: rgba(69,100,0,0.5);
+}
 
 
-.tournament-container {
+.container {
 	height: 100%;
 	width: 100%;
 }
 
 .tournament-teams-container {
-	padding: 10px;
+	padding: 5px;
 	position: absolute;
 	left: 5%;
 	top: 5%;
@@ -142,6 +151,7 @@ body {
 	height: 100%;
 	width: 100%;
 	box-sizing: border-box;
+	background: rgba(239,244,255,0.3);	
 }
 .team-list {
 	height: 80%;
@@ -156,7 +166,7 @@ body {
     display: inline-block;
 }
 .tournament-desc-container {
-	padding: 10px;
+	padding: 5px;
 	position: absolute;
 	left: 5%;
 	bottom: 5%;
@@ -168,7 +178,7 @@ body {
 }
 
 .tournament-bracket-container {
-	padding: 10px;
+	padding: 5px;
 	position: absolute;
 	right: 5%;
 	top: 5%;
@@ -182,4 +192,5 @@ body {
 	height: 100%;
 	width: 100%;
 }
+
 

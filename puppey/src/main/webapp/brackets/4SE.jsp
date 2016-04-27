@@ -5,31 +5,30 @@
 		width: 20%;
 	} 
 	.single-box {
+		padding: 5px;
 		box-sizing: border-box;
-		height: 44%;
+		height: 46%;
 		width: 100%;
 		padding: 2px;
 		font-size: 18px;
-		color: #EFF4FF;
+		color: #151B1E;
 		font-weight: 700;
-		line-height: 300%;
+		line-height: 45px;
 		border: 1px solid #41444C;
-
-
-		
+		background: rgba(239,244,255,0.8);	
 	}
 	.team-title {
 		width: 80%;
 		padding: 2px;
 	}
 	.full-matchup {
-		padding: 1%;
-		background: rgba(227,123,51,0.5);
+		padding: 0.5%;
+		background: rgba(65,68,76,0.5);
 		position: absolute;
 		box-sizing: border-box;
 	}
 	.spacer {
-	height: 12%;
+	height: 8%;
 	width: 100%;
 	}
 </style>
@@ -68,7 +67,14 @@
 			<div  class="team-title"> {{ selectedTournament.matchupList[1].team2Name }} </div>
 		</div>	
 	</div>
-	<div  class="full-matchup" style="left: 52%; top: 40%; height: 20%; width: 40%;">	
+	<div  class="full-matchup" style="left: 52%; top: 40%; height: 20%; width: 40%;">
+		<div class="single-box">
+				
+			</div>
+			<div class="spacer"></div>
+		<div class="single-box">
+			
+		</div>	
 	</div>
 	
 
