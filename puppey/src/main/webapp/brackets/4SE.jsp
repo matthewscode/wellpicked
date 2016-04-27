@@ -6,21 +6,31 @@
 	} 
 	.single-box {
 		box-sizing: border-box;
-		height: 50%;
+		height: 44%;
 		width: 100%;
 		padding: 2px;
 		font-size: 18px;
 		color: #EFF4FF;
 		font-weight: 700;
 		line-height: 300%;
+		border: 1px solid #41444C;
+
+
+		
 	}
 	.team-title {
 		width: 80%;
 		padding: 2px;
 	}
 	.full-matchup {
-		background: rgba(65,68,76,0.3);
+		padding: 1%;
+		background: rgba(227,123,51,0.5);
 		position: absolute;
+		box-sizing: border-box;
+	}
+	.spacer {
+	height: 12%;
+	width: 100%;
 	}
 </style>
 <div class="bracket-4SE">
@@ -41,6 +51,7 @@
 			<div class="team-box-small team-box" style="background-image: url(resources/images/teams/logos/{{ selectedTournament.matchupList[0].team1Slug }}.png)"></div>
 			<div style="width: 80%; padding: 2px;"> {{ selectedTournament.matchupList[0].team1Name }} </div>
 		</div>
+		<div class="spacer"></div>
 		<div  class="single-box">
 			<div class="team-box-small team-box" style="background-image: url(resources/images/teams/logos/{{ selectedTournament.matchupList[0].team2Slug }}.png)"></div>
 			<div class="team-title"> {{ selectedTournament.matchupList[0].team2Name }} </div>
@@ -51,6 +62,7 @@
 				<div class="team-box-small team-box" style="background-image: url(resources/images/teams/logos/{{ selectedTournament.matchupList[1].team1Slug }}.png)"></div>
 				<div class="team-title"> {{ selectedTournament.matchupList[1].team1Name }} </div>
 			</div>
+			<div class="spacer"></div>
 		<div class="single-box">
 			<div class="team-box-small team-box" style="background-image: url(resources/images/teams/logos/{{ selectedTournament.matchupList[1].team2Slug }}.png)"></div>
 			<div  class="team-title"> {{ selectedTournament.matchupList[1].team2Name }} </div>

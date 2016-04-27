@@ -1,5 +1,18 @@
-var wpApp = angular.module('wpApp', []);
+var wpApp = angular.module('wpApp', ['ngRoute']);
+wpApp.config(function($routeProvider) {
+    $routeProvider
 
+//        .when('/', {
+//            templateUrl : 'WEB-INF/views/tournament.jsp',
+//            controller  : 'mainCtrl'
+//        })
+
+        .when('/tournament', {
+            templateUrl : 'pages/tournament.jsp',
+            controller  : 'tournamentCtrl'
+        })
+
+});
 wpApp.controller('mainCtrl', ['$scope', '$http', function($scope, $http) {
 	$scope.tournamentUrl;
 	$scope.tournamentTeamUrl;
