@@ -31,7 +31,7 @@ public class News {
 	@Column(name = "text")
 	private String newsText;
 	
-	@NotEmpty
+
 	@Column(name = "class")
 	private String newsClass;
 	

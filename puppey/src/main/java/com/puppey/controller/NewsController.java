@@ -10,8 +10,10 @@ import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.puppey.domain.News;
 import com.puppey.service.NewsService;
@@ -25,7 +27,7 @@ public class NewsController {
     //ADMIN
     @RequestMapping(value = "/admin/news/add", method = RequestMethod.GET)
     public String addNews(Model model){
-        model.addAttribute("news", new News());
+        model.addAttribute("newNews", new News());
         return "/news/admin/add";
     }
     
@@ -66,5 +68,13 @@ public class NewsController {
         List<News> newsList = newsService.getAllNews();
         model.addAttribute("newsList", newsList);
         return "/news/admin/list";
+    }
+    
+    //api
+    @RequestMapping(value = "/api/news", method = RequestMethod.POST)
+    @ResponseBody
+    public boolean newNews(@RequestBody News news) {
+    	newsService.addNews(news);
+        return true;
     }
 }
