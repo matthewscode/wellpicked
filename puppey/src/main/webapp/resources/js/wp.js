@@ -7,22 +7,20 @@ wpApp.config(function($routeProvider) {
 //            controller  : 'mainCtrl'
 //        })
 
-        .when('/tournament', {
+        .when('/tournament/:tournamentSlug', {
             templateUrl : 'pages/tournament.jsp',
             controller  : 'tournamentCtrl'
         })
 
 });
 wpApp.controller('mainCtrl', ['$scope', '$http', function($scope, $http) {
-	$scope.loggedIn = 1;
-	$scope.tournamentUrl = 'api/tournament/';
 	$scope.latestTournamentsUrl = 'api/tournament/list/latest/4';
 	$scope.matchupListUrl = 'api/tournament/matchup/list/'
 	$scope.homeTournament = {};
 	$scope.init = function() {
 		$http.get('api/user/current')
 			.success(function(data) {
-					$scope.userId = data.id;
+					$scope.userId = data.userId;
 					$scope.username = data.username;
 				})
 		$http.get($scope.latestTournamentsUrl)
@@ -39,13 +37,16 @@ wpApp.controller('mainCtrl', ['$scope', '$http', function($scope, $http) {
 	
 }]);
 
-wpApp.controller('tournamentCtrl', ['$scope', '$http', function($scope, $http) {
+wpApp.controller('tournamentCtrl', ['$scope', '$routeParams', '$http', function($scope, $routeParams, $http) {
 	$scope.selectedTournament = {};
+	$scope.tournamentUrl = 'api/tournament/';
 	$scope.tournamentTeamUrl = 'api/tournament/team/list/';
-	$scope.getTournament = function(id) {
-		$http.get($scope.tournamentUrl + id)
+	$scope.init = function(){
+		$scope.getTournament();
+	}
+	$scope.getTournament = function() {
+		$http.get($scope.tournamentUrl + $routeParams.tournamentSlug)
 		.success(function(data) {
-				$scope.ctrl = 'tournament';
 				$scope.selectedTournament.id = data.tournamentId;
 				$scope.selectedTournament.name = data.tournamentName;
 				$scope.selectedTournament.slug = data.tournamentSlug;

@@ -335,8 +335,8 @@ public class TournamentServiceImpl implements TournamentService {
 	}
 
 	@Override
-	public TournamentDto getTournamentDto(int id) {
-		Tournament tournament = getTournament(id);
+	public TournamentDto getTournamentDto(String slug) {
+		Tournament tournament = getTournamentBySlug(slug);
 		TournamentDto dto = new TournamentDto();
 		dto.setTournamentId(tournament.getTournamentId());
 		dto.setTournamentName(tournament.getTournamentName());

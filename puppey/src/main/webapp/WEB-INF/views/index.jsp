@@ -29,7 +29,7 @@
 					class="icons">keyboard_arrow_down</i></a>
 				<div class="nav-link-menu"
 					ng-class="{'nav-selected' : showTournaments}">
-					<a class="sub-menu-link" href="#/tournament"
+					<a class="sub-menu-link" href="#/tournament/{{ entry.tournamentSlug }}"
 						ng-click="getTournament(entry.tournamentId);"
 						ng-repeat="entry in tData">{{ entry.tournamentName }}</a>
 				</div>

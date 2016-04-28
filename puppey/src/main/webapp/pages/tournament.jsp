@@ -1,4 +1,4 @@
-<div class="container">
+<div class="container" data-ng-init="init();">
 	<div class="tournament-teams-container">
 		<div class="box-inner">
 			<div class="team-list">

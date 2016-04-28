@@ -238,10 +238,15 @@ public class TournamentController {
         return tournamentService.getAllTournaments();
     }
     
+//    @ResponseBody
+//    @RequestMapping("/api/tournament/{id}")
+//    public TournamentDto tournament(@PathVariable int id) {
+//        return tournamentService.getTournamentDto(id);
+//    }
     @ResponseBody
-    @RequestMapping("/api/tournament/{id}")
-    public TournamentDto tournament(@PathVariable int id) {
-        return tournamentService.getTournamentDto(id);
+    @RequestMapping("/api/tournament/{slug}")
+    public TournamentDto tournament(@PathVariable String slug) {
+        return tournamentService.getTournamentDto(slug);
     }
     @ResponseBody
     @RequestMapping("/api/tournament/team/list/{tournamentId}")

@@ -70,7 +70,7 @@ public interface TournamentService {
 
 	public boolean updateMatchupTeam(int matchupId, int teamInt, int teamId);
 
-	public TournamentDto getTournamentDto(int id);
+	public TournamentDto getTournamentDto(String slug);
 
 	public List<TeamDto> getTournamentTeamList(int tournamentId);
 
