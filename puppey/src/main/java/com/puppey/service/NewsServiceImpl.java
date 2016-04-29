@@ -59,4 +59,10 @@ public class NewsServiceImpl implements NewsService {
 		return newsDao.getAllNews();
 	}
 
+	@Override
+	@Transactional
+	public List<News> getLatestNews(int amount) {
+		return newsDao.getLatestNews(amount);
+	}
+
 }

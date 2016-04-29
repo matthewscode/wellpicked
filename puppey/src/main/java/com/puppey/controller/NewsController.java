@@ -77,4 +77,10 @@ public class NewsController {
     	newsService.addNews(news);
         return true;
     }
+    
+    @RequestMapping(value = "/api/news/list/latest/{amount}", method = RequestMethod.GET)
+    @ResponseBody
+    public List<News> getNewsList(@PathVariable int amount) {
+    	return newsService.getLatestNews(amount);
+    }
 }

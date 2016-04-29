@@ -10,4 +10,5 @@ public interface NewsDao {
 	public News getNewsById(int newsId);
 	public void updateNews(News newsToConfirm);
 	public List<News> getAllNews();
+	public List<News> getLatestNews(int amount);
 }

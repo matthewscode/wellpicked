@@ -16,4 +16,6 @@ public interface NewsService {
 	public void updateNews(News newsToConfirm);
 
 	public List<News> getAllNews();
+
+	public List<News> getLatestNews(int amount);
 }
