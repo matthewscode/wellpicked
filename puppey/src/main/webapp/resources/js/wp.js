@@ -21,6 +21,7 @@ wpApp.config(function($routeProvider) {
 wpApp.controller('mainCtrl', ['$scope', '$http', function($scope, $http) {
 	$scope.latestTournamentsUrl = 'api/tournament/list/latest/4';
 	$scope.matchupListUrl = 'api/tournament/matchup/list/'
+	$scope.streamUrl = 'api/streams/live';
 	$scope.homeTournament = {};
 	$scope.username = 'Guest';
 	$scope.userId = '0';
@@ -37,6 +38,13 @@ wpApp.controller('mainCtrl', ['$scope', '$http', function($scope, $http) {
 			})
 			.error(function(){
 				console.log('didnt init 4 tournaments');
+			})
+		$http.get($scope.streamUrl)
+			.success(function(data){
+				$scope.dStream = data;
+			})
+			.error(function(){
+				console.log('didnt init streams');
 			})
 	};
 	

@@ -19,7 +19,6 @@
 	<div id="main-container" data-ng-controller="mainCtrl"
 		data-ng-init="init();"
 		style="background-image: url(<c:url value="/resources/images/tournaments/" />{{ homeTournament.slug }}.jpg);">
-
 		<!-- NAVIGATION -->
 		<div id="nav-container">
 			<div class="nav-link-container"
@@ -29,7 +28,8 @@
 					class="icons">keyboard_arrow_down</i></a>
 				<div class="nav-link-menu"
 					ng-class="{'nav-selected' : showTournaments}">
-					<a class="sub-menu-link" href="#/tournament/{{ entry.tournamentSlug }}"
+					<a class="sub-menu-link"
+						href="#/tournament/{{ entry.tournamentSlug }}"
 						ng-click="getTournament(entry.tournamentId);"
 						ng-repeat="entry in tData">{{ entry.tournamentName }}</a>
 				</div>
@@ -44,29 +44,33 @@
 			</div>
 			<div class="steam-id-container" ng-show="userId == 0">
 				<form action="login/openid" method="post">
-	              <input name="openid_identifier" type="hidden" value="http://steamcommunity.com/openid" />
-	              <input type="image" src="<c:url value="/resources/images/pages/login--sits.png" />" alt="Sign In Through Steam"/>
-	             </form>
+					<input name="openid_identifier" type="hidden"
+						value="http://steamcommunity.com/openid" /> <input type="image"
+						src="<c:url value="/resources/images/pages/login--sits.png" />"
+						alt="Sign In Through Steam" />
+				</form>
 			</div>
-			 
+
 		</div>
 
 		<!-- MAIN -->
 		<div class="main" data-ng-controller="adminCtrl">
-		News
-		<form ng-submit="postNews()" class="form-admin">
-			<input ng-model="news.newsTitle" /><br/>
-			<textarea ng-model="news.newsText" ></textarea><br/>
-			<button type="submit">submit news</button><br/>
-			{{ newsMessage }}
-		</form>
-		
+			News
+			<form ng-submit="postNews()" class="form-admin">
+				<input ng-model="news.newsTitle" /><br />
+				<textarea ng-model="news.newsText"></textarea>
+				<br />
+				<button type="submit">submit news</button>
+				<br /> {{ newsMessage }}
+			</form>
+
 		</div>
 
 	</div>
 	<script
 		src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.9/angular.min.js"></script>
-		<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.9/angular-route.js"></script>
+	<script
+		src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.9/angular-route.js"></script>
 	<script src="<c:url value="/resources/js/wp.js" />"></script>
 	<script src="<c:url value="/resources/js/king.js" />"></script>
 </body>

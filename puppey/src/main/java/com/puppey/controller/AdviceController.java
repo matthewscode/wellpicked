@@ -63,10 +63,6 @@ public class AdviceController {
 //	       return difference;
 //	   }
 
-	@ResponseBody
-	@RequestMapping("/api/streams/favorite_teams")
-	public List<JSONObject>  favoriteTeamList(@ModelAttribute("userData") User user){
-	        return StreamServiceImpl.currentStreams;  
-	    }
+
 	    
 }

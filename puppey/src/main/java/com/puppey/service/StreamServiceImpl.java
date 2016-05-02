@@ -11,6 +11,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.DependsOn;
 import org.springframework.stereotype.Service;
 
+import com.puppey.dto.StreamDto;
+
 
 @DependsOn("teamService")
 @Service("streamService")
@@ -19,11 +21,11 @@ public class StreamServiceImpl implements StreamService {
     @Autowired
     private TeamService teamService;
     
-    public static List<JSONObject> currentStreams = new ArrayList<>();
+    public static List<StreamDto> currentStreams = new ArrayList<>();
 
     
     @Override
-    public List<JSONObject> getCurrentStreamsJson() {
+    public List<StreamDto> getCurrentStreamsJson() {
         return currentStreams;
     }
     

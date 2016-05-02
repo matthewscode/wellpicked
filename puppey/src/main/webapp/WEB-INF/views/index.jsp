@@ -55,10 +55,20 @@
 		<!-- MAIN -->
 		<div class="main">
 			<div class="main-left">
-			<!-- routing to different pages goes here -->
-			<div ng-view></div>
+				<!-- routing to different pages goes here -->
+				<div ng-view></div>
 			</div>
-			<div class="main-right"></div>
+			<div class="main-right">
+				<div class="right-profile" style="background-image: url(<c:url value="/resources/images/avatars/default.png" />);">
+				-- avatar for guest --
+				</div>
+				<div class="right-stream-list">
+				Live Now! 
+					<div style="width: 100%; height: 20px;" ng-repeat="stream in dStream">
+					{{ stream.name }} : {{ stream.team }}
+					</div>
+				</div>
+			</div>
 		</div>
 
 	</div>

@@ -10,15 +10,19 @@ import org.json.simple.JSONValue;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.puppey.domain.Comment;
 import com.puppey.domain.Tournament;
+import com.puppey.domain.User;
+import com.puppey.dto.StreamDto;
 import com.puppey.service.AchievementService;
 import com.puppey.service.CommentService;
 import com.puppey.service.StreamService;
+import com.puppey.service.StreamServiceImpl;
 import com.puppey.service.TeamService;
 import com.puppey.service.TournamentService;
 import com.puppey.service.UserService;
@@ -104,4 +108,9 @@ public class HomeController {
         return finalJson;
         
     }
+	@ResponseBody
+	@RequestMapping("/api/streams/live")
+	public List<StreamDto> getStreamList(){
+	        return StreamServiceImpl.currentStreams;  
+	    }
 }

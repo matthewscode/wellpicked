@@ -4,8 +4,10 @@ import java.util.List;
 
 import org.json.simple.JSONObject;
 
+import com.puppey.dto.StreamDto;
+
 public interface StreamService {
-    List<JSONObject> getCurrentStreamsJson();
+    List<StreamDto> getCurrentStreamsJson();
 
     JSONObject getStreamsByTeam(int teamId);
 }
