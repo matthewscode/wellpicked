@@ -18,7 +18,7 @@
 <body data-ng-app="wpApp">
 	<div id="main-container" data-ng-controller="mainCtrl"
 		data-ng-init="init();"
-		style="background-image: url(<c:url value="/resources/images/tournaments/" />{{ homeTournament.slug }}.jpg);">
+		style="background-image: url(<c:url value="/resources/images/backgrounds/wp_bg.png" />);">
 
 		<!-- NAVIGATION -->
 		<div id="nav-container">
@@ -48,13 +48,17 @@
 	              <input type="image" src="<c:url value="/resources/images/pages/login--sits.png" />" alt="Sign In Through Steam"/>
 	             </form>
 			</div>
+			<h4 ng-hide="userId == '0'" style="position: absolute; top: 0px; right: 0px;">Greetings {{ username }}!</h4>
 			 
 		</div>
 
 		<!-- MAIN -->
 		<div class="main">
-		hello {{ username }} !
+			<div class="main-left">
+			<!-- routing to different pages goes here -->
 			<div ng-view></div>
+			</div>
+			<div class="main-right"></div>
 		</div>
 
 	</div>

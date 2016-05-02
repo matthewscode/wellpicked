@@ -268,7 +268,7 @@ public class UserController {
     		return "{ \"userId\": \"0\", \"username\":  \"none\" }";
     	}else{
     		SiteUser user = (SiteUser)(SecurityContextHolder.getContext().getAuthentication().getPrincipal());
-    		return user.toString();
+    		return "{ \"userId\": \"" + user.getUserId() + "\", \"username\":  \"" + user.getUsername() +"\" }";
     	}
     }
     

@@ -1,20 +1,20 @@
-<div class="container">
-	<div class="tournament-teams-container">
-		<div class="box-inner">
-			<div class="team-list">
-				<div class="team-box-small"
-					ng-repeat="team in selectedTournament.teamList"
-					style="background-image: url(resources/images/teams/logos/{{ team.teamSlug }}.png);">
-				</div>
-			</div>
-		</div>
+<div class="container" data-ng-init="init();">
+	<div class="news-not-selected"  ng-repeat="news in dNews" data-ng-class="{'selected' : selectedNewsId == news.newsId}">
+	 	<div class="news-box-big">
+	 		<div class="news-image-box" style="background-image: url(resources/images/news/{{ news.slug }}.png);"></div>
+	 		<div class="news-text-box">
+		 		<div class="box-inner" style="text-align: left;">
+		 			<h1>{{ news.newsTitle }}</h1>
+		 			{{ news.newsText }}
+		 		</div>
+	 		</div>
+	 	</div>
 	</div>
-	<div class="tournament-desc-container">
-		<div class="box-inner">{{ selectedTournament.desc }}</div>
-	</div>
-	<div class="tournament-bracket-container">
-		<div class="box-inner">
-			<div ng-include="'brackets/' + selectedTournament.template + '.jsp'">
+	<div class="news-list-container">
+		<div class="news-list">
+			<div class="news-box-small"
+				ng-repeat="news in dNews" ng-click="$parent.selectedNewsId = news.newsId"
+				style="background-image: url(resources/images/news/{{ news.slug }}.png);" >
 			</div>
 		</div>
 	</div>

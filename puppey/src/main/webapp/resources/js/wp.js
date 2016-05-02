@@ -11,12 +11,19 @@ wpApp.config(function($routeProvider) {
             templateUrl : 'pages/tournament.jsp',
             controller  : 'tournamentCtrl'
         })
+        
+        .when('/', {
+            templateUrl : 'pages/news.jsp',
+            controller  : 'newsCtrl'
+        })
 
 });
 wpApp.controller('mainCtrl', ['$scope', '$http', function($scope, $http) {
 	$scope.latestTournamentsUrl = 'api/tournament/list/latest/4';
 	$scope.matchupListUrl = 'api/tournament/matchup/list/'
 	$scope.homeTournament = {};
+	$scope.username = 'Guest';
+	$scope.userId = '0';
 	$scope.init = function() {
 		$http.get('api/user/current')
 			.success(function(data) {
@@ -25,12 +32,28 @@ wpApp.controller('mainCtrl', ['$scope', '$http', function($scope, $http) {
 				})
 		$http.get($scope.latestTournamentsUrl)
 			.success(function(data) {
-				$scope.ctrl = 'news';
 				$scope.homeTournament.slug = data[0].tournamentSlug;
 				$scope.tData = data;
 			})
 			.error(function(){
 				console.log('didnt init 4 tournaments');
+			})
+	};
+	
+	
+}]);
+
+wpApp.controller('newsCtrl', ['$scope', '$http', function($scope, $http) {
+	$scope.selectedNewsId = 0;
+	$scope.latestNewsUrl = 'api/news/list/latest/4';
+	$scope.init = function() {
+		$http.get($scope.latestNewsUrl)
+			.success(function(data) {
+				$scope.dNews = data;
+				$scope.selectedNewsId = data[0].newsId;;
+			})
+			.error(function(){
+				console.log('didnt init 4 news');
 			})
 	};
 	
