@@ -47,7 +47,7 @@ public class StreamThread implements Runnable {
         
         
             try{
-            String channelJson = IOUtils.toString(new URL("https://api.twitch.tv/kraken/streams?game=dota%202&limit=8").openStream(), "UTF-8");
+            String channelJson = IOUtils.toString(new URL("https://api.twitch.tv/kraken/streams?game=dota%202&limit=7").openStream(), "UTF-8");
             JSONObject streamListJsonObject = (JSONObject) JSONValue.parseWithException(channelJson);
             List<String> liveStreamers = new ArrayList<>();
             JSONArray streamArray = (JSONArray) streamListJsonObject.get("streams");
@@ -66,7 +66,6 @@ public class StreamThread implements Runnable {
             	for (int i = 0; i < userTeams.size(); i++) {
             		JSONObject team = (JSONObject)userTeams.get(i);
             		String teamName = (String)team.get("name");
-            		System.out.println(teamTwitchList);
             		if(teamTwitchList.contains(teamName)){
             			dto.setTeam(teamName);
             		}

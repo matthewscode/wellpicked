@@ -42,13 +42,6 @@
 					<a class="sub-menu-link" href="">teams</a>
 				</div>
 			</div>
-			<div class="steam-id-container" ng-show="userId == '0'">
-				<form action="login/openid" method="post">
-	              <input name="openid_identifier" type="hidden" value="http://steamcommunity.com/openid" />
-	              <input type="image" src="<c:url value="/resources/images/pages/login--sits.png" />" alt="Sign In Through Steam"/>
-	             </form>
-			</div>
-			<h4 ng-hide="userId == '0'" style="position: absolute; top: 0px; right: 0px;">Greetings {{ username }}!</h4>
 			 
 		</div>
 
@@ -56,16 +49,23 @@
 		<div class="main">
 			<div class="main-left">
 				<!-- routing to different pages goes here -->
-				<div ng-view></div>
+				<div style="height: 100%; box-sizing: border-box;" ng-view></div>
 			</div>
 			<div class="main-right">
 				<div class="right-profile" style="background-image: url(<c:url value="/resources/images/avatars/default.png" />);">
-				-- avatar for guest --
 				</div>
-				<div class="right-stream-list">
-				Live Now! 
-					<div style="width: 100%; height: 20px;" ng-repeat="stream in dStream">
-					{{ stream.name }} : {{ stream.team }}
+				<div class="steam-id-container" ng-show="userId == '0'">
+				<form action="login/openid" method="post">
+	              <input name="openid_identifier" type="hidden" value="http://steamcommunity.com/openid" />
+	              <input type="image" src="<c:url value="/resources/images/pages/login--sits.png" />" alt="Sign In Through Steam"/>
+	             </form>
+			</div>
+			<h4 ng-hide="userId == '0'" style="position: absolute; top: 0px; right: 0px;">Greetings {{ username }}!</h4>
+				<div class="right-stream-list"><div class="box-inner">
+				<div class="stream-entry-even">Live Now!</div>
+					<div ng-class-odd="'stream-entry-odd'" ng-class-even="'stream-entry-even'" ng-repeat="stream in dStream">
+					<a href="#/stream/{{ stream.name }}">{{ stream.name }}</a> : {{ stream.team }}
+					</div>
 					</div>
 				</div>
 			</div>

@@ -11,6 +11,10 @@ wpApp.config(function($routeProvider) {
             templateUrl : 'pages/tournament.jsp',
             controller  : 'tournamentCtrl'
         })
+        .when('/stream/:streamTag', {
+            templateUrl : 'pages/stream.jsp',
+            controller  : 'streamCtrl'
+        })
         
         .when('/', {
             templateUrl : 'pages/news.jsp',
@@ -165,4 +169,10 @@ wpApp.controller('bracketListCtrl', ['$scope', '$http', function($scope, $http) 
 				console.log('error on bracketListCtrl data init');
 			})
 	}
+}]);
+wpApp.controller('streamCtrl', ['$scope', '$routeParams', '$http', '$sce', function($scope, $routeParams, $http, $sce) {
+	$scope.init = function() {
+		console.log('test is it geting here');
+		$scope.streamUrl = $sce.trustAsResourceUrl('http://www.twitch.tv/' + $routeParams.streamTag + '/embed');
+	};
 }]);
