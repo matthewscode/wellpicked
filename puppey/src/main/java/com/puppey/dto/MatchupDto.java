@@ -1,7 +1,5 @@
 package com.puppey.dto;
 
-import com.puppey.domain.Team;
-
 public class MatchupDto {
 
     private int matchupId;
@@ -16,6 +14,8 @@ public class MatchupDto {
     private String team2Name;
     private String team1Slug;
     private String team2Slug;
+    private String team1Color;
+    private String team2Color;
     private String winnerSlug;
     private int winnerNextMatchId;
     private int loserNextMatchId;
@@ -118,7 +118,23 @@ public class MatchupDto {
 	public void setLoserNextMatchId(int loserNextMatchId) {
 		this.loserNextMatchId = loserNextMatchId;
 	}
-	
+
+	public String getTeam1Color() {
+		return team1Color;
+	}
+
+	public void setTeam1Color(String team1Color) {
+		this.team1Color = team1Color;
+	}
+
+	public String getTeam2Color() {
+		return team2Color;
+	}
+
+	public void setTeam2Color(String team2Color) {
+		this.team2Color = team2Color;
+	}
+	 
 
 	
     

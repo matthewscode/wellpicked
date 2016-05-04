@@ -150,9 +150,10 @@ public class TeamServiceImpl implements TeamService {
 		for(Team team : teamList){
 			TeamDto td = new TeamDto();
 			td.setId(team.getTeamId());
-			td.setTeamName(team.getTeamName());
-			td.setTeamSlug(team.getTeamSlug());
-			td.setTeamRegion(team.getRegion());
+			td.setName(team.getTeamName());
+			td.setSlug(team.getTeamSlug());
+			td.setRegion(team.getRegion());
+			td.setColor(team.getColor());
 			teamDtoList.add(td);
 		}
 		return teamDtoList;

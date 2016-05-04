@@ -3,34 +3,43 @@ package com.puppey.dto;
 public class TeamDto {
 
 	private int id;
-	private String teamName;
-	private String teamSlug;
-	private String teamRegion;
-	
+	private String name;
+	private String slug;
+	private String region;
+	private String color;
 	public int getId() {
 		return id;
 	}
 	public void setId(int id) {
 		this.id = id;
 	}
-	public String getTeamName() {
-		return teamName;
+	public String getName() {
+		return name;
 	}
-	public void setTeamName(String teamName) {
-		this.teamName = teamName;
+	public void setName(String name) {
+		this.name = name;
 	}
-	public String getTeamSlug() {
-		return teamSlug;
+	public String getSlug() {
+		return slug;
 	}
-	public void setTeamSlug(String teamSlug) {
-		this.teamSlug = teamSlug;
+	public void setSlug(String slug) {
+		this.slug = slug;
 	}
-	public String getTeamRegion() {
-		return teamRegion;
+	public String getRegion() {
+		return region;
 	}
-	public void setTeamRegion(String teamRegion) {
-		this.teamRegion = teamRegion;
+	public void setRegion(String region) {
+		this.region = region;
 	}
+	public String getColor() {
+		return color;
+	}
+	public void setColor(String color) {
+		this.color = color;
+	}
+	
+
+	
 	
 	
 }

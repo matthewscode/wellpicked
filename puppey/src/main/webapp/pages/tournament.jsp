@@ -4,7 +4,7 @@
 			<div class="team-list">
 				<div class="team-box-small"
 					ng-repeat="team in selectedTournament.teamList"
-					style="background-image: url(resources/images/teams/logos/{{ team.teamSlug }}.png);">
+					style="background-image: url(resources/images/teams/logos/{{ team.slug }}.png);">
 				</div>
 			</div>
 		</div>
@@ -13,7 +13,7 @@
 		<div class="box-inner">{{ selectedTournament.desc }}</div>
 	</div>
 	<div class="tournament-bracket-container">
-		<div class="box-inner">
+		<div class="box-inner" style="background: none; border: 0px;">
 			<div ng-include="'brackets/' + selectedTournament.template + '.jsp'">
 			</div>
 		</div>

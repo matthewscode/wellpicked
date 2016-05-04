@@ -352,10 +352,11 @@ public class TournamentServiceImpl implements TournamentService {
 		List<Team> teamList = getTournament(tournamentId).getTeams();
 		for(Team team : teamList){
 			TeamDto dto = new TeamDto();
-			dto.setTeamName(team.getTeamName());
+			dto.setName(team.getTeamName());
 			dto.setId(team.getTeamId());
-			dto.setTeamSlug(team.getTeamSlug());
-			dto.setTeamRegion(team.getRegion());
+			dto.setSlug(team.getTeamSlug());
+			dto.setRegion(team.getRegion());
+			dto.setColor(team.getColor());
 			dtoList.add(dto);
 		}
 		return dtoList;
@@ -373,11 +374,13 @@ public class TournamentServiceImpl implements TournamentService {
 				dto.setTeam1Id(matchup.getTeam1().getTeamId());
 				dto.setTeam1Name(matchup.getTeam1().getTeamName());
 				dto.setTeam1Slug(matchup.getTeam1().getTeamSlug());
+				dto.setTeam1Color(matchup.getTeam1().getColor());
 			}
 			if(matchup.getTeam2() != null){
 				dto.setTeam2Id(matchup.getTeam2().getTeamId());
 				dto.setTeam2Slug(matchup.getTeam2().getTeamSlug());
 				dto.setTeam2Name(matchup.getTeam2().getTeamName());
+				dto.setTeam2Color(matchup.getTeam2().getColor());
 			}
 			dtoList.add(dto);
 		}
