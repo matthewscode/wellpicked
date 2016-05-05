@@ -86,7 +86,7 @@ wpApp.controller('tournamentCtrl', ['$scope', '$routeParams', '$http', function(
 				$scope.selectedTournament.name = data.tournamentName;
 				$scope.selectedTournament.slug = data.tournamentSlug;
 				$scope.selectedTournament.desc = data.tournamentDesc;
-				$scope.selectedTournament.template = '4SE';
+				$scope.selectedTournament.template = data.template;
 				$scope.getTournamentTeams();
 				$scope.getTournamentMatchups();
 			})

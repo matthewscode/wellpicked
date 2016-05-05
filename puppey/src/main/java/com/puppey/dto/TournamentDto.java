@@ -6,6 +6,7 @@ public class TournamentDto {
     private String tournamentName;
     private String tournamentSlug;
     private String tournamentDesc;
+    private String template;
     private int tournamentStart;
     private int tournamentEnd;
     
@@ -64,6 +65,14 @@ public class TournamentDto {
 
 	public void setTournamentDesc(String tournamentDesc) {
 		this.tournamentDesc = tournamentDesc;
+	}
+
+	public String getTemplate() {
+		return template;
+	}
+
+	public void setTemplate(String template) {
+		this.template = template;
 	}
     
     

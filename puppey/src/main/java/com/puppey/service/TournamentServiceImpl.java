@@ -342,6 +342,7 @@ public class TournamentServiceImpl implements TournamentService {
 		dto.setTournamentName(tournament.getTournamentName());
 		dto.setTournamentSlug(tournament.getTournamentSlug());
 		dto.setTournamentDesc(tournament.getTournamentDescription());
+		dto.setTemplate(tournament.getTemplate().getTemplate());
 		return dto;
 	}
 

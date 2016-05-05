@@ -16,7 +16,7 @@
 		font-weight: 700;
 		line-height: 45px;
 		border: 1px solid #41444C;
-		background: rgba(239,244,255,0.6);	
+		background: rgba(239,244,255,0.5);	
 	}
 	.team-title {
 		width: 80%;
@@ -27,8 +27,8 @@
 		box-sizing: border-box;
 	}
 	.spacer {
-	height: 1px;
-	width: 100%;
+		height: 1px;
+		width: 100%;
 	}
 
 	.h-line{
