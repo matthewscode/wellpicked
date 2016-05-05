@@ -197,7 +197,7 @@
 <!--  UPPER ROUND 1 -->
 	<!-- UR1M1 -->
 	<div   class="full-matchup" style="left: 12%; top: 5%;">
-		<div class="single-box" style="background: rgb({{ selectedTournament.matchupList[0].team1Color }}0.2);">
+		<div class="single-box" style="background: rgba({{ selectedTournament.matchupList[0].team1Color }}0.2);">
 			<div class="team-box-small team-box" style="background-image: url(resources/images/teams/logos/{{ selectedTournament.matchupList[0].team1Slug }}.png)"></div>
 			<div style="width: 80%; padding: 2px;"> {{ selectedTournament.matchupList[0].team1Name }} </div>
 		</div>
