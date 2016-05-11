@@ -17,24 +17,25 @@
 </head>
 <body data-ng-app="wpApp">
 	<div id="main-container" data-ng-controller="mainCtrl"
-		data-ng-init="init();"
-		style="background-image: url(<c:url value="/resources/images/backgrounds/wp_bg.png" />);">
+		data-ng-init="init();">
 
 		<!-- NAVIGATION -->
 		<div id="nav-container">
-			<div class="nav-link-container"
-				ng-click="showTeams=false;showTournaments=!showTournaments">
-				<a href="" class="nav-link-entry"
-					ng-class="{'nav-selected' : showTournaments}">Tournaments<i
+			<div class="nav-home-container" style="width: 5%;">
+			<a href="#/" class="nav-link-entry">WP.GG</a>
+			</div>
+			<div class="nav-tournament-container"
+				ng-click="showTeams=false;showTournaments=!showTournaments" ng-mouseenter="navtournaments = 'navtournamentsshown'" ng-mouseleave="navtournaments = 'navtournamentshidden'">
+				
+				<a href="" class="nav-link-entry">Tournaments<i
 					class="icons">keyboard_arrow_down</i></a>
-				<div class="nav-link-menu"
-					ng-class="{'nav-selected' : showTournaments}">
+				<div class= "navtournamentshidden" ng-class="navtournaments">
 					<a class="sub-menu-link" href="#/tournament/{{ entry.tournamentSlug }}"
 						ng-click="getTournament(entry.tournamentId);"
 						ng-repeat="entry in tData">{{ entry.tournamentName }}</a>
 				</div>
 			</div>
-			<div class="nav-link-container"
+			<div class="nav-team-container"
 				ng-click="showTournaments = false; showTeams = !showTeams;">
 				<a href="" class="nav-link-entry"
 					ng-class="{'nav-selected' : showTeams}">Teams<i class="icons">keyboard_arrow_down</i></a>
@@ -44,6 +45,7 @@
 			</div>
 			 
 		</div>
+		
 
 		<!-- MAIN -->
 		<div class="main">
@@ -53,16 +55,17 @@
 			</div>
 			<div class="main-right">
 				<div class="right-profile" style="background-image: url(<c:url value="/resources/images/avatars/default.png" />);">
-				</div>
 				<div class="steam-id-container" ng-show="userId == '0'">
 				<form action="login/openid" method="post">
 	              <input name="openid_identifier" type="hidden" value="http://steamcommunity.com/openid" />
 	              <input type="image" src="<c:url value="/resources/images/pages/login--sits.png" />" alt="Sign In Through Steam"/>
 	             </form>
-			</div>
+				</div>
+				</div>
+				
 			<h4 ng-hide="userId == '0'" style="position: absolute; top: 0px; right: 0px;">Greetings {{ username }}!</h4>
 				<div class="right-stream-list"><div class="box-inner">
-				<div class="stream-entry-even">Live Now!</div>
+				<div class="stream-entry-even head">Live Now!</div>
 					<div ng-class-odd="'stream-entry-odd'" ng-class-even="'stream-entry-even'" ng-repeat="stream in dStream">
 					<a href="#/stream/{{ stream.name }}">{{ stream.name }}</a> : {{ stream.team }}
 					</div>

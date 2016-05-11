@@ -4,6 +4,13 @@
 //white #EFF4FF
 //back to basics kuler
 
+//new kuler
+//blue world
+//lightest E1E6FA
+// C4D7ED
+// ABC8E2
+// 375D81
+// 183152
 html {
 	font-family: 'Roboto', serif;
 }
@@ -32,29 +39,31 @@ a:hover {
 	height: 100.00vh;
 	width: 100%;
 	margin: 0;
+	background:  #e8e8e8;
 	background-size: cover;
     background-position: center;
 	
 }
 .main {
 	position: absolute;
-	left: 2%;
-	top: 5%;
+	top: 50px;
 	height:  90%;
-	width: 96%;
-	border: 1px solid #41444C;
+	width: 99%;
 }
 .main-left{
 	width: 85%;
-	height: 90.00vh;
+	height: 93.00vh;
 	float: left;
 	box-sizing: border-box;
 }
 .main-right{
+	position: absolute;
+	z-index: 25;
+	top: -25px;
+	right: 0px;
 	width: 15%;
 	height: 100%;
 	float: right;
-	padding: 0.5%;
 	box-sizing: border-box;
 }
 .icons {
@@ -80,17 +89,40 @@ a:hover {
 
 #nav-container {
 	position: absolute;
-	left: 2%;
 	height: 50px;
-	width: 92%;
-	color: #41444C;
+	width: 100%;
+	color: #E1E6FA;
+	background: #183152;
+	padding-left: 20px;
+	box-shadow: 0 2px 2px 0 rgba(0,0,0,.14),0 3px 1px -2px rgba(0,0,0,.2),0 1px 5px 0 rgba(0,0,0,.12);
+	z-index: 20;
 }
-.nav-link-container{
+.nav-home-container{
+	position: absolute;
+	left: 2%;
 	display: inline-block;
 	width: 10%;
 	height: 200px;
 	float: left;
 }
+.nav-tournament-container{
+	position: absolute;
+	left: 7%;
+	display: inline-block;
+	width: 10%;
+	height: 0px;
+	float: left;
+	z-index: 10;
+}
+.nav-team-container{
+	position: absolute;
+	left: 17%;
+	display: inline-block;
+	width: 10%;
+	height: 200px;
+	float: left;
+}
+
 .nav-link-entry {
 	padding-left: 2px;
 	padding-right: 2px;
@@ -121,31 +153,56 @@ a:hover {
 .sub-menu-link{
 	height: 40px;
 	line-height: 40px;
-	border-bottom: 1px solid #D1D6E1;
 	display: block;
 	text-decoration: none;
 	color: inherit;
 }
-.sub-menu-link:hover {
-	cursor: pointer;
-	text-decoration: none;
-	background: #333;
-	color: #EFF4FF;
+
+.navtournaments {
+	height: 0px;
+	overflow: hidden;
+	position: absolute;
+	top: -120px;
+	z-index: -1;
 }
-.nav-selected {
-	background: #41444C;
+.navtournamentshidden {
+	height: 0px;
+	overflow: hidden;
+	position: absolute;
+	top: -120px;
+	z-index: -1;
+	width: 120%;
+}
+.navtournamentsshown {
+	height: 160px;;
+	display: block;
+	padding: 5px;
+	top: 48px;
+	left: 7%;
+	width: 140%;
+	position: absolute;
+	background: #FBFFFF;
 	visibility: initial;
-	color: #D1D6E1;
-	z-index: 101;
+	color: #183152;
+	border-radius: 2px;
+	box-shadow: 0 2px 2px 0 rgba(0,0,0,.14),0 3px 1px -2px rgba(0,0,0,.2),0 1px 5px 0 rgba(0,0,0,.12);
+}
+
+.nav-selected {
+	top: 35px;
 }
 .steam-id-container {
+	height: 35px;
+	position: absolute;
 	text-align: center;
-	width: 98%;
+	width: 100%;
 	padding: 2px;
 	background: green;
 	margin-top: 3px;
-	background: rgba(69,100,0,0.5);
-	border: 1px solid #41444C;
+	background: #5D8328;
+	bottom: 0px;
+	padding: 6px;
+	box-sizing: border-box;
 }
 
 
@@ -176,12 +233,10 @@ a:hover {
   	background-repeat: no-repeat;
 }
 .box-inner {
-	padding: 10px;
-	border: 1px solid #41444C;
 	height: 100%;
 	width: 100%;
 	box-sizing: border-box;
-	background: rgba(239,244,255,0.3);	
+
 }
 .team-list {
 	height: 80%;
@@ -206,16 +261,19 @@ a:hover {
 }
 
 .tournament-bracket-container {
+	background: #FBFFFF;
 	position: absolute;
-	left: 0;
-	top: 0;
+	left: 1%;
+	top: 10px;;
 	bottom: 1%;
-	width: 85%;
+	width: 83%;
 	text-align: center;
+	border-radius: 2px;
+	box-shadow: 0 2px 2px 0 rgba(0,0,0,.14),0 3px 1px -2px rgba(0,0,0,.2),0 1px 5px 0 rgba(0,0,0,.12);
 }
 
 .match {
-	background: rgba(65,68,76,0.3);
+	background: #375D81;
 	height: 100%;
 	width: 100%;
 }
@@ -227,7 +285,7 @@ a:hover {
 .news-not-selected {
 	position: absolute;
 	width: 85%;
-	height: 65%;
+	height: 70%;
 	text-align: center;
 	top: 0px;
 	margin-left: -120%;
@@ -255,29 +313,44 @@ a:hover {
 
 .news-box-small {
 	height: 100%;
-	width: 20%;
+	margin-left: 0.4%;
+	margin-right: 0.4%;
+	width: 22%;
+	background: #FBFFFF;
 	background-size: contain;
     background-position: center;
   	background-repeat: no-repeat;
     display: inline-block;
+    padding: 10px;
+    border-radius: 2px;
+    box-shadow: 0 2px 2px 0 rgba(0,0,0,.14),0 3px 1px -2px rgba(0,0,0,.2),0 1px 5px 0 rgba(0,0,0,.12);
+    
 }
 .news-box-small:hover {
+	background: #E1E6FA;
+	background-size: contain;
+    background-position: center;
+  	background-repeat: no-repeat;
 	cursor: pointer;
 }
 .news-box-big {
-	margin-top: 1%;
+	margin-top: 10px;
 	height: 95%;
-	width: 95%;
-	background: rgba(65,68,76,0.3);
+	width: 96.5%;
+	background: #FBFFFF;
     display: inline-block;
+    border-radius: 2px;
+    box-shadow: 0 2px 2px 0 rgba(0,0,0,.14),0 3px 1px -2px rgba(0,0,0,.2),0 1px 5px 0 rgba(0,0,0,.12);
 }
 .news-image-box {
  	float: left;
 	height: 100%;
 	width: 30%;
+	background: #FBFFFF;
 	background-size: contain;
     background-position: center;
   	background-repeat: no-repeat;
+  	border-radius: 2px;
 }
 .news-text-box {
 	float: left;
@@ -288,15 +361,19 @@ a:hover {
 }
 
 .right-profile {
+	position: relative;
 	height: 35%;
 	width: 100%;
+	background: #E1E6FA;
 	background-size: contain;
     background-position: center;
   	background-repeat: no-repeat;
+  	border-radius: 2px;
+  	box-shadow: 0 2px 2px 0 rgba(0,0,0,.14),0 3px 1px -2px rgba(0,0,0,.2),0 1px 5px 0 rgba(0,0,0,.12);
 }
 
 .right-stream-list {
-	padding: 2px;
+	margin-top: 10px;
 	height: 35%;
 	width: 100%;
 }
@@ -304,22 +381,49 @@ a:hover {
 
 .stream-entry-odd {
 	padding: 2px;
-	width: 100%;
-	height: 22px;
-	background: rgba(65,68,76,0.2);
+	padding-left: 5px;
+	width: 95%;
+	height: 25px;
+	background: #FBFFFF;
 	line-height: 22px;
+	box-shadow: 0 2px 2px 0 rgba(0,0,0,.14),0 3px 1px -2px rgba(0,0,0,.2),0 1px 5px 0 rgba(0,0,0,.12);
+	margin-top: 6px;
+	border-radius: 2px;
+	box-sizing: border-box;
+	float: right;
 }
 .stream-entry-even {
 	padding: 2px;
-	width: 100%;
-	height: 22px;
-	background: rgba(65,68,76,0.0);
+	padding-left: 5px;
+	width: 95%;
+	height: 25px;
+	background: #E1E6FA;
 	line-height: 22px;
+	box-shadow: 0 2px 2px 0 rgba(0,0,0,.14),0 3px 1px -2px rgba(0,0,0,.2),0 1px 5px 0 rgba(0,0,0,.12);
+	margin-top: 6px;
+	border-radius: 2px;
+	box-sizing: border-box;
+	float: right;
+}
+.head {
+	background: #183152;
+	color: #E1E6FA;
+	width: 100%;
 }
 .stream-entry-odd:hover, .stream-entry-even:hover {
 	background: rgba(65,68,76,0.8);
 }
 
+.stream-container {
+	margin-top: 5px;
+	margin-left: 5px;
+	width: 98%;
+	height: 98%;
+	border-radius: 2px;
+	overflow: hidden;
+	background: #FBFFFF;
+	box-shadow: 0 2px 2px 0 rgba(0,0,0,.14),0 3px 1px -2px rgba(0,0,0,.2),0 1px 5px 0 rgba(0,0,0,.12);
+}
 
 .full-opacity {
 	opacity: 0.4 !important;
