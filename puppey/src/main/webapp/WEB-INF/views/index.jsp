@@ -54,7 +54,7 @@
 				<div style="height: 100%; box-sizing: border-box;" ng-view></div>
 			</div>
 			<div class="main-right">
-				<div class="right-profile" style="background-image: url(<c:url value="/resources/images/avatars/default.png" />);">
+				<div class="right-profile" ng-click="go('profile')" style="background-image: url(resources/images/avatars/{{ userAvatar }}.png);" ng-cloak>
 				<div class="steam-id-container" ng-show="userId == '0'">
 				<form action="login/openid" method="post">
 	              <input name="openid_identifier" type="hidden" value="http://steamcommunity.com/openid" />
@@ -62,8 +62,6 @@
 	             </form>
 				</div>
 				</div>
-				
-			<h4 ng-hide="userId == '0'" style="position: absolute; top: 0px; right: 0px;">Greetings {{ username }}!</h4>
 				<div class="right-stream-list"><div class="box-inner">
 				<div class="stream-entry-even head">Live Now!</div>
 					<div ng-class-odd="'stream-entry-odd'" ng-class-even="'stream-entry-even'" ng-repeat="stream in dStream">

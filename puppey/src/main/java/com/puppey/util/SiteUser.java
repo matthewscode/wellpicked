@@ -11,10 +11,12 @@ public class SiteUser extends User {
 
     private int userId;
     private String username;
+    private String userAvatar;
     public SiteUser(String username, String password, boolean enabled, boolean accountNonExpired,
-            boolean credentialsNonExpired, boolean accountNonLocked, Collection<? extends GrantedAuthority> authorities) {
+            boolean credentialsNonExpired, boolean accountNonLocked, Collection<? extends GrantedAuthority> authorities, String userAvatar) {
         super(username, password, enabled, accountNonExpired, credentialsNonExpired, accountNonLocked, authorities);
         this.username=username;
+        this.userAvatar = userAvatar;
     }
 
     public int getUserId() {
@@ -25,7 +27,23 @@ public class SiteUser extends User {
         this.userId = userId;
     }
 
-    @Override
+    public String getUsername() {
+		return username;
+	}
+
+	public void setUsername(String username) {
+		this.username = username;
+	}
+
+	public String getUserAvatar() {
+		return userAvatar;
+	}
+
+	public void setUserAvatar(String userAvatar) {
+		this.userAvatar = userAvatar;
+	}
+
+	@Override
     public boolean equals(Object rhs) {
         if (rhs instanceof User) {
             return username.equals(((User) rhs).getUsername());

@@ -20,20 +20,35 @@ wpApp.config(function($routeProvider) {
             templateUrl : 'pages/news.jsp',
             controller  : 'newsCtrl'
         })
+        
+        .when('/profile', {
+            templateUrl : 'pages/profile.jsp',
+            controller  : 'profileCtrl'
+        })
+        .when('/bracket/create/:tournamentSlug', {
+            templateUrl : 'pages/bracket-create.jsp',
+            controller  : 'bracketCtrl'
+        })
 
 });
-wpApp.controller('mainCtrl', ['$scope', '$http', function($scope, $http) {
+wpApp.controller('mainCtrl', ['$scope', '$http', '$location', function($scope, $http, $location) {
 	$scope.latestTournamentsUrl = 'api/tournament/list/latest/4';
 	$scope.matchupListUrl = 'api/tournament/matchup/list/'
 	$scope.streamUrl = 'api/streams/live';
 	$scope.homeTournament = {};
 	$scope.username = 'Guest';
 	$scope.userId = '0';
+	$scope.userAvatar;
 	$scope.init = function() {
 		$http.get('api/user/current')
 			.success(function(data) {
 					$scope.userId = data.userId;
 					$scope.username = data.username;
+					if(angular.isDefined(data.userAvatar) && data.userAvatar.length  > 0){
+					$scope.userAvatar = data.userAvatar;
+					}else{
+						$scope.userAvatar = 'default';
+					}
 				})
 		$http.get($scope.latestTournamentsUrl)
 			.success(function(data) {
@@ -51,6 +66,10 @@ wpApp.controller('mainCtrl', ['$scope', '$http', function($scope, $http) {
 				console.log('didnt init streams');
 			})
 	};
+	
+	$scope.go = function(path){
+		 $location.path( path );
+	}
 	
 	
 }]);
@@ -175,4 +194,65 @@ wpApp.controller('streamCtrl', ['$scope', '$routeParams', '$http', '$sce', funct
 		console.log('test is it geting here');
 		$scope.streamUrl = $sce.trustAsResourceUrl('http://www.twitch.tv/' + $routeParams.streamTag + '/embed');
 	};
+}]);
+wpApp.controller('profileCtrl', ['$scope', '$routeParams', '$http', '$sce', function($scope, $routeParams, $http, $sce) {
+	$scope.userAvatar;
+	$scope.init = function() {
+		$http.get('api/user/current')
+		.success(function(data) {
+				$scope.userId = data.userId;
+				$scope.username = data.username;
+				if(data.userAvatar.length  > 0){
+				$scope.userAvatar = data.userAvatar;
+				}else{
+					$scope.userAvatar = 'default';
+				}
+			})
+		$http.get('api/user/brackets/recent')
+		.success(function(data) {
+				$scope.bracketList = data;
+			})
+	};
+}]);
+wpApp.controller('bracketCtrl', ['$scope', '$routeParams', '$http', '$sce', function($scope, $routeParams, $http, $sce) {
+	$scope.selectedTournament = {};
+	$scope.tournamentUrl = 'api/tournament/';
+	$scope.tournamentTeamUrl = 'api/tournament/team/list/';
+	$scope.init = function(){
+		$scope.getTournament();
+	}
+	$scope.getTournament = function() {
+		$http.get($scope.tournamentUrl + $routeParams.tournamentSlug)
+		.success(function(data) {
+				$scope.selectedTournament.id = data.tournamentId;
+				$scope.selectedTournament.name = data.tournamentName;
+				$scope.selectedTournament.slug = data.tournamentSlug;
+				$scope.selectedTournament.desc = data.tournamentDesc;
+				$scope.selectedTournament.template = data.template;
+				$scope.getTournamentTeams();
+				$scope.getTournamentMatchups();
+			})
+			.error(function(){
+				console.log('error didnt set it');
+			})
+	}
+	$scope.getTournamentTeams = function() {
+		$http.get($scope.tournamentTeamUrl + $scope.selectedTournament.id)
+		.success(function(data) {
+			$scope.selectedTournament.teamList = data;
+			})
+			.error(function(){
+				console.log('error in getting teams');
+			})
+	}
+	
+	$scope.getTournamentMatchups = function(){
+		$http.get($scope.matchupListUrl + $scope.selectedTournament.id)
+		.success(function(data) {
+			$scope.selectedTournament.matchupList = data;
+			})
+			.error(function(){
+				console.log('error in getting matchups');
+			})
+	}
 }]);

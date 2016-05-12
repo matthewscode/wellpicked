@@ -43,12 +43,13 @@ public class UserSuccessHandler implements UserDetailsService {
     static User buildUserFromUserEntity(com.puppey.domain.User user, List<GrantedAuthority> authorities) {
         String username = user.getUsername();
         String password = user.getPassword();
+        String userAvatar = user.getAvatarName();
         boolean enabled = true;
         boolean accountNonExpired = true;
         boolean credentialsNonExpired = true;
         boolean accountNonLocked = true;
         SiteUser siteUser = new SiteUser(username, password, enabled, accountNonExpired, credentialsNonExpired,
-                accountNonLocked, authorities);
+                accountNonLocked, authorities, userAvatar);
         siteUser.setUserId(user.getUserId());
         return siteUser;
     }

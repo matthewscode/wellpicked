@@ -37,8 +37,8 @@
 	.full-matchup-final {
 		position: absolute;
 		box-sizing: border-box;
-		width: 15%;
-		height: 10%;
+		width: 17%;
+		height: 11%;
 	}
 	.spacer {
 		height: 4px;
@@ -183,11 +183,13 @@
 	<div class="h-line" style="top: 72.0%; left: 64.0%; width: 0.5%;"></div>
 	
 	<!-- UR3M1 to GF -->
-	<div class="v-line" style="top: 28.5%; left: 74.0%; height: 19.0%;"></div>
-	<div class="h-line" style="top: 47.5%; left: 74.0%; width: 1.5%;"></div>
+	<div class="h-line" style="top: 24.0%; left: 75.5%; width: 1.0%;"></div>
+	<div class="v-line" style="top: 24.0%; left: 76.5%; height: 23.5%;"></div>
+	<div class="h-line" style="top: 47.5%; left: 76.5%; width: 1.5%;"></div>
 	<!-- LR6M1 to GF -->
-	<div class="v-line" style="top: 51.8%; left: 74.0%; height: 17.5%;"></div>
-	<div class="h-line" style="top: 51.8%; left: 74.0%; width: 1.5%;"></div>
+	<div class="h-line" style="top: 74.0%; left: 75.5%; width: 1.0%;"></div>
+	<div class="v-line" style="top: 51.8%; left: 76.5%; height: 22.4%;"></div>
+	<div class="h-line" style="top: 51.8%; left: 76.5%; width: 1.5%;"></div>
 	
 	<!-- divider line -->
 	
@@ -484,7 +486,7 @@
 	</div>
 
 <!-- GRAND FINAL -->
-<div class="full-matchup-final" style="left: 76%; top: 45%;">
+<div class="full-matchup-final" style="left: 78.5%; top: 44%;">
 		<div class="single-box" style="background: rgba({{ selectedTournament.matchupList[21].team1Color }},0.8);">
 				<div class="team-box-small team-box" style="background-image: url(resources/images/teams/logos/{{ selectedTournament.matchupList[21].team1Slug }}.png)"></div>
 				<div class="team-title"> {{ selectedTournament.matchupList[21].team1Name }} </div>
