@@ -5,7 +5,7 @@
 	 		<div class="news-text-box">
 		 		<div class="box-inner" style="text-align: left;">
 		 			<h1>{{ news.newsTitle }}</h1>
-		 			{{ news.newsText }}
+		 			<p>HELLO JOHN</p>{{ news.newsText }}
 		 		</div>
 	 		</div>
 	 	</div>
