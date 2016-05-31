@@ -214,7 +214,7 @@ wpApp.controller('profileCtrl', ['$scope', '$routeParams', '$http', '$sce', func
 			})
 	};
 }]);
-wpApp.controller('bracketCtrl', ['$scope', '$routeParams', '$http', '$sce', function($scope, $routeParams, $http, $sce) {
+wpApp.controller('bracketCtrl', ['$scope', '$routeParams', '$http', '$sce', '$filter', function($scope, $routeParams, $http, $sce, $filter) {
 	$scope.selectedTournament = {};
 	$scope.tournamentUrl = 'api/tournament/';
 	$scope.tournamentTeamUrl = 'api/tournament/team/list/';
@@ -255,4 +255,31 @@ wpApp.controller('bracketCtrl', ['$scope', '$routeParams', '$http', '$sce', func
 				console.log('error in getting matchups');
 			})
 	}
+	
+	$scope.predictMatchup = function(matchup, teamNum){
+		console.log('matchup team 1 = ' + matchup.team1Id);
+		console.log('teamNum = ' +teamNum);
+		for(var i = 0; i < $scope.selectedTournament.matchupList.length; i++){
+			if($scope.selectedTournament.matchupList[i].matchupId == matchup.winnerNextMatchId){
+				var team = {};
+				console.log(matchup.team1Id);
+				if(teamNum == 1){
+					for(var j = 0; j < $scope.selectedTournament.teamList.length; j++){
+						console.log($scope.selectedTournament.teamList[j].id + '<->' + matchup.team1Id);
+						if($scope.selectedTournament.teamList[j].id == matchup.team1Id){
+							console.log('testthis' + $scope.selectedTournament.teamList[j].id);
+							team = $scope.selectedTournament.teamList[j];
+							break;
+							}
+						}
+				}
+				console.log(team.slug);
+				$scope.selectedTournament.matchupList[i].team1Slug = team.slug;
+			}
+			
+		}
+		
+	}
+	
+	
 }]);

@@ -19,6 +19,8 @@ public class MatchupDto {
     private String winnerSlug;
     private int winnerNextMatchId;
     private int loserNextMatchId;
+    private int winnerNextTeam;
+    private int loserNextTeam;
     
     public MatchupDto(){
     	
@@ -133,6 +135,22 @@ public class MatchupDto {
 
 	public void setTeam2Color(String team2Color) {
 		this.team2Color = team2Color;
+	}
+
+	public int getWinnerNextTeam() {
+		return winnerNextTeam;
+	}
+
+	public void setWinnerNextTeam(int winnerNextTeam) {
+		this.winnerNextTeam = winnerNextTeam;
+	}
+
+	public int getLoserNextTeam() {
+		return loserNextTeam;
+	}
+
+	public void setLoserNextTeam(int loserNextTeam) {
+		this.loserNextTeam = loserNextTeam;
 	}
 	 
 

@@ -384,6 +384,10 @@ public class TournamentServiceImpl implements TournamentService {
 				dto.setTeam2Color(matchup.getTeam2().getColor());
 			}
 			dto.setWinnerId(matchup.getWinnerId());
+			dto.setWinnerNextMatchId(matchup.getWinnerNextMatchup());
+			dto.setWinnerNextTeam(matchup.getWinnerNextTeam());
+			dto.setLoserNextMatchId(matchup.getLoserNextMatchup());
+			dto.setLoserNextTeam(matchup.getLoserNextTeam());
 			dtoList.add(dto);
 		}
 		return dtoList;
