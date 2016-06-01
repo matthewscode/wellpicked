@@ -218,6 +218,7 @@ wpApp.controller('bracketCtrl', ['$scope', '$routeParams', '$http', '$sce', '$fi
 	$scope.selectedTournament = {};
 	$scope.tournamentUrl = 'api/tournament/';
 	$scope.tournamentTeamUrl = 'api/tournament/team/list/';
+	$scope.allTeamsUrl = 'api/team/list/active/0';
 	$scope.init = function(){
 		$scope.getTournament();
 	}
@@ -237,7 +238,7 @@ wpApp.controller('bracketCtrl', ['$scope', '$routeParams', '$http', '$sce', '$fi
 			})
 	}
 	$scope.getTournamentTeams = function() {
-		$http.get($scope.tournamentTeamUrl + $scope.selectedTournament.id)
+		$http.get($scope.allTeamsUrl)
 		.success(function(data) {
 			$scope.selectedTournament.teamList = data;
 			})
@@ -257,24 +258,38 @@ wpApp.controller('bracketCtrl', ['$scope', '$routeParams', '$http', '$sce', '$fi
 	}
 	
 	$scope.predictMatchup = function(matchup, teamNum){
-		console.log('matchup team 1 = ' + matchup.team1Id);
-		console.log('teamNum = ' +teamNum);
+		var winnerNextMatchup;
+		var loserNextMatchup;
+		var winnerTeamNum = matchup.winnerNextTeam;
+		var loserTeamNum = matchup.loserNextTeam;
 		for(var i = 0; i < $scope.selectedTournament.matchupList.length; i++){
 			if($scope.selectedTournament.matchupList[i].matchupId == matchup.winnerNextMatchId){
+				winnerNextMatchup = $scope.selectedTournament.matchupList[i];
 				var team = {};
-				console.log(matchup.team1Id);
 				if(teamNum == 1){
 					for(var j = 0; j < $scope.selectedTournament.teamList.length; j++){
-						console.log($scope.selectedTournament.teamList[j].id + '<->' + matchup.team1Id);
 						if($scope.selectedTournament.teamList[j].id == matchup.team1Id){
-							console.log('testthis' + $scope.selectedTournament.teamList[j].id);
 							team = $scope.selectedTournament.teamList[j];
+							$scope.selectedTournament.matchupList[i].team1Slug = team.slug;
+							$scope.selectedTournament.matchupList[i].team1Color = team.color;
+							$scope.selectedTournament.matchupList[i].team1Name = team.name;
 							break;
 							}
 						}
+					
+				}else if(teamNum == 2){
+					for(var j = 0; j < $scope.selectedTournament.teamList.length; j++){
+						if($scope.selectedTournament.teamList[j].id == matchup.team2Id){
+							team = $scope.selectedTournament.teamList[j];
+							$scope.selectedTournament.matchupList[i].team1Slug = team.slug;
+							$scope.selectedTournament.matchupList[i].team1Color = team.color;
+							$scope.selectedTournament.matchupList[i].team1Name = team.name;
+							break;
+							}
+						}
+					
 				}
-				console.log(team.slug);
-				$scope.selectedTournament.matchupList[i].team1Slug = team.slug;
+				
 			}
 			
 		}
