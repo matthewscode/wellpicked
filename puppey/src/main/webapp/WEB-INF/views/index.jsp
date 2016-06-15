@@ -35,14 +35,14 @@
 						ng-repeat="entry in tData">{{ entry.tournamentName }}</a>
 				</div>
 			</div>
-			<div class="nav-team-container"
-				ng-click="showTournaments = false; showTeams = !showTeams;">
-				<a href="" class="nav-link-entry"
-					ng-class="{'nav-selected' : showTeams}">Teams<i class="icons">keyboard_arrow_down</i></a>
-				<div class="nav-link-menu" ng-class="{'nav-selected' : showTeams}">
-					<a class="sub-menu-link" href="">teams</a>
-				</div>
-			</div>
+<!-- 			<div class="nav-team-container" -->
+<!-- 				ng-click="showTournaments = false; showTeams = !showTeams;"> -->
+<!-- 				<a href="" class="nav-link-entry" -->
+<!-- 					ng-class="{'nav-selected' : showTeams}">Teams<i class="icons">keyboard_arrow_down</i></a> -->
+<!-- 				<div class="nav-link-menu" ng-class="{'nav-selected' : showTeams}"> -->
+<!-- 					<a class="sub-menu-link" href="">teams</a> -->
+<!-- 				</div> -->
+<!-- 			</div> -->
 			 
 		</div>
 		

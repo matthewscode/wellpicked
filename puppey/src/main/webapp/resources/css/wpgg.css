@@ -1,9 +1,3 @@
-//light #41444C
-//dark  #151B1E
-//darkwhite: #D1D6E1
-//white #EFF4FF
-//back to basics kuler
-
 //new kuler
 //blue world
 //lightest E1E6FA
@@ -251,14 +245,37 @@ a:hover {
 	position: absolute;
 	left: 10px;
 	top: 24%;
-	background: #FBFFFF;
 	height: 76.5%;
 	width: 18%;
-	box-shadow: 0 2px 2px 0 rgba(0,0,0,.14),0 3px 1px -2px rgba(0,0,0,.2),0 1px 5px 0 rgba(0,0,0,.12);
 	z-index: 15;
 	border-radius: 2px;
 	box-sizing: border-box;
-	padding-top: 200px;
+	padding: 0px;
+}
+.create-bracket-button {
+	display: block;
+	position: relative;
+	background: #C4D7ED;
+	width: 100%;
+	height: 40px;
+	text-align: center;
+	line-height: 40px;
+	color: #183152;
+	font-family: 'Roboto', serif;
+	border: 0px;
+	box-shadow: 0 2px 2px 0 rgba(0,0,0,.14),0 3px 1px -2px rgba(0,0,0,.2),0 1px 5px 0 rgba(0,0,0,.12);
+	border-radius: 2px;
+	margin-top: 0px;
+}
+.create-bracket-button:hover {
+	cursor: pointer;
+	background: #183152;
+	
+}
+.tournament-general {
+	background: #FBFFFF;
+	box-shadow: 0 2px 2px 0 rgba(0,0,0,.14),0 3px 1px -2px rgba(0,0,0,.2),0 1px 5px 0 rgba(0,0,0,.12);
+	border-radius: 2px;
 }
 .box-inner {
 	height: 100%;
@@ -521,3 +538,32 @@ a:hover {
 	box-shadow: 0 2px 2px 0 rgba(0,0,0,.14),0 3px 1px -2px rgba(0,0,0,.2),0 1px 5px 0 rgba(0,0,0,.12);
 	border-radius: 2px;
 }
+.bracket-submit-box{
+	position: absolute;
+	bottom: 40px;
+	right: 40px;
+	text-align: center;
+}
+.bracket-submit-button {
+	background: #C4D7ED;
+	width: 200px;
+	height: 30px;
+	color: #183152;
+	font-family: 'Roboto', serif;
+	border: 0px;
+	box-shadow: 0 2px 2px 0 rgba(0,0,0,.14),0 3px 1px -2px rgba(0,0,0,.2),0 1px 5px 0 rgba(0,0,0,.12);
+	border-radius: 2px;
+	
+}
+.bracket-submit-button:hover {
+	background: #375D81;
+	color: #fff;
+	cursor: pointer;
+}
+.bracket-name-text {
+	width: 200px;
+	height: 30px;
+	padding: 5px;
+	box-sizing: border-box;
+}
+

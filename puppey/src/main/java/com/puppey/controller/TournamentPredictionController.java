@@ -4,6 +4,8 @@ import java.security.Principal;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.annotation.Secured;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -13,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.puppey.domain.MatchupPrediction;
 import com.puppey.domain.Tournament;
 import com.puppey.domain.TournamentPrediction;
 import com.puppey.domain.User;
@@ -23,6 +26,7 @@ import com.puppey.service.TeamService;
 import com.puppey.service.TournamentService;
 import com.puppey.service.UserService;
 import com.puppey.util.Message;
+import com.puppey.util.SiteUser;
 import com.puppey.util.Utility;
 
 @Controller
@@ -40,20 +44,20 @@ public class TournamentPredictionController {
     @Autowired
     private MessageService messageService;
 
-    @RequestMapping(value = "/bracket/{tournamentPredictionId}", method = RequestMethod.GET)
-    public String userTournamentPrediction(@PathVariable("tournamentPredictionId") int tournamentPredictionId,
-            Model model) {
-
-        TournamentPrediction tournamentPrediction = tournamentPredictionService
-                .getTournamentPredictionById(tournamentPredictionId);
-
-        if (tournamentPrediction != null) {
-            model.addAttribute("userPrediction", tournamentPrediction);
-        }
-
-        return "/bracket/view";
-
-    }
+//    @RequestMapping(value = "/bracket/{tournamentPredictionId}", method = RequestMethod.GET)
+//    public String userTournamentPrediction(@PathVariable("tournamentPredictionId") int tournamentPredictionId,
+//            Model model) {
+//
+//        TournamentPrediction tournamentPrediction = tournamentPredictionService
+//                .getTournamentPredictionById(tournamentPredictionId);
+//
+//        if (tournamentPrediction != null) {
+//            model.addAttribute("userPrediction", tournamentPrediction);
+//        }
+//
+//        return "/bracket/view";
+//
+//    }
     
     @RequestMapping(value = "/bracket/{tournamentSlug}/new", method = RequestMethod.GET)
     public String predictTournamentMatchups(@PathVariable("tournamentSlug") String tournamentSlug, Model model,
@@ -80,17 +84,17 @@ public class TournamentPredictionController {
         }
     }
     
-    @RequestMapping(value = "/bracket/{tournamentPredictionId}/edit", method = RequestMethod.GET)
-    public String editUserTournamentBracket(@PathVariable("tournamentPredictionId") int tournamentPredictionId, @ModelAttribute("userData") User currentUser, Model model){
-    	TournamentPrediction tournamentPrediction = tournamentPredictionService.getTournamentPredictionById(tournamentPredictionId);
-    	System.out.println(currentUser.getUsername());
-    	if(tournamentPrediction.getUser().getUserId() == currentUser.getUserId() && tournamentPrediction.getTournament().getTournamentStart() > Utility.getCurrentTime()){
-    		model.addAttribute("userTournamentPrediction", tournamentPrediction);
-    		return "/bracket/edit";
-    	}
-    	model.addAttribute("tournamentStarted", "You cannot edit this bracket anymore!");
-    	return "redirect:/bracket/" + tournamentPredictionId;
-    }
+//    @RequestMapping(value = "/bracket/{tournamentPredictionId}/edit", method = RequestMethod.GET)
+//    public String editUserTournamentBracket(@PathVariable("tournamentPredictionId") int tournamentPredictionId, @ModelAttribute("userData") User currentUser, Model model){
+//    	TournamentPrediction tournamentPrediction = tournamentPredictionService.getTournamentPredictionById(tournamentPredictionId);
+//    	System.out.println(currentUser.getUsername());
+//    	if(tournamentPrediction.getUser().getUserId() == currentUser.getUserId() && tournamentPrediction.getTournament().getTournamentStart() > Utility.getCurrentTime()){
+//    		model.addAttribute("userTournamentPrediction", tournamentPrediction);
+//    		return "/bracket/edit";
+//    	}
+//    	model.addAttribute("tournamentStarted", "You cannot edit this bracket anymore!");
+//    	return "redirect:/bracket/" + tournamentPredictionId;
+//    }
     
     @RequestMapping(value = "/brackets", method = RequestMethod.GET)
     public String viewBrackets(Model model) {
@@ -153,6 +157,26 @@ public class TournamentPredictionController {
     @RequestMapping(value = "/api/predictions/list/latest/{numResults}/{tournamentId}", method = RequestMethod.GET)
     public List<TournamentPredictionDto> latestBrackets (@PathVariable("numResults") int numResults, @PathVariable("tournamentId") int tournamentId){
     	return tournamentPredictionService.getLatestTournamentPredictions(tournamentId, numResults);
+    }
+    
+    @Secured("ROLE_USER")
+    @ResponseBody
+    @RequestMapping(value = "/api/tournament-prediction/create/{tournamentId}/{predictionName}", method = RequestMethod.POST)
+    public String createTournamentPrediction(@PathVariable("tournamentId") int tournamentId, @PathVariable("predictionName") String predictionName,
+    		@RequestBody List<MatchupPrediction> matchupPredictionList) {
+    	if(predictionName.length() > 30){
+    		predictionName = predictionName.substring(0,30);
+    	}
+    	SiteUser su = (SiteUser) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+		User currentUser = userService.getUserById(su.getUserId());
+        Boolean success = tournamentPredictionService.createTournamentPrediction(tournamentId, currentUser, predictionName, matchupPredictionList);
+    	return success.toString();
+    }
+
+    @ResponseBody
+    @RequestMapping(value = "/api/tournament-prediction/matchup-list/{tournamentPredictionId}", method = RequestMethod.GET)
+    public TournamentPredictionDto getTournamentPrediction(@PathVariable("tournamentPredictionId") int tournamentPredictionId) {
+        return tournamentPredictionService.getTournamentPredictionById(tournamentPredictionId);
     }
     
 }

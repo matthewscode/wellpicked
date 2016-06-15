@@ -51,7 +51,7 @@ public interface TournamentPredictionService {
 
     MatchupPrediction getMatchpPredictionById(int matchupPredictionId);
 
-    TournamentPrediction getTournamentPredictionById(int tournamentPredictionId);
+    TournamentPredictionDto getTournamentPredictionById(int tournamentPredictionId);
     
     TournamentPrediction getTournamentPredictionByIdSolo(int tournamentPredictionId);
 
@@ -85,5 +85,7 @@ public interface TournamentPredictionService {
     List<TournamentPredictionDto> getPopularPredictionsForTournament(int tournamentId, int amount);
 
 	List<TournamentPredictionDto> getLatestTournamentPredictions(int tournamentId, int numResults);
+
+	boolean createTournamentPrediction(int tournamentId, User user, String predictionName, List<MatchupPrediction> matchupPredictionList);
 
 }

@@ -214,28 +214,28 @@ public class Template8U8LDEImpl implements Template8U8LDE {
         //upper round 1 details
         matchupUR1M1.setWinnerNextMatchup(matchupUR2M1.getMatchupId());
         matchupUR1M1.setWinnerNextTeam(1);
-        matchupUR1M1.setLoserNextMatchup(matchupLR2M4.getMatchupId());
+        matchupUR1M1.setLoserNextMatchup(matchupLR2M1.getMatchupId());
         matchupUR1M1.setLoserNextTeam(1);
         matchupUR1M1.setWeight(2);
         tournamentDao.updateMatchup(matchupUR1M1);
         
         matchupUR1M2.setWinnerNextMatchup(matchupUR2M1.getMatchupId());
         matchupUR1M2.setWinnerNextTeam(2);
-        matchupUR1M2.setLoserNextMatchup(matchupLR2M3.getMatchupId());
+        matchupUR1M2.setLoserNextMatchup(matchupLR2M2.getMatchupId());
         matchupUR1M2.setLoserNextTeam(1);
         matchupUR1M2.setWeight(2);
         tournamentDao.updateMatchup(matchupUR1M2);
         
         matchupUR1M3.setWinnerNextMatchup(matchupUR2M2.getMatchupId());
         matchupUR1M3.setWinnerNextTeam(1);
-        matchupUR1M3.setLoserNextMatchup(matchupLR2M2.getMatchupId());
+        matchupUR1M3.setLoserNextMatchup(matchupLR2M3.getMatchupId());
         matchupUR1M3.setLoserNextTeam(1);
         matchupUR1M3.setWeight(2);
         tournamentDao.updateMatchup(matchupUR1M3);
         
         matchupUR1M4.setWinnerNextMatchup(matchupUR2M2.getMatchupId());
         matchupUR1M4.setWinnerNextTeam(2);
-        matchupUR1M4.setLoserNextMatchup(matchupLR2M1.getMatchupId());
+        matchupUR1M4.setLoserNextMatchup(matchupLR2M4.getMatchupId());
         matchupUR1M4.setLoserNextTeam(1);
         matchupUR1M4.setWeight(2);
         tournamentDao.updateMatchup(matchupUR1M4);
@@ -243,14 +243,14 @@ public class Template8U8LDEImpl implements Template8U8LDE {
         //upper round 2 details
         matchupUR2M1.setWinnerNextMatchup(matchupUR3M1.getMatchupId());
         matchupUR2M1.setWinnerNextTeam(1);
-        matchupUR2M1.setLoserNextMatchup(matchupLR4M1.getMatchupId());
+        matchupUR2M1.setLoserNextMatchup(matchupLR4M2.getMatchupId());
         matchupUR2M1.setLoserNextTeam(1);
         matchupUR2M1.setWeight(4);
         tournamentDao.updateMatchup(matchupUR2M1);
         
         matchupUR2M2.setWinnerNextMatchup(matchupUR3M1.getMatchupId());
         matchupUR2M2.setWinnerNextTeam(2);
-        matchupUR2M2.setLoserNextMatchup(matchupLR4M2.getMatchupId());
+        matchupUR2M2.setLoserNextMatchup(matchupLR4M1.getMatchupId());
         matchupUR2M2.setLoserNextTeam(1);
         matchupUR2M2.setWeight(4);
         tournamentDao.updateMatchup(matchupUR2M2);

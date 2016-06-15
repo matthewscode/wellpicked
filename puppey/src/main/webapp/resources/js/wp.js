@@ -29,6 +29,10 @@ wpApp.config(function($routeProvider) {
             templateUrl : 'pages/bracket-create.jsp',
             controller  : 'bracketCtrl'
         })
+                .when('/bracket/view/:tournamentSlug/:tpid', {
+            templateUrl : 'pages/bracket-view.jsp',
+            controller  : 'bracketCtrl'
+        })
 
 });
 wpApp.controller('mainCtrl', ['$scope', '$http', '$location', function($scope, $http, $location) {
@@ -219,8 +223,10 @@ wpApp.controller('bracketCtrl', ['$scope', '$routeParams', '$http', '$sce', '$fi
 	$scope.tournamentUrl = 'api/tournament/';
 	$scope.tournamentTeamUrl = 'api/tournament/team/list/';
 	$scope.allTeamsUrl = 'api/team/list/active/0';
+	$scope.matchupPredictionListUrl = 'api/tournament-prediction/matchup-list/'
 	$scope.init = function(){
 		$scope.getTournament();
+		
 	}
 	$scope.getTournament = function() {
 		$http.get($scope.tournamentUrl + $routeParams.tournamentSlug)
@@ -251,9 +257,30 @@ wpApp.controller('bracketCtrl', ['$scope', '$routeParams', '$http', '$sce', '$fi
 		$http.get($scope.matchupListUrl + $scope.selectedTournament.id)
 		.success(function(data) {
 			$scope.selectedTournament.matchupList = data;
+			if($routeParams.tpid.length > 0){
+				$scope.getTournamentPrediction();
+			}
 			})
 			.error(function(){
 				console.log('error in getting matchups');
+			})
+	}
+	
+	$scope.getTournamentPrediction = function(){
+		$scope.tournamentPrediction = {};
+		$http.get($scope.matchupPredictionListUrl + $routeParams.tpid)
+		.success(function(data) {
+			$scope.tournamentPrediction = data;
+			for(var i = 0; i < data.matchupPredictionList.length; i++){
+				if(data.matchupPredictionList[i].winner == data.matchupPredictionList[i].team1Id){
+					$scope.predictMatchup(data.matchupPredictionList[i], 1);
+				}else if(data.matchupPredictionList[i].winner == data.matchupPredictionList[i].team2Id){
+					$scope.predictMatchup(data.matchupPredictionList[i], 2);
+				}
+			}
+			})
+			.error(function(){
+				console.log('error in getting matchup predictions');
 			})
 	}
 	
@@ -262,39 +289,101 @@ wpApp.controller('bracketCtrl', ['$scope', '$routeParams', '$http', '$sce', '$fi
 		var loserNextMatchup;
 		var winnerTeamNum = matchup.winnerNextTeam;
 		var loserTeamNum = matchup.loserNextTeam;
+		var team1 = $scope.findTeam(matchup.team1Id);
+		var team2 = $scope.findTeam(matchup.team2Id);
+		
+		var teamWinner = {};
+		var teamLoser = {};
+		if(teamNum == 1){
+			matchup.winnerId = team1.id;
+			teamWinner = team1;
+			teamLoser = team2;
+		} else if(teamNum == 2){
+			matchup.winnerId = team2.id;
+			teamWinner = team2;
+			teamLoser = team1;
+		}
 		for(var i = 0; i < $scope.selectedTournament.matchupList.length; i++){
+			if($scope.selectedTournament.matchupList[i].matchupId == matchup.id){
+				$scope.selectedTournament.matchupList[i].winner = matchup.winnerId;
+			}
 			if($scope.selectedTournament.matchupList[i].matchupId == matchup.winnerNextMatchId){
 				winnerNextMatchup = $scope.selectedTournament.matchupList[i];
-				var team = {};
 				if(teamNum == 1){
-					for(var j = 0; j < $scope.selectedTournament.teamList.length; j++){
-						if($scope.selectedTournament.teamList[j].id == matchup.team1Id){
-							team = $scope.selectedTournament.teamList[j];
-							$scope.selectedTournament.matchupList[i].team1Slug = team.slug;
-							$scope.selectedTournament.matchupList[i].team1Color = team.color;
-							$scope.selectedTournament.matchupList[i].team1Name = team.name;
-							break;
-							}
-						}
-					
+					if(winnerTeamNum == 1){
+						$scope.selectedTournament.matchupList[i].team1Id = teamWinner.id;
+						$scope.selectedTournament.matchupList[i].team1Slug = teamWinner.slug;
+						$scope.selectedTournament.matchupList[i].team1Color = teamWinner.color;
+						$scope.selectedTournament.matchupList[i].team1Name = teamWinner.name;
+					} else if(winnerTeamNum == 2){
+						$scope.selectedTournament.matchupList[i].team2Id = teamWinner.id;
+						$scope.selectedTournament.matchupList[i].team2Slug = teamWinner.slug;
+						$scope.selectedTournament.matchupList[i].team2Color = teamWinner.color;
+						$scope.selectedTournament.matchupList[i].team2Name = teamWinner.name;
+					}
+	
 				}else if(teamNum == 2){
-					for(var j = 0; j < $scope.selectedTournament.teamList.length; j++){
-						if($scope.selectedTournament.teamList[j].id == matchup.team2Id){
-							team = $scope.selectedTournament.teamList[j];
-							$scope.selectedTournament.matchupList[i].team1Slug = team.slug;
-							$scope.selectedTournament.matchupList[i].team1Color = team.color;
-							$scope.selectedTournament.matchupList[i].team1Name = team.name;
-							break;
-							}
-						}
-					
+					if(winnerTeamNum == 1){
+						$scope.selectedTournament.matchupList[i].team1Id = teamWinner.id;
+						$scope.selectedTournament.matchupList[i].team1Slug = teamWinner.slug;
+						$scope.selectedTournament.matchupList[i].team1Color = teamWinner.color;
+						$scope.selectedTournament.matchupList[i].team1Name = teamWinner.name;
+					}else if(winnerTeamNum == 2){
+						$scope.selectedTournament.matchupList[i].team2Id = teamWinner.id;
+						$scope.selectedTournament.matchupList[i].team2Slug = teamWinner.slug;
+						$scope.selectedTournament.matchupList[i].team2Color = teamWinner.color;
+						$scope.selectedTournament.matchupList[i].team2Name = teamWinner.name;
+					}
 				}
+
 				
+			} 
+			if($scope.selectedTournament.matchupList[i].matchupId == matchup.loserNextMatchId){
+				if(loserTeamNum == 1){
+					$scope.selectedTournament.matchupList[i].team1Id = teamLoser.id;
+					$scope.selectedTournament.matchupList[i].team1Slug = teamLoser.slug;
+					$scope.selectedTournament.matchupList[i].team1Color = teamLoser.color;
+					$scope.selectedTournament.matchupList[i].team1Name = teamLoser.name;
+				}else if(loserTeamNum == 2){
+					$scope.selectedTournament.matchupList[i].team2Id = teamLoser.id;
+					$scope.selectedTournament.matchupList[i].team2Slug = teamLoser.slug;
+					$scope.selectedTournament.matchupList[i].team2Color = teamLoser.color;
+					$scope.selectedTournament.matchupList[i].team2Name = teamLoser.name;
+				}
 			}
 			
 		}
-		
 	}
 	
+	$scope.submitTournamentPrediction = function(predictionName){
+		if(predictionName.length > 30){
+			predictionName = predictionName.substring(0,30);
+		}
+		$scope.matchupPredictionList = [];
+		for(var i = 0; i < $scope.selectedTournament.matchupList.length; i++){
+			var matchupPrediction = {};
+			matchupPrediction.matchup = $scope.selectedTournament.matchupList[i].matchupId;
+			matchupPrediction.winner = $scope.selectedTournament.matchupList[i].winnerId;
+			$scope.matchupPredictionList.push(matchupPrediction);
+		}
+		$http.post('api/tournament-prediction/create/' + $scope.selectedTournament.id + '/' + predictionName, $scope.matchupPredictionList)
+		.success(function() {
+			console.log('sucessfully created tp');
+			})
+			.error(function(){
+				console.log('DIDNT CREATE TP');
+			})
+		
+	}
+	$scope.findTeam = function(teamId){
+		for(var j = 0; j < $scope.selectedTournament.teamList.length; j++){
+			var team = {};
+			if($scope.selectedTournament.teamList[j].id == teamId){
+				team = $scope.selectedTournament.teamList[j];
+				return team;
+				}
+			}
+		return team;
+	}
 	
 }]);

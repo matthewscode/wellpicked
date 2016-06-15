@@ -1,6 +1,7 @@
 package com.puppey.service;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.Deque;
 import java.util.LinkedList;
 import java.util.List;
@@ -249,17 +250,16 @@ public class TournamentPredictionServiceImpl implements TournamentPredictionServ
 
     @Override
     @Transactional
-    public TournamentPrediction getTournamentPredictionById(int tournamentPredictionId) {
+    public TournamentPredictionDto getTournamentPredictionById(int tournamentPredictionId) {
         TournamentPrediction tournamentPrediction = tournamentPredictionDao
                 .getTournamentPredictionById(tournamentPredictionId);
-        // initialize matchups
-        System.out.println(tournamentPrediction.getTournamentPredictionName());
-//        if(tournamentPrediction.getMatchupPredictionList() != null){
-//            tournamentPrediction.getMatchupPredictionList().size();
-//            tournamentPrediction.getTournament().getMatchups().size();
-//        };
-
-        return tournamentPrediction;
+        tournamentPrediction.getMatchupPredictionList().size();
+        TournamentPredictionDto tpdto = new TournamentPredictionDto();
+        tpdto.setMatchupPredictionList(tournamentPrediction.getMatchupPredictionList());
+        tpdto.setScore(tournamentPrediction.getTournamentPredictionScore());
+        tpdto.setTournamentPredictionId(tournamentPrediction.getTournamentPredictionId());
+        tpdto.setTournamentPredictionName(tournamentPrediction.getTournamentPredictionName());
+        return tpdto;
     }
     
     @Override
@@ -337,31 +337,32 @@ public class TournamentPredictionServiceImpl implements TournamentPredictionServ
 	@Transactional(propagation = Propagation.REQUIRED, readOnly = false)
 	public int updateUserTournamentPrediction(TournamentPrediction jsonTP) {
 		
-		TournamentPrediction oldTP = getTournamentPredictionById(jsonTP.getTournamentPredictionId());
-		SiteUser su = (SiteUser) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-
-		if(oldTP.getUser().getUserId() != su.getUserId()){
-			return 0;
-		}
-
-        try {
-            for (MatchupPrediction jsonMP : jsonTP.getMatchupPredictionList()) {
-                MatchupPrediction matchupPrediction = getMatchpPredictionById(jsonMP
-                        .getPredictionId());
-                if(matchupPrediction.getTournamentPrediction().getTournamentPredictionId() == oldTP.getTournamentPredictionId()){
-                	matchupPrediction.setWinner(jsonMP.getWinner());
-                }else{
-                	throw new Exception();
-                }
-            }
-    		if(jsonTP.getTournamentPredictionName() != null){
-    			oldTP.setTournamentPredictionName(jsonTP.getTournamentPredictionName());
-    		}
-        } catch (Exception e) {
-            LOG.error("Unable to save, check log", e);
-            return 0;
-        }
-        return oldTP.getTournamentPredictionId();
+//		TournamentPrediction oldTP = getTournamentPredictionById(jsonTP.getTournamentPredictionId());
+//		SiteUser su = (SiteUser) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+//
+//		if(oldTP.getUser().getUserId() != su.getUserId()){
+//			return 0;
+//		}
+//
+//        try {
+//            for (MatchupPrediction jsonMP : jsonTP.getMatchupPredictionList()) {
+//                MatchupPrediction matchupPrediction = getMatchpPredictionById(jsonMP
+//                        .getPredictionId());
+//                if(matchupPrediction.getTournamentPrediction().getTournamentPredictionId() == oldTP.getTournamentPredictionId()){
+//                	matchupPrediction.setWinner(jsonMP.getWinner());
+//                }else{
+//                	throw new Exception();
+//                }
+//            }
+//    		if(jsonTP.getTournamentPredictionName() != null){
+//    			oldTP.setTournamentPredictionName(jsonTP.getTournamentPredictionName());
+//    		}
+//        } catch (Exception e) {
+//            LOG.error("Unable to save, check log", e);
+//            return 0;
+//        }
+//        return oldTP.getTournamentPredictionId();
+		return 0;
 	}
 
 	@Override
@@ -469,6 +470,26 @@ public class TournamentPredictionServiceImpl implements TournamentPredictionServ
 			tpdtoList.add(tpd);
 		}
 		return tpdtoList;
+	}
+
+	@Override
+    @Transactional(propagation = Propagation.REQUIRED, readOnly = false)
+	public boolean createTournamentPrediction(int tournamentId, User user, String predictionName, List<MatchupPrediction> matchupPredictionList) {
+		TournamentPrediction tournamentPrediction = new TournamentPrediction();
+		Tournament tournament = tournamentService.getTournament(tournamentId);
+		tournamentPrediction.setTournament(tournament);
+		tournamentPrediction.setUser(user);
+		if(predictionName.length() < 1){
+			predictionName = user.getUsername() + " - " + new Date().getTime();
+		}
+		tournamentPrediction.setTournamentPredictionName(predictionName);
+		tournamentPredictionDao.addTournamentPrediction(tournamentPrediction);
+		for(MatchupPrediction mp : matchupPredictionList){
+			mp.setTournamentPrediction(tournamentPrediction);
+			tournamentPredictionDao.addMatchupPrediction(mp);
+			System.out.println(mp.getMatchup() + " ----" + mp.getWinner() + " - tp: " + mp.getTournamentPrediction().getTournamentPredictionId());
+		}
+		return true;
 	}
     
 

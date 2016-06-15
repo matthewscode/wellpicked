@@ -72,23 +72,25 @@ public class CommentServiceImpl implements CommentService{
     @Override
     @Transactional
     public List<Comment> getCommentsByTournamentPrediction(int objectId) {
-        TournamentPrediction tournamentPrediction = tournamentPredictionService.getTournamentPredictionById(objectId);
-        return commentDao.getCommentsByTournamentPrediction(tournamentPrediction);
+//        TournamentPrediction tournamentPrediction = tournamentPredictionService.getTournamentPredictionById(objectId);
+//        return commentDao.getCommentsByTournamentPrediction(tournamentPrediction);
+    	return null;
     }
 
 
     @Override
     @Transactional(propagation=Propagation.REQUIRED, readOnly=false)
     public Message addTournamentPredictionComment(Comment jsonComment) {
-        System.out.println(jsonComment.getObjectId());
-        TournamentPrediction tp = tournamentPredictionService.getTournamentPredictionById(jsonComment.getObjectId());
-        jsonComment.setTournamentPrediction(tp);
-        System.out.println(TournamentPredictionServiceImpl.getPopularTournamentPredictions().size());
-        Message message = addComment(jsonComment);
-        if(message.getSuccess()){
-        TournamentPredictionServiceImpl.addToDeque(tp);
-        }
-        return message;
+//        System.out.println(jsonComment.getObjectId());
+//        TournamentPrediction tp = tournamentPredictionService.getTournamentPredictionById(jsonComment.getObjectId());
+//        jsonComment.setTournamentPrediction(tp);
+//        System.out.println(TournamentPredictionServiceImpl.getPopularTournamentPredictions().size());
+//        Message message = addComment(jsonComment);
+//        if(message.getSuccess()){
+//        TournamentPredictionServiceImpl.addToDeque(tp);
+//        }
+//        return message;
+    	return null;
     }
 
 }

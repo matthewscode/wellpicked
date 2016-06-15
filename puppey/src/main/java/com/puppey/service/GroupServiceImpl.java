@@ -198,16 +198,16 @@ public class GroupServiceImpl implements GroupService {
 	@Override
 	@Transactional(propagation = Propagation.REQUIRED, readOnly = false)
 	public void addTournamentPredictionToGroup(int tournamentPredictionId, int groupId) {
-		
-		int userId =  ((SiteUser) SecurityContextHolder.getContext().getAuthentication().getPrincipal()).getUserId();
-		User user = userService.getUserById(userId);
-        Group currentGroup = getGroupById(groupId);
-        TournamentPrediction tournamentPrediction = tournamentPredictionService.getTournamentPredictionById(tournamentPredictionId);
-        
-       if(tournamentPrediction.getUser().getUserId() == userId){
-               currentGroup.getTournamentPredictions().add(tournamentPrediction);
-               currencyService.decreaseUserBalance(user, currentGroup.getEntryCost(), "Entry fee for joining pool:" + currentGroup.getGroupName());
-       }
+//		
+//		int userId =  ((SiteUser) SecurityContextHolder.getContext().getAuthentication().getPrincipal()).getUserId();
+//		User user = userService.getUserById(userId);
+//        Group currentGroup = getGroupById(groupId);
+//        TournamentPrediction tournamentPrediction = tournamentPredictionService.getTournamentPredictionById(tournamentPredictionId);
+//        
+//       if(tournamentPrediction.getUser().getUserId() == userId){
+//               currentGroup.getTournamentPredictions().add(tournamentPrediction);
+//               currencyService.decreaseUserBalance(user, currentGroup.getEntryCost(), "Entry fee for joining pool:" + currentGroup.getGroupName());
+//       }
 		
 	}
 

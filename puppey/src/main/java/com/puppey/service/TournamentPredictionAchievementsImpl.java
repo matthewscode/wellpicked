@@ -36,24 +36,24 @@ public class TournamentPredictionAchievementsImpl implements TournamentPredictio
     @Override
     @Transactional
     public void allChecks(int tpId){
-        TournamentPrediction tp = tournamentPredictionService.getTournamentPredictionById(tpId);
-        User user = tp.getUser();
-        Tournament tournament = tp.getTournament();
-        List<TournamentPrediction> userTournamentPredictions;
-        userTournamentPredictions = tournamentPredictionService.getTournamentPredictionsByUser(user);
-        
-        if(tournament.getTournamentStart() > (System.currentTimeMillis() / 1000)){
-        user = addBracket(user, userTournamentPredictions);
-        user = addSecondBracket(user, userTournamentPredictions);
-        }
-        
-        if(tournament.getTournamentStart() <= (System.currentTimeMillis() / 1000)){
-            int matchupSize = tournament.getMatchups().size();
-            if (matchupSize == 8){
-                user = perfectEight(tp);
-            }
-        }
-	
+//        TournamentPrediction tp = tournamentPredictionService.getTournamentPredictionById(tpId);
+//        User user = tp.getUser();
+//        Tournament tournament = tp.getTournament();
+//        List<TournamentPrediction> userTournamentPredictions;
+//        userTournamentPredictions = tournamentPredictionService.getTournamentPredictionsByUser(user);
+//        
+//        if(tournament.getTournamentStart() > (System.currentTimeMillis() / 1000)){
+//        user = addBracket(user, userTournamentPredictions);
+//        user = addSecondBracket(user, userTournamentPredictions);
+//        }
+//        
+//        if(tournament.getTournamentStart() <= (System.currentTimeMillis() / 1000)){
+//            int matchupSize = tournament.getMatchups().size();
+//            if (matchupSize == 8){
+//                user = perfectEight(tp);
+//            }
+//        }
+//	
     }
 	
 

@@ -23,7 +23,7 @@ public class HibernateTournamentPredictionDao implements TournamentPredictionDao
 
     @Override
     public void addTournamentPrediction(TournamentPrediction tournamentPrediction) {
-        sessionFactory.getCurrentSession().save(tournamentPrediction);
+        sessionFactory.getCurrentSession().saveOrUpdate(tournamentPrediction);
 
     }
 
@@ -37,12 +37,11 @@ public class HibernateTournamentPredictionDao implements TournamentPredictionDao
     public TournamentPrediction getTournamnetPredictionById(int tournamentPredictionId) {
         return (TournamentPrediction) sessionFactory.getCurrentSession().get(TournamentPrediction.class,
                 tournamentPredictionId);
-
     }
 
     @Override
     public void addMatchupPrediction(MatchupPrediction matchupPrediction) {
-        sessionFactory.getCurrentSession().save(matchupPrediction);
+        sessionFactory.getCurrentSession().saveOrUpdate(matchupPrediction);
     }
 
     @Override

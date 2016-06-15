@@ -207,10 +207,10 @@
 	<div   class="full-matchup" style="left: 12%; top: 5%;">
 		<div class="single-box" style="background: rgba({{ selectedTournament.matchupList[0].team1Color }},0.8);" ng-click="predictMatchup(selectedTournament.matchupList[0], 1)">
 			<div class="team-box-small team-box" style="background-image: url(resources/images/teams/logos/{{ selectedTournament.matchupList[0].team1Slug }}.png)"></div>
-			<div style="width: 80%; padding: 2px;"> {{ selectedTournament.matchupList[0].team1Name }} </div>
+			<div class="team-title"> {{ selectedTournament.matchupList[0].team1Name }} </div>
 		</div>
 		<div class="spacer"></div>
-		<div  class="single-box" style="background: rgba({{ selectedTournament.matchupList[0].team2Color }},0.8);">
+		<div  class="single-box" style="background: rgba({{ selectedTournament.matchupList[0].team2Color }},0.8);" ng-click="predictMatchup(selectedTournament.matchupList[0], 2)">
 			<div class="team-box-small team-box" style="background-image: url(resources/images/teams/logos/{{ selectedTournament.matchupList[0].team2Slug }}.png)"></div>
 			<div class="team-title"> {{ selectedTournament.matchupList[0].team2Name }} </div>
 		</div>
@@ -218,12 +218,12 @@
 	
 	<!-- UR1M2 -->
 	<div class="full-matchup" style="left: 12%; top: 15%;">
-		<div class="single-box" style="background: rgba({{ selectedTournament.matchupList[1].team1Color }},0.8);">
+		<div class="single-box" style="background: rgba({{ selectedTournament.matchupList[1].team1Color }},0.8);" ng-click="predictMatchup(selectedTournament.matchupList[1], 1)">
 				<div class="team-box-small team-box" style="background-image: url(resources/images/teams/logos/{{ selectedTournament.matchupList[1].team1Slug }}.png)"></div>
 				<div class="team-title"> {{ selectedTournament.matchupList[1].team1Name }} </div>
 			</div>
 			<div class="spacer"></div>
-		<div class="single-box"  style="background: rgba({{ selectedTournament.matchupList[1].team2Color }},0.8);">
+		<div class="single-box"  style="background: rgba({{ selectedTournament.matchupList[1].team2Color }},0.8);"  ng-click="predictMatchup(selectedTournament.matchupList[1], 2)">
 			<div class="team-box-small team-box" style="background-image: url(resources/images/teams/logos/{{ selectedTournament.matchupList[1].team2Slug }}.png)"></div>
 			<div  class="team-title"> {{ selectedTournament.matchupList[1].team2Name }} </div>
 		</div>	
@@ -231,12 +231,12 @@
 	
 	<!-- UR1M3 -->
 	<div class="full-matchup" style="left: 12%; top: 25%;">
-		<div class="single-box" style="background: rgba({{ selectedTournament.matchupList[2].team1Color }},0.8);">
+		<div class="single-box" style="background: rgba({{ selectedTournament.matchupList[2].team1Color }},0.8);"  ng-click="predictMatchup(selectedTournament.matchupList[2], 1)">
 				<div class="team-box-small team-box" style="background-image: url(resources/images/teams/logos/{{ selectedTournament.matchupList[2].team1Slug }}.png)"></div>
 				<div class="team-title"> {{ selectedTournament.matchupList[2].team1Name }} </div>
 			</div>
 			<div class="spacer"></div>
-		<div class="single-box"  style="background: rgba({{ selectedTournament.matchupList[2].team2Color }},0.8);">
+		<div class="single-box"  style="background: rgba({{ selectedTournament.matchupList[2].team2Color }},0.8);"  ng-click="predictMatchup(selectedTournament.matchupList[2], 2)">
 			<div class="team-box-small team-box" style="background-image: url(resources/images/teams/logos/{{ selectedTournament.matchupList[2].team2Slug }}.png)"></div>
 			<div  class="team-title"> {{ selectedTournament.matchupList[2].team2Name }} </div>
 		</div>	
@@ -244,12 +244,12 @@
 	
 	<!-- UR1M4 -->
 	<div class="full-matchup" style="left: 12%; top: 35%;">
-		<div class="single-box" style="background: rgba({{ selectedTournament.matchupList[3].team1Color }},0.8);">
+		<div class="single-box" style="background: rgba({{ selectedTournament.matchupList[3].team1Color }},0.8);"  ng-click="predictMatchup(selectedTournament.matchupList[3], 1)">
 				<div class="team-box-small team-box" style="background-image: url(resources/images/teams/logos/{{ selectedTournament.matchupList[3].team1Slug }}.png)"></div>
 				<div class="team-title"> {{ selectedTournament.matchupList[3].team1Name }} </div>
 			</div>
 			<div class="spacer"></div>
-		<div class="single-box"  style="background: rgba({{ selectedTournament.matchupList[3].team2Color }},0.8);">
+		<div class="single-box"  style="background: rgba({{ selectedTournament.matchupList[3].team2Color }},0.8);"  ng-click="predictMatchup(selectedTournament.matchupList[3], 2)">
 			<div class="team-box-small team-box" style="background-image: url(resources/images/teams/logos/{{ selectedTournament.matchupList[3].team2Slug }}.png)"></div>
 			<div  class="team-title"> {{ selectedTournament.matchupList[3].team2Name }} </div>
 		</div>	
@@ -258,14 +258,14 @@
 <!--  UPPER ROUND 2 -->
 	<!-- UR2M1 -->
 	<div class="full-matchup" style="left: 38%; top: 10%;">
-		<div class="single-box"  style="background: rgba({{ selectedTournament.matchupList[4].team1Color }},0.8);">
+		<div class="single-box"  style="background: rgba({{ selectedTournament.matchupList[4].team1Color }},0.8);" ng-click="predictMatchup(selectedTournament.matchupList[4], 1)">
 			
 			<div class="team-box-small team-box" style="background-image: url(resources/images/teams/logos/{{ selectedTournament.matchupList[4].team1Slug }}.png)"></div>
 			<div  class="team-title"> {{ selectedTournament.matchupList[4].team1Name }} </div>
 		
 		</div>
 		<div class="spacer"></div>
-		<div class="single-box"  style="background: rgba({{ selectedTournament.matchupList[4].team2Color }},0.8);">
+		<div class="single-box"  style="background: rgba({{ selectedTournament.matchupList[4].team2Color }},0.8);" ng-click="predictMatchup(selectedTournament.matchupList[4], 2)">
 			
 			<div class="team-box-small team-box" style="background-image: url(resources/images/teams/logos/{{ selectedTournament.matchupList[4].team2Slug }}.png)"></div>
 			<div  class="team-title"> {{ selectedTournament.matchupList[4].team2Name }} </div>
@@ -275,14 +275,14 @@
 	
 	<!-- UR2M2 -->
 	<div class="full-matchup" style="left: 38%; top: 30%;">
-		<div class="single-box"  style="background: rgba({{ selectedTournament.matchupList[5].team1Color }},0.8);">
+		<div class="single-box"  style="background: rgba({{ selectedTournament.matchupList[5].team1Color }},0.8);" ng-click="predictMatchup(selectedTournament.matchupList[5], 1)">
 			
 			<div class="team-box-small team-box" style="background-image: url(resources/images/teams/logos/{{ selectedTournament.matchupList[5].team1Slug }}.png)"></div>
 			<div  class="team-title"> {{ selectedTournament.matchupList[5].team1Name }} </div>
 		
 		</div>
 		<div class="spacer"></div>
-		<div class="single-box"  style="background: rgba({{ selectedTournament.matchupList[5].team2Color }},0.8);">
+		<div class="single-box"  style="background: rgba({{ selectedTournament.matchupList[5].team2Color }},0.8);" ng-click="predictMatchup(selectedTournament.matchupList[5], 2)">
 			
 			<div class="team-box-small team-box" style="background-image: url(resources/images/teams/logos/{{ selectedTournament.matchupList[5].team2Slug }}.png)"></div>
 			<div  class="team-title"> {{ selectedTournament.matchupList[5].team2Name }} </div>
@@ -291,16 +291,16 @@
 	</div>
 
 <!--  UPPER ROUND 3 -->
-	<!-- UR2M1 -->
+	<!-- UR3M1 -->
 	<div class="full-matchup" style="left: 63%; top: 20%;">
-		<div class="single-box"  style="background: rgba({{ selectedTournament.matchupList[6].team1Color }},0.8);">
+		<div class="single-box"  style="background: rgba({{ selectedTournament.matchupList[6].team1Color }},0.8);" ng-click="predictMatchup(selectedTournament.matchupList[6], 1)">
 			
 			<div class="team-box-small team-box" style="background-image: url(resources/images/teams/logos/{{ selectedTournament.matchupList[6].team1Slug }}.png)"></div>
 			<div  class="team-title"> {{ selectedTournament.matchupList[6].team1Name }} </div>
 		
 		</div>
 		<div class="spacer"></div>
-		<div class="single-box"  style="background: rgba({{ selectedTournament.matchupList[6].team2Color }},0.8);">
+		<div class="single-box"  style="background: rgba({{ selectedTournament.matchupList[6].team2Color }},0.8);" ng-click="predictMatchup(selectedTournament.matchupList[6], 2)">
 			
 			<div class="team-box-small team-box" style="background-image: url(resources/images/teams/logos/{{ selectedTournament.matchupList[6].team2Slug }}.png)"></div>
 			<div  class="team-title"> {{ selectedTournament.matchupList[6].team2Name }} </div>
@@ -311,12 +311,12 @@
 <!-- LOWER ROUND 1 -->
 	<!-- LR1M1 -->
 	<div class="full-matchup-lower" style="left: 1%; top: 55%;">
-		<div class="single-box" style="background: rgba({{ selectedTournament.matchupList[7].team1Color }},0.8);">
+		<div class="single-box" style="background: rgba({{ selectedTournament.matchupList[7].team1Color }},0.8);" ng-click="predictMatchup(selectedTournament.matchupList[7], 1)">
 				<div class="team-box-small team-box" style="background-image: url(resources/images/teams/logos/{{ selectedTournament.matchupList[7].team1Slug }}.png)"></div>
 				<div class="team-title"> {{ selectedTournament.matchupList[7].team1Name }} </div>
 			</div>
 			<div class="spacer"></div>
-		<div class="single-box"  style="background: rgba({{ selectedTournament.matchupList[7].team2Color }},0.8);">
+		<div class="single-box"  style="background: rgba({{ selectedTournament.matchupList[7].team2Color }},0.8);" ng-click="predictMatchup(selectedTournament.matchupList[7], 2)">
 			<div class="team-box-small team-box" style="background-image: url(resources/images/teams/logos/{{ selectedTournament.matchupList[7].team2Slug }}.png)"></div>
 			<div  class="team-title"> {{ selectedTournament.matchupList[7].team2Name }} </div>
 		</div>	
@@ -324,12 +324,12 @@
 	
 	<!-- LR1M2 -->
 	<div class="full-matchup-lower" style="left: 1%; top: 65%;">
-		<div class="single-box" style="background: rgba({{ selectedTournament.matchupList[8].team1Color }},0.8);">
+		<div class="single-box" style="background: rgba({{ selectedTournament.matchupList[8].team1Color }},0.8);" ng-click="predictMatchup(selectedTournament.matchupList[8], 1)">
 				<div class="team-box-small team-box" style="background-image: url(resources/images/teams/logos/{{ selectedTournament.matchupList[8].team1Slug }}.png)"></div>
 				<div class="team-title"> {{ selectedTournament.matchupList[8].team1Name }} </div>
 			</div>
 			<div class="spacer"></div>
-		<div class="single-box"  style="background: rgba({{ selectedTournament.matchupList[8].team2Color }},0.8);">
+		<div class="single-box"  style="background: rgba({{ selectedTournament.matchupList[8].team2Color }},0.8);" ng-click="predictMatchup(selectedTournament.matchupList[8], 2)">
 			<div class="team-box-small team-box" style="background-image: url(resources/images/teams/logos/{{ selectedTournament.matchupList[8].team2Slug }}.png)"></div>
 			<div  class="team-title"> {{ selectedTournament.matchupList[8].team2Name }} </div>
 		</div>	
@@ -337,12 +337,12 @@
 	
 	<!-- LR1M3 -->
 	<div class="full-matchup-lower" style="left: 1%; top: 75%;">
-		<div class="single-box" style="background: rgba({{ selectedTournament.matchupList[9].team1Color }},0.8);">
+		<div class="single-box" style="background: rgba({{ selectedTournament.matchupList[9].team1Color }},0.8);" ng-click="predictMatchup(selectedTournament.matchupList[9], 1)">
 				<div class="team-box-small team-box" style="background-image: url(resources/images/teams/logos/{{ selectedTournament.matchupList[9].team1Slug }}.png)"></div>
 				<div class="team-title"> {{ selectedTournament.matchupList[9].team1Name }} </div>
 			</div>
 			<div class="spacer"></div>
-		<div class="single-box"  style="background: rgba({{ selectedTournament.matchupList[9].team2Color }},0.8);">
+		<div class="single-box"  style="background: rgba({{ selectedTournament.matchupList[9].team2Color }},0.8);" ng-click="predictMatchup(selectedTournament.matchupList[9], 2)">
 			<div class="team-box-small team-box" style="background-image: url(resources/images/teams/logos/{{ selectedTournament.matchupList[9].team2Slug }}.png)"></div>
 			<div  class="team-title"> {{ selectedTournament.matchupList[9].team2Name }} </div>
 		</div>	
@@ -350,12 +350,12 @@
 	
 	<!-- LR1M4-->
 	<div class="full-matchup-lower" style="left: 1%; top: 85%;">
-		<div class="single-box" style="background: rgba({{ selectedTournament.matchupList[10].team1Color }},0.8);">
+		<div class="single-box" style="background: rgba({{ selectedTournament.matchupList[10].team1Color }},0.8);" ng-click="predictMatchup(selectedTournament.matchupList[10], 1)">
 				<div class="team-box-small team-box" style="background-image: url(resources/images/teams/logos/{{ selectedTournament.matchupList[10].team1Slug }}.png)"></div>
 				<div class="team-title"> {{ selectedTournament.matchupList[10].team1Name }} </div>
 			</div>
 			<div class="spacer"></div>
-		<div class="single-box"  style="background: rgba({{ selectedTournament.matchupList[10].team2Color }},0.8);">
+		<div class="single-box"  style="background: rgba({{ selectedTournament.matchupList[10].team2Color }},0.8);" ng-click="predictMatchup(selectedTournament.matchupList[10], 2)">
 			<div class="team-box-small team-box" style="background-image: url(resources/images/teams/logos/{{ selectedTournament.matchupList[10].team2Slug }}.png)"></div>
 			<div  class="team-title"> {{ selectedTournament.matchupList[10].team2Name }} </div>
 		</div>	
@@ -364,48 +364,48 @@
 <!-- LOWER ROUND 2 -->
 	<!-- LR2M1 -->
 	<div  class="full-matchup-lower" style="left: 13%; top: 55%;">
-		<div class="single-box" style="background: rgba({{ selectedTournament.matchupList[11].team1Color }},0.8);">
+		<div class="single-box" style="background: rgba({{ selectedTournament.matchupList[11].team1Color }},0.8);" ng-click="predictMatchup(selectedTournament.matchupList[11], 1)">
 				<div class="team-box-small team-box" style="background-image: url(resources/images/teams/logos/{{ selectedTournament.matchupList[11].team1Slug }}.png)"></div>
 				<div class="team-title"> {{ selectedTournament.matchupList[11].team1Name }} </div>
 			</div>
 		<div class="spacer"></div>
-		<div class="single-box"  style="background: rgba({{ selectedTournament.matchupList[11].team2Color }},0.8);">
+		<div class="single-box"  style="background: rgba({{ selectedTournament.matchupList[11].team2Color }},0.8);" ng-click="predictMatchup(selectedTournament.matchupList[11], 2)">
 			<div class="team-box-small team-box" style="background-image: url(resources/images/teams/logos/{{ selectedTournament.matchupList[11].team2Slug }}.png)"></div>
 			<div  class="team-title"> {{ selectedTournament.matchupList[11].team2Name }} </div>
 		</div>
 	</div>
 	<!-- LR2M2 -->
 	<div  class="full-matchup-lower" style="left: 13%; top: 65%;">
-		<div class="single-box" style="background: rgba({{ selectedTournament.matchupList[12].team1Color }},0.8);">
+		<div class="single-box" style="background: rgba({{ selectedTournament.matchupList[12].team1Color }},0.8);" ng-click="predictMatchup(selectedTournament.matchupList[12], 1)">
 				<div class="team-box-small team-box" style="background-image: url(resources/images/teams/logos/{{ selectedTournament.matchupList[12].team1Slug }}.png)"></div>
 				<div class="team-title"> {{ selectedTournament.matchupList[12].team1Name }} </div>
 		</div>
 		<div class="spacer"></div>
-		<div class="single-box"  style="background: rgba({{ selectedTournament.matchupList[12].team2Color }},0.8);">
+		<div class="single-box"  style="background: rgba({{ selectedTournament.matchupList[12].team2Color }},0.8);" ng-click="predictMatchup(selectedTournament.matchupList[12], 2)">
 			<div class="team-box-small team-box" style="background-image: url(resources/images/teams/logos/{{ selectedTournament.matchupList[12].team2Slug }}.png)"></div>
 			<div  class="team-title"> {{ selectedTournament.matchupList[12].team2Name }} </div>
 		</div>
 	</div>
 	<!-- LR2M3 -->
 	<div  class="full-matchup-lower" style="left: 13%; top: 75%;">
-		<div class="single-box" style="background: rgba({{ selectedTournament.matchupList[13].team1Color }},0.8);">
+		<div class="single-box" style="background: rgba({{ selectedTournament.matchupList[13].team1Color }},0.8);" ng-click="predictMatchup(selectedTournament.matchupList[13], 1)">
 				<div class="team-box-small team-box" style="background-image: url(resources/images/teams/logos/{{ selectedTournament.matchupList[13].team1Slug }}.png)"></div>
 				<div class="team-title"> {{ selectedTournament.matchupList[13].team1Name }} </div>
 		</div>
 		<div class="spacer"></div>
-		<div class="single-box"  style="background: rgba({{ selectedTournament.matchupList[13].team2Color }},0.8);">
+		<div class="single-box"  style="background: rgba({{ selectedTournament.matchupList[13].team2Color }},0.8);" ng-click="predictMatchup(selectedTournament.matchupList[13], 2)">
 			<div class="team-box-small team-box" style="background-image: url(resources/images/teams/logos/{{ selectedTournament.matchupList[13].team2Slug }}.png)"></div>
 			<div  class="team-title"> {{ selectedTournament.matchupList[13].team2Name }} </div>
 		</div>
 	</div>
 	<!-- LR2M4 -->
 	<div  class="full-matchup-lower" style="left: 13%; top: 85%;">
-		<div class="single-box" style="background: rgba({{ selectedTournament.matchupList[14].team1Color }},0.8);">
+		<div class="single-box" style="background: rgba({{ selectedTournament.matchupList[14].team1Color }},0.8);" ng-click="predictMatchup(selectedTournament.matchupList[14], 1)">
 				<div class="team-box-small team-box" style="background-image: url(resources/images/teams/logos/{{ selectedTournament.matchupList[14].team1Slug }}.png)"></div>
 				<div class="team-title"> {{ selectedTournament.matchupList[14].team1Name }} </div>
 		</div>
 		<div class="spacer"></div>
-		<div class="single-box"  style="background: rgba({{ selectedTournament.matchupList[14].team2Color }},0.8);">
+		<div class="single-box"  style="background: rgba({{ selectedTournament.matchupList[14].team2Color }},0.8);" ng-click="predictMatchup(selectedTournament.matchupList[14], 2)">
 			<div class="team-box-small team-box" style="background-image: url(resources/images/teams/logos/{{ selectedTournament.matchupList[14].team2Slug }}.png)"></div>
 			<div  class="team-title"> {{ selectedTournament.matchupList[14].team2Name }} </div>
 		</div>	
@@ -414,24 +414,24 @@
 <!-- LOWER ROUND 3 -->
 	<!-- LR3M1 -->
 	<div  class="full-matchup-lower" style="left: 26%; top: 60%;">
-		<div class="single-box" style="background: rgba({{ selectedTournament.matchupList[15].team1Color }},0.8);">
+		<div class="single-box" style="background: rgba({{ selectedTournament.matchupList[15].team1Color }},0.8);" ng-click="predictMatchup(selectedTournament.matchupList[15], 1)">
 				<div class="team-box-small team-box" style="background-image: url(resources/images/teams/logos/{{ selectedTournament.matchupList[15].team1Slug }}.png)"></div>
 				<div class="team-title"> {{ selectedTournament.matchupList[15].team1Name }} </div>
 		</div>
 		<div class="spacer"></div>
-		<div class="single-box"  style="background: rgba({{ selectedTournament.matchupList[15].team2Color }},0.8);">
+		<div class="single-box"  style="background: rgba({{ selectedTournament.matchupList[15].team2Color }},0.8);" ng-click="predictMatchup(selectedTournament.matchupList[15], 2)">
 			<div class="team-box-small team-box" style="background-image: url(resources/images/teams/logos/{{ selectedTournament.matchupList[15].team2Slug }}.png)"></div>
 			<div  class="team-title"> {{ selectedTournament.matchupList[15].team2Name }} </div>
 		</div>	
 	</div>
 	<!-- LR3M2 -->
 	<div  class="full-matchup-lower" style="left: 26%; top: 80%;">
-		<div class="single-box" style="background: rgba({{ selectedTournament.matchupList[16].team1Color }},0.8);">
+		<div class="single-box" style="background: rgba({{ selectedTournament.matchupList[16].team1Color }},0.8);" ng-click="predictMatchup(selectedTournament.matchupList[16], 1)">
 				<div class="team-box-small team-box" style="background-image: url(resources/images/teams/logos/{{ selectedTournament.matchupList[16].team1Slug }}.png)"></div>
 				<div class="team-title"> {{ selectedTournament.matchupList[16].team1Name }} </div>
 		</div>
 		<div class="spacer"></div>
-		<div class="single-box"  style="background: rgba({{ selectedTournament.matchupList[16].team2Color }},0.8);">
+		<div class="single-box"  style="background: rgba({{ selectedTournament.matchupList[16].team2Color }},0.8);" ng-click="predictMatchup(selectedTournament.matchupList[16], 2)">
 			<div class="team-box-small team-box" style="background-image: url(resources/images/teams/logos/{{ selectedTournament.matchupList[16].team2Slug }}.png)"></div>
 			<div  class="team-title"> {{ selectedTournament.matchupList[16].team2Name }} </div>
 		</div>		
@@ -440,24 +440,24 @@
 <!-- LOWER ROUND 4 -->
 	<!-- LR4M1 -->
 	<div  class="full-matchup-lower" style="left: 39%; top: 60%;">
-		<div class="single-box" style="background: rgba({{ selectedTournament.matchupList[17].team1Color }},0.8);">
+		<div class="single-box" style="background: rgba({{ selectedTournament.matchupList[17].team1Color }},0.8);" ng-click="predictMatchup(selectedTournament.matchupList[17], 1)">
 				<div class="team-box-small team-box" style="background-image: url(resources/images/teams/logos/{{ selectedTournament.matchupList[17].team1Slug }}.png)"></div>
 				<div class="team-title"> {{ selectedTournament.matchupList[17].team1Name }} </div>
 		</div>
 		<div class="spacer"></div>
-		<div class="single-box"  style="background: rgba({{ selectedTournament.matchupList[17].team2Color }},0.8);">
+		<div class="single-box"  style="background: rgba({{ selectedTournament.matchupList[17].team2Color }},0.8);" ng-click="predictMatchup(selectedTournament.matchupList[17], 2)">
 			<div class="team-box-small team-box" style="background-image: url(resources/images/teams/logos/{{ selectedTournament.matchupList[17].team2Slug }}.png)"></div>
 			<div  class="team-title"> {{ selectedTournament.matchupList[17].team2Name }} </div>
 		</div>	
 	</div>
 	<!-- LR4M2 -->
 	<div  class="full-matchup-lower" style="left: 39%; top: 80%;">
-		<div class="single-box" style="background: rgba({{ selectedTournament.matchupList[18].team1Color }},0.8);">
+		<div class="single-box" style="background: rgba({{ selectedTournament.matchupList[18].team1Color }},0.8);" ng-click="predictMatchup(selectedTournament.matchupList[18], 1)">
 				<div class="team-box-small team-box" style="background-image: url(resources/images/teams/logos/{{ selectedTournament.matchupList[18].team1Slug }}.png)"></div>
 				<div class="team-title"> {{ selectedTournament.matchupList[18].team1Name }} </div>
 		</div>
 		<div class="spacer"></div>
-		<div class="single-box"  style="background: rgba({{ selectedTournament.matchupList[18].team2Color }},0.8);">
+		<div class="single-box"  style="background: rgba({{ selectedTournament.matchupList[18].team2Color }},0.8);" ng-click="predictMatchup(selectedTournament.matchupList[18], 2)">
 			<div class="team-box-small team-box" style="background-image: url(resources/images/teams/logos/{{ selectedTournament.matchupList[18].team2Slug }}.png)"></div>
 			<div  class="team-title"> {{ selectedTournament.matchupList[18].team2Name }} </div>
 		</div>	
@@ -466,12 +466,12 @@
 <!-- LOWER ROUND 5 -->
 	<!-- LR3M1 -->
 	<div  class="full-matchup-lower" style="left: 52%; top: 70%;">
-		<div class="single-box" style="background: rgba({{ selectedTournament.matchupList[19].team1Color }},0.8);">
+		<div class="single-box" style="background: rgba({{ selectedTournament.matchupList[19].team1Color }},0.8);" ng-click="predictMatchup(selectedTournament.matchupList[19], 1)">
 				<div class="team-box-small team-box" style="background-image: url(resources/images/teams/logos/{{ selectedTournament.matchupList[19].team1Slug }}.png)"></div>
 				<div class="team-title"> {{ selectedTournament.matchupList[19].team1Name }} </div>
 		</div>
 		<div class="spacer"></div>
-		<div class="single-box"  style="background: rgba({{ selectedTournament.matchupList[19].team2Color }},0.8);">
+		<div class="single-box"  style="background: rgba({{ selectedTournament.matchupList[19].team2Color }},0.8);" ng-click="predictMatchup(selectedTournament.matchupList[19], 2)">
 			<div class="team-box-small team-box" style="background-image: url(resources/images/teams/logos/{{ selectedTournament.matchupList[19].team2Slug }}.png)"></div>
 			<div  class="team-title"> {{ selectedTournament.matchupList[19].team2Name }} </div>
 		</div>	
@@ -480,12 +480,12 @@
 <!-- LOWER ROUND 6 -->
 	<!-- LR3M1 -->
 	<div  class="full-matchup-lower" style="left: 65%; top: 70%;">
-		<div class="single-box" style="background: rgba({{ selectedTournament.matchupList[20].team1Color }},0.8);">
+		<div class="single-box" style="background: rgba({{ selectedTournament.matchupList[20].team1Color }},0.8);" ng-click="predictMatchup(selectedTournament.matchupList[20], 1)">
 				<div class="team-box-small team-box" style="background-image: url(resources/images/teams/logos/{{ selectedTournament.matchupList[20].team1Slug }}.png)"></div>
 				<div class="team-title"> {{ selectedTournament.matchupList[20].team1Name }} </div>
 		</div>
 		<div class="spacer"></div>
-		<div class="single-box"  style="background: rgba({{ selectedTournament.matchupList[20].team2Color }},0.8);">
+		<div class="single-box"  style="background: rgba({{ selectedTournament.matchupList[20].team2Color }},0.8);" ng-click="predictMatchup(selectedTournament.matchupList[20], 2)">
 			<div class="team-box-small team-box" style="background-image: url(resources/images/teams/logos/{{ selectedTournament.matchupList[20].team2Slug }}.png)"></div>
 			<div  class="team-title"> {{ selectedTournament.matchupList[20].team2Name }} </div>
 		</div>	
@@ -493,15 +493,18 @@
 
 <!-- GRAND FINAL -->
 <div class="full-matchup-final" style="left: 78.5%; top: 44%;">
-		<div class="single-box" style="background: rgba({{ selectedTournament.matchupList[21].team1Color }},0.8);">
+		<div class="single-box" style="background: rgba({{ selectedTournament.matchupList[21].team1Color }},0.8);" ng-click="predictMatchup(selectedTournament.matchupList[21], 1)">
 				<div class="team-box-small team-box" style="background-image: url(resources/images/teams/logos/{{ selectedTournament.matchupList[21].team1Slug }}.png)"></div>
 				<div class="team-title"> {{ selectedTournament.matchupList[21].team1Name }} </div>
 		</div>
 		<div class="spacer"></div>
-		<div class="single-box"  style="background: rgba({{ selectedTournament.matchupList[21].team2Color }},0.8);">
+		<div class="single-box"  style="background: rgba({{ selectedTournament.matchupList[21].team2Color }},0.8);" ng-click="predictMatchup(selectedTournament.matchupList[21], 2)">
 			<div class="team-box-small team-box" style="background-image: url(resources/images/teams/logos/{{ selectedTournament.matchupList[21].team2Slug }}.png)"></div>
 			<div  class="team-title"> {{ selectedTournament.matchupList[21].team2Name }} </div>
 		</div>		
 </div>
-
+<div class="bracket-submit-box">
+	<input class="bracket-name-text" type="text" ng-model="predictionName" placeholder="Name your bracket!" maxlength="30"><br/>
+	<button class="bracket-submit-button" ng-click="submitTournamentPrediction(predictionName);">SUBMIT</button>
+</div>
 </div>
